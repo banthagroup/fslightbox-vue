@@ -14,6 +14,15 @@
   },
   "jest": {
     "verbose": true,
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
     "testPathIgnorePatterns": [
       "/node_modules/",
       "/demo/",
@@ -36,21 +45,21 @@
   },
   "homepage": "https://fslightbox.com/",
   "peerDependencies": {
-    "vue-template-compiler": "^2.6.0",
-    "vue": "^2.6.0"
+    "vue": "^2.6.0",
+    "vue-template-compiler": "^2.6.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "babel-polyfill": "^6.26.0",
     "copy-webpack-plugin": "^5.0.3",
     "core-js": "^3.0.1",
     "css-loader": "^2.1.0",
-    "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
     "gulp": "^4.0.2",
@@ -66,6 +75,7 @@
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "vue": "^2.6.0",
+    "vue-jest": "^3.0.5",
     "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.30.0",
