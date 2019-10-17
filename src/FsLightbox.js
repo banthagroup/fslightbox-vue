@@ -25,6 +25,10 @@ export function FsLightbox(props) {
         next: undefined
     };
 
+    this.componentsServices = {
+        setSlideNumber: null
+    };
+
     this.elements = {
         container: null,
         sourcesOutersWrapper: null,
