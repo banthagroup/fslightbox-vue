@@ -1,11 +1,11 @@
 export function setUpFullscreenToggler(
     {
-        componentsStates: { toolbarButtons: { fullscreen: isFullscreenOpenState } },
+        componentsServices: { isFullscreenOpenManager },
         core: { fullscreenToggler: self }
     }
 ) {
     self.enterFullscreen = () => {
-        isFullscreenOpenState.set(true);
+        isFullscreenOpenManager.set(true);
 
         const documentElement = document.documentElement;
         if (documentElement.requestFullscreen) {
@@ -20,7 +20,7 @@ export function setUpFullscreenToggler(
     };
 
     self.exitFullscreen = () => {
-        isFullscreenOpenState.set(false);
+        isFullscreenOpenManager.set(false);
 
         if (document.exitFullscreen) {
             document.exitFullscreen();
