@@ -1,5 +1,6 @@
 import { getSourcesCount } from "./core/sources/getSourcesCount";
 import { getInitialCurrentIndex } from "./core/stage/getInitialCurrentIndex";
+import { setUpCore } from "./core/setUpCore";
 
 export function FsLightbox(props) {
     this.props = props;
@@ -26,7 +27,8 @@ export function FsLightbox(props) {
     };
 
     this.componentsServices = {
-        setSlideNumber: null
+        setSlideNumber: null,
+        isFullscreenOpenManager: {}
     };
 
     this.elements = {
@@ -55,4 +57,11 @@ export function FsLightbox(props) {
         stageManager: {},
         windowResizeActioner: {}
     };
+
+    this.resolve = (dependency, params = []) => {
+        params.unshift(this);
+        return new dependency(...params);
+    };
+
+    setUpCore(this);
 }

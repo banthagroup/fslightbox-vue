@@ -2,25 +2,21 @@ import { setUpFullscreenToggler } from "./setUpFullscreenToggler";
 
 const fullscreenToggler = {};
 const fsLightbox = {
-    componentsStates: {
-        toolbarButtons: {
-            fullscreen: {
-                set: jest.fn()
-            }
+    componentsServices: {
+        isFullscreenOpenManager: {
+            set: jest.fn()
         }
     },
-    core: {
-        fullscreenToggler: fullscreenToggler
-    }
+    core: { fullscreenToggler: fullscreenToggler }
 };
 
 setUpFullscreenToggler(fsLightbox);
 
 test('setting isFullscreenOpen component state', () => {
     fullscreenToggler.enterFullscreen();
-    expect(fsLightbox.componentsStates.toolbarButtons.fullscreen.set).toBeCalledWith(true);
+    expect(fsLightbox.componentsServices.isFullscreenOpenManager.set).toBeCalledWith(true);
     fullscreenToggler.exitFullscreen();
-    expect(fsLightbox.componentsStates.toolbarButtons.fullscreen.set).toBeCalledWith(false);
+    expect(fsLightbox.componentsServices.isFullscreenOpenManager.set).toBeCalledWith(false);
 });
 
 describe('requestFullscreen', () => {
