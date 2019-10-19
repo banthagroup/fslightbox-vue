@@ -5,9 +5,7 @@ export function setUpSlideChangeFacade(
             slideIndexChanger,
             stageManager
         },
-        data: {
-            sourcesCount
-        }
+        data: { sourcesCount }
     }
 ) {
     if (sourcesCount > 1) {

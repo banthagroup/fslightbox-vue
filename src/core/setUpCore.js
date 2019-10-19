@@ -23,7 +23,7 @@ export function setUpCore(fsLightbox) {
     // setUpLightboxOpenActioner(fsLightbox);
     // setUpLightboxUpdater(fsLightbox);
     // setUpScrollbarRecompensor(fsLightbox);
-    // setUpSlideChangeFacade(fsLightbox);
+    setUpSlideChangeFacade(fsLightbox);
     // setUpSlideIndexChanger(fsLightbox);
     // setUpSlideSwipingDown(fsLightbox);
     // setUpStageManager(fsLightbox);

@@ -1,7 +1,7 @@
 <template>
     <FsLightbox
-            :toggler="true"
-            :custom-sources="['image']"
+        :toggler="true"
+        :custom-sources="['image', 'second']"
     />
 </template>
 
