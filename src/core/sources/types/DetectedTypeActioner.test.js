@@ -1,7 +1,7 @@
 import React from 'react'
 import { CUSTOM_TYPE, IMAGE_TYPE, INVALID_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../constants/core-constants";
-import Image from "../../../components/sources/proper-sources/Image";
-import Video from "../../../components/sources/proper-sources/Video";
+import Image from "../../../components/sources/proper-sources/Imager";
+import Video from "../../../components/sources/proper-sources/Videor";
 import Youtube from "../../../components/sources/proper-sources/Youtube";
 import Invalid from "../../../components/sources/proper-sources/Invalid";
 import { SourceLoadHandler } from "../SourceLoadHandler";

@@ -1,11 +1,7 @@
 import { CreatingSourcesLocalStorageManager } from "./CreatingSourcesLocalStorageManager";
 import { SOURCES_TYPES_KEY } from "../../../constants/local-storage-constants";
 
-const fsLightbox = {
-    props: {
-        disableLocalStorage: false
-    }
-};
+const fsLightbox = { props: { disableLocalStorage: false } };
 
 let creatingSourcesLocalStorageManager;
 

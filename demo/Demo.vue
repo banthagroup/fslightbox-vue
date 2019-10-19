@@ -2,6 +2,7 @@
     <FsLightbox
         :toggler="true"
         :custom-sources="['image', 'second']"
+        :open-on-mount="true"
     />
 </template>
 

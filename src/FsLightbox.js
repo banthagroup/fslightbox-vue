@@ -1,6 +1,7 @@
 import { getSourcesCount } from "./core/sources/getSourcesCount";
 import { getInitialCurrentIndex } from "./core/stage/getInitialCurrentIndex";
 import { setUpCore } from "./core/setUpCore";
+import { getSourcesHoldersTransformersCollection } from "./core/collections/getSourcesHoldersTransformersCollection";
 
 export function FsLightbox(props) {
     this.props = props;
@@ -28,7 +29,9 @@ export function FsLightbox(props) {
 
     this.componentsServices = {
         setSlideNumber: null,
-        isFullscreenOpenManager: {}
+        isFullscreenOpenManager: {},
+        isSourceLoadedManagersCollection: [],
+        setSourceComponentCollection: []
     };
 
     this.elements = {
@@ -38,6 +41,20 @@ export function FsLightbox(props) {
         sourcesOuters: [],
         sourcesInners: [],
         sourcesComponents: []
+    };
+
+    this.resolve = (dependency, params = []) => {
+        params.unshift(this);
+        return new dependency(...params);
+    };
+
+    this.collections = {
+        sourcesOutersTransformers: getSourcesHoldersTransformersCollection(this),
+        sourcesLoadsHandlers: [],
+        // after source load its size adjuster will be stored in this array so it may be later resized
+        sourcesStylers: [],
+        // if lightbox is unmounted pending xhrs need to be aborted
+        xhrs: []
     };
 
     this.core = {
@@ -56,11 +73,6 @@ export function FsLightbox(props) {
         sourceLoadActioner: {},
         stageManager: {},
         windowResizeActioner: {}
-    };
-
-    this.resolve = (dependency, params = []) => {
-        params.unshift(this);
-        return new dependency(...params);
     };
 
     setUpCore(this);

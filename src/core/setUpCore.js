@@ -14,19 +14,19 @@ import { setUpClassFacade } from "./elements/setUpClassFacade";
 import { setUpGlobalEventsController } from "./events/setUpGlobalEventsController";
 
 export function setUpCore(fsLightbox) {
-    // setUpClassFacade(fsLightbox);
-    // setUpEventsDispatcher(fsLightbox);
+    setUpClassFacade(fsLightbox);
+    setUpEventsDispatcher(fsLightbox);
     setUpFullscreenToggler(fsLightbox);
     // setUpGlobalEventsController(fsLightbox);
     setUpLightboxCloser(fsLightbox);
     // setUpLightboxOpener(fsLightbox);
-    // setUpLightboxOpenActioner(fsLightbox);
+    setUpLightboxOpenActioner(fsLightbox);
     // setUpLightboxUpdater(fsLightbox);
-    // setUpScrollbarRecompensor(fsLightbox);
+    setUpScrollbarRecompensor(fsLightbox);
     setUpSlideChangeFacade(fsLightbox);
     // setUpSlideIndexChanger(fsLightbox);
     // setUpSlideSwipingDown(fsLightbox);
-    // setUpStageManager(fsLightbox);
+    setUpStageManager(fsLightbox);
     // setUpWindowResizeActioner(fsLightbox);
 }
 
