@@ -19,10 +19,14 @@ test('SourcesOutersWrapper', () => {
     expect(sourcesOutersWrapper.vm.$children.length).toBe(4);
     expect(sourcesOutersWrapper.vm.$children[0].$options._componentTag).toBe('SourceOuter');
     expect(sourcesOutersWrapper.vm.$children[0].$props['fsLightboxIndex']).toBe(1);
+    expect(sourcesOutersWrapper.vm.$children[0].$props['i']).toBe(0);
     expect(sourcesOutersWrapper.vm.$children[1].$options._componentTag).toBe('SourceOuter');
     expect(sourcesOutersWrapper.vm.$children[1].$props['fsLightboxIndex']).toBe(1);
+    expect(sourcesOutersWrapper.vm.$children[1].$props['i']).toBe(1);
     expect(sourcesOutersWrapper.vm.$children[2].$options._componentTag).toBe('SourceOuter');
     expect(sourcesOutersWrapper.vm.$children[2].$props['fsLightboxIndex']).toBe(1);
+    expect(sourcesOutersWrapper.vm.$children[2].$props['i']).toBe(2);
     expect(sourcesOutersWrapper.vm.$children[3].$options._componentTag).toBe('SourceOuter');
     expect(sourcesOutersWrapper.vm.$children[3].$props['fsLightboxIndex']).toBe(1);
+    expect(sourcesOutersWrapper.vm.$children[3].$props['i']).toBe(3);
 });

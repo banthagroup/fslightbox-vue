@@ -1,8 +1,9 @@
 <template>
     <div ref="ref" class="fslightbox-absoluted fslightbox-full-dimension">
         <SourceOuter
-            v-for="i in sourcesCount"
+            v-for="(n, i) in sourcesCount"
             :key="i"
+            :i="i"
             :fs-lightbox-index="fsLightboxIndex"
         />
     </div>

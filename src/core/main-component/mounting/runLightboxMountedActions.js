@@ -10,6 +10,7 @@ export function runLightboxMountedActions(
 ) {
     injectStylesIfNotInDom();
     data.scrollbarWidth = getScrollbarWidth();
+
     if (openOnMount) {
         runLightboxOpeningActions();
     }
