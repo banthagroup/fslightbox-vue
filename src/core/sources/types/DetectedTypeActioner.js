@@ -4,44 +4,38 @@ import { SourceLoadHandler } from "../SourceLoadHandler";
 export function DetectedTypeActioner(fsLightbox) {
     const {
         collections: { sourcesLoadsHandlers },
-        getState: getLightboxState,
-        // componentsStates: { sourcesInnersUpdatersCollection: sourcesInnersUpdatersStateCollection },
-        elements: { sourcesComponents },
+        getIsOpen,
+        componentsServices: { setSourceComponentCollection },
         resolve
     } = fsLightbox;
 
     this.runActionsForSourceTypeAndIndex = (type, i) => {
-        let BaseSourceComponent;
+        if (type !== INVALID_TYPE) {
+            sourcesLoadsHandlers[i] = resolve(SourceLoadHandler, [i]);
+        }
 
-        // if (type !== INVALID_TYPE) {
-        //     sourcesLoadsHandlers[i] = resolve(SourceLoadHandler, [i]);
-        // }
+        let componentName;
 
-        // switch (type) {
-        //     case IMAGE_TYPE:
-        //         BaseSourceComponent = Image;
-        //         break;
-        //     case VIDEO_TYPE:
-        //         BaseSourceComponent = Video;
-        //         break;
-        //     case YOUTUBE_TYPE:
-        //         BaseSourceComponent = Youtube;
-        //         break;
-        //     case CUSTOM_TYPE:
-        //         BaseSourceComponent = Custom;
-        //         break;
-        //     default:
-        //         BaseSourceComponent = Invalid;
-        //         break;
-        // }
+        switch (type) {
+            case IMAGE_TYPE:
+                componentName = 'Imager';
+                break;
+            case VIDEO_TYPE:
+                componentName = 'Videor';
+                break;
+            case YOUTUBE_TYPE:
+                componentName = 'Youtuber';
+                break;
+            case CUSTOM_TYPE:
+                componentName = 'Customer';
+                break;
+            default:
+                componentName = 'Invalider';
+                break;
+        }
 
-        // sourcesComponents[i] = <BaseSourceComponent
-        //     fsLightbox={ fsLightbox }
-        //     i={ i }
-        // />;
-
-        // if (getLightboxState().isOpen) {
-        //     sourcesInnersUpdatersStateCollection[i].set(true);
-        // }
+        if (getIsOpen()) {
+            setSourceComponentCollection[i](componentName);
+        }
     };
 }

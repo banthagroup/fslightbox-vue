@@ -26,4 +26,8 @@ test('SourceInner', () => {
     fsLightboxStore[2].componentsServices.setSourceComponentCollection[1]('Videor');
     expect(sourceInner.vm.$children.length).toBe(1);
     expect(sourceInner.contains(Videor)).toBe(true);
+    expect(sourceInner.vm.$children[0].$props).toEqual({
+        fsLightboxIndex: 2,
+        i: 1
+    });
 });

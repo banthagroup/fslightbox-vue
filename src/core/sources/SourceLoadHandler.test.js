@@ -2,7 +2,7 @@ import { SourceLoadActioner } from "./SourceLoadActioner";
 import { SourceLoadHandler } from "./SourceLoadHandler";
 
 const fsLightbox = {
-    elements: { sources: [{ current: { offsetWidth: 1111, offsetHeight: 555 } }] },
+    elements: { sources: [{ offsetWidth: 1111, offsetHeight: 555 }] },
     props: {},
     resolve: (constructor, params) => {
         if (constructor === SourceLoadActioner) {

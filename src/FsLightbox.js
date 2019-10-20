@@ -1,7 +1,7 @@
 import { getSourcesCount } from "./core/sources/getSourcesCount";
 import { getInitialCurrentIndex } from "./core/stage/getInitialCurrentIndex";
 import { setUpCore } from "./core/setUpCore";
-import { getSourcesHoldersTransformersCollection } from "./core/collections/getSourcesHoldersTransformersCollection";
+import { getSourcesOutersTransformersCollection } from "./core/collections/getSourcesOutersTransformersCollection";
 
 export function FsLightbox(props) {
     this.props = props;
@@ -30,7 +30,7 @@ export function FsLightbox(props) {
     this.componentsServices = {
         setSlideNumber: null,
         isFullscreenOpenManager: {},
-        isSourceLoadedManagersCollection: [],
+        hideLoaderCollection: [],
         setSourceComponentCollection: []
     };
 
@@ -49,7 +49,7 @@ export function FsLightbox(props) {
     };
 
     this.collections = {
-        sourcesOutersTransformers: getSourcesHoldersTransformersCollection(this),
+        sourcesOutersTransformers: getSourcesOutersTransformersCollection(this),
         sourcesLoadsHandlers: [],
         // after source load its size adjuster will be stored in this array so it may be later resized
         sourcesStylers: [],

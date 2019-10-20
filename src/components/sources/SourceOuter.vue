@@ -19,9 +19,7 @@
             }
         },
         created() {
-            fsLightboxStore[this.fsLightboxIndex].componentsServices.isSourceLoadedManagersCollection[this.i] = {
-                set: (value) => this.isSourceLoaded = value
-            };
+            fsLightboxStore[this.fsLightboxIndex].componentsServices.hideLoaderCollection[this.i] = () => this.isSourceLoaded = true;
         }
     }
 </script>

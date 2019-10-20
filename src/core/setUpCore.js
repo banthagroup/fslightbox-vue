@@ -27,6 +27,6 @@ export function setUpCore(fsLightbox) {
     // setUpSlideIndexChanger(fsLightbox);
     // setUpSlideSwipingDown(fsLightbox);
     setUpStageManager(fsLightbox);
-    // setUpWindowResizeActioner(fsLightbox);
+    setUpWindowResizeActioner(fsLightbox);
 }
 

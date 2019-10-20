@@ -3,16 +3,16 @@ import { FADE_IN_STRONG_CLASS_NAME, OPACITY_1_CLASS_NAME } from "../../constants
 
 export function SourceLoadActioner(
     {
-        componentsStates: { isSourceLoadedCollection },
+        componentsServices: { hideLoaderCollection },
         collections: { sourcesStylers },
         elements: { sourcesInners, sources },
         resolve
     }, i, defaultWidth, defaultHeight
 ) {
     this.runNormalLoadActions = () => {
-        sources[i].current.classList.add(OPACITY_1_CLASS_NAME);
-        sourcesInners[i].current.classList.add(FADE_IN_STRONG_CLASS_NAME);
-        isSourceLoadedCollection[i].set(true);
+        sources[i].classList.add(OPACITY_1_CLASS_NAME);
+        sourcesInners[i].classList.add(FADE_IN_STRONG_CLASS_NAME);
+        hideLoaderCollection[i]();
     };
 
     this.runInitialLoadActions = () => {
