@@ -17,7 +17,7 @@ export function setUpCore(fsLightbox) {
     setUpClassFacade(fsLightbox);
     setUpEventsDispatcher(fsLightbox);
     setUpFullscreenToggler(fsLightbox);
-    // setUpGlobalEventsController(fsLightbox);
+    setUpGlobalEventsController(fsLightbox);
     setUpLightboxCloser(fsLightbox);
     // setUpLightboxOpener(fsLightbox);
     setUpLightboxOpenActioner(fsLightbox);
@@ -25,7 +25,7 @@ export function setUpCore(fsLightbox) {
     setUpScrollbarRecompensor(fsLightbox);
     setUpSlideChangeFacade(fsLightbox);
     setUpSlideIndexChanger(fsLightbox);
-    // setUpSlideSwipingDown(fsLightbox);
+    setUpSlideSwipingDown(fsLightbox);
     setUpStageManager(fsLightbox);
     setUpWindowResizeActioner(fsLightbox);
 }

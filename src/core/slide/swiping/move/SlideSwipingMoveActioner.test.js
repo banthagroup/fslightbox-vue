@@ -15,7 +15,7 @@ const fsLightbox = {
             }
         ]
     },
-    elements: { container: { current: { classList: { add: jest.fn() } } } },
+    elements: { container: { classList: { add: jest.fn() } } },
     slideSwipingProps: { downClientX: null, swipedX: null, },
     stageIndexes: {
         previous: 0,
@@ -43,7 +43,7 @@ test('simple actions', () => {
     slideSwipingMoveActions.runActionsForEvent(e);
 
     expect(fsLightbox.componentsServices.isSlideSwipingHovererShown.set).not.toBeCalled();
-    expect(fsLightbox.elements.container.current.classList.add).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
+    expect(fsLightbox.elements.container.classList.add).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
     expect(fsLightbox.slideSwipingProps.swipedX).toBe(-50);
 
 
