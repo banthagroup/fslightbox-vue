@@ -1,8 +1,9 @@
 <template>
-    <div v-if="isOpen" class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
+    <div v-if="isOpen" ref="container" class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
         <Nav :fs-lightbox-index="this.fsLightboxIndex"/>
         <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex"/>
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex"/>
+        <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex"/>
     </div>
 </template>
 
@@ -12,10 +13,11 @@
     import Nav from './components/nav/Nav.vue';
     import SourcesOutersWrapper from "./components/sources/SourcesOutersWrapper.vue";
     import SlideButtons from "./components/SlideButtons.vue";
+    import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
     import { runLightboxMountedActions } from "./core/main-component/mounting/runLightboxMountedActions";
 
     export default {
-        components: { SlideButtons, SourcesOutersWrapper, Nav },
+        components: { SlideButtons, SourcesOutersWrapper, Nav, SlideSwipingHoverer },
         props: {
             toggler: Boolean,
             sources: Array,
@@ -48,6 +50,7 @@
             fsLightboxStore[this.fsLightboxIndex].setIsOpen = (value) => this.isOpen = value;
         },
         mounted() {
+            fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
             runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
         }
     };

@@ -31,7 +31,8 @@ export function FsLightbox(props) {
         setSlideNumber: null,
         isFullscreenOpenManager: {},
         hideLoaderCollection: [],
-        setSourceComponentCollection: []
+        setSourceComponentCollection: [],
+        isSlideSwipingHovererShownManager: {}
     };
 
     this.elements = {

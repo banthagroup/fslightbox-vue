@@ -12,7 +12,7 @@
         props: { fsLightboxIndex: Number, i: Number },
         mounted() {
             const {
-                collections: { hideLoaderCollection },
+                componentsServices: { hideLoaderCollection },
                 elements: { sourcesOuters }
             } = fsLightboxStore[this.fsLightboxIndex];
 

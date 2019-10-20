@@ -3,9 +3,9 @@ import { CURSOR_GRABBING_CLASS_NAME } from "../../../../constants/classes-names"
 
 export function SlideSwipingUpActioner(
     {
-        componentsServices: { isSlideSwipingHovererShown: isSlideSwipingHovererShownState },
+        componentsServices: { isSlideSwipingHovererShownManager },
         core: { lightboxCloser },
-        elements: { container },
+        elements,
         resolve,
         slideSwipingProps
     }
@@ -27,9 +27,9 @@ export function SlideSwipingUpActioner(
             slideSwipingUpActionsBucket.runNegativeSwipedXActions();
         }
 
-        isSlideSwipingHovererShownState.set(false);
+        isSlideSwipingHovererShownManager.set(false);
 
-        container.classList.remove(CURSOR_GRABBING_CLASS_NAME);
+        elements.container.classList.remove(CURSOR_GRABBING_CLASS_NAME);
 
         slideSwipingProps.isSwiping = false;
     };
