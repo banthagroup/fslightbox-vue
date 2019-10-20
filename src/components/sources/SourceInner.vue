@@ -13,11 +13,13 @@
     import { fsLightboxStore } from "../../fsLightboxStore";
     import Imager from "./proper-sources/Imager.vue";
     import Videor from "./proper-sources/Videor.vue";
+    import Youtuber from "./proper-sources/Youtuber.vue";
     import Customer from "./proper-sources/Customer.vue";
+    import Invalider from "./proper-sources/Invalider.vue";
 
     export default {
         props: { fsLightboxIndex: Number, i: Number },
-        components: { Imager, Videor, Customer },
+        components: { Imager, Videor, Youtuber, Customer, Invalider },
         data() {
             return {
                 sourceComponent: null

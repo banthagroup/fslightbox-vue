@@ -1,7 +1,7 @@
 <template>
     <FsLightbox
         :toggler="true"
-        :sources="['https://i.imgur.com/Ys15LQF.jpg']"
+        :sources="['https://i.imgur.com/Ys15LQF.jpg', null, 'invalid']"
         :custom-sources="[null, Custom]"
         :open-on-mount="true"
     />
