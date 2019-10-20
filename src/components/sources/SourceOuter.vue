@@ -1,5 +1,6 @@
 <template>
-    <div class="fslightbox-source-outer fslightbox-absoluted fslightbox-full-dimension fslightbox-flex-centered">
+    <div class="fslightbox-source-outer fslightbox-absoluted fslightbox-full-dimension fslightbox-flex-centered"
+         ref="ref">
         <SourceInner :fs-lightbox-index="fsLightboxIndex" :i="i"/>
         <Loader v-if="!isSourceLoaded"/>
     </div>
@@ -20,6 +21,9 @@
         },
         created() {
             fsLightboxStore[this.fsLightboxIndex].componentsServices.hideLoaderCollection[this.i] = () => this.isSourceLoaded = true;
+        },
+        mounted() {
+            fsLightboxStore[this.fsLightboxIndex].elements.sourcesOuters[this.i] = this.$refs.ref;
         }
     }
 </script>

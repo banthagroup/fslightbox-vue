@@ -3,7 +3,7 @@ import { FADE_OUT_STRONG_CLASS_NAME, OPEN_CLASS_NAME } from "../../../constants/
 import { ANIMATION_TIME } from "../../../constants/css-constants";
 
 const fsLightbox = {
-    componentsStates: { toolbarButtons: { fullscreen: { get: () => false } } },
+    componentsServices: { toolbarButtons: { fullscreen: { get: () => false } } },
     core: {
         eventsDispatcher: { dispatch: jest.fn() },
         fullscreenToggler: { enterFullscreen: jest.fn() },
@@ -14,7 +14,7 @@ const fsLightbox = {
     setMainComponentState: () => {},
     slideSwipingProps: {},
 };
-const isFullscreenOpenState = fsLightbox.componentsStates.toolbarButtons.fullscreen;
+const isFullscreenOpenState = fsLightbox.componentsServices.toolbarButtons.fullscreen;
 const fullscreenToggler = fsLightbox.core.fullscreenToggler;
 const scrollbarRecompensor = fsLightbox.core.scrollbarRecompensor;
 
