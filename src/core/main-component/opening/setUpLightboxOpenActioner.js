@@ -21,8 +21,8 @@ export function setUpLightboxOpenActioner(fsLightbox) {
         document.documentElement.classList.add(OPEN_CLASS_NAME);
         windowResizeActioner.runActions();
         scrollbarRecompensor.addRecompense();
-        // globalEventsController.attachListeners();
-        // sourcesOutersTransformers[stageIndexes.current].zero();
+        globalEventsController.attachListeners();
+        sourcesOutersTransformers[stageIndexes.current].zero();
         eventsDispatcher.dispatch('onOpen');
 
         (data.isInitialized) ?

@@ -1,5 +1,8 @@
 <template>
-    <div ref="ref" class="fslightbox-absoluted fslightbox-full-dimension">
+    <div class="fslightbox-absoluted fslightbox-full-dimension"
+         ref="ref"
+         @mousedown="listener"
+         @touchstart="listener">
         <SourceOuter
             v-for="(n, i) in sourcesCount"
             :key="i"
@@ -17,8 +20,14 @@
         props: { fsLightboxIndex: Number },
         components: { SourceOuter },
         data() {
+            const {
+                core: { slideSwipingDown: { listener } },
+                data: { sourcesCount }
+            } = fsLightboxStore[this.fsLightboxIndex];
+
             return {
-                sourcesCount: fsLightboxStore[this.fsLightboxIndex].data.sourcesCount
+                sourcesCount: sourcesCount,
+                listener: listener
             }
         },
         mounted() {

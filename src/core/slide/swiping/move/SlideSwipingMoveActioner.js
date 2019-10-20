@@ -17,7 +17,7 @@ export function SlideSwipingMoveActioner(
             isSlideSwipingHovererShownState.set(true);
         }
 
-        container.current.classList.add(CURSOR_GRABBING_CLASS_NAME);
+        container.classList.add(CURSOR_GRABBING_CLASS_NAME);
 
         slideSwipingProps.swipedX = getClientXFromEvent(e) - slideSwipingProps.downClientX;
 

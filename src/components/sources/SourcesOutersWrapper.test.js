@@ -4,6 +4,7 @@ import SourcesOutersWrapper from "./SourcesOutersWrapper.vue";
 import SourceOuter from "./SourceOuter.vue";
 
 fsLightboxStore[1] = {
+    core: { slideSwipingDown: { listener: jest.fn() } },
     data: { sourcesCount: 4 },
     elements: {
         sourcesOutersWrapper: null
@@ -29,4 +30,11 @@ test('SourcesOutersWrapper', () => {
     expect(sourcesOutersWrapper.vm.$children[3].$options._componentTag).toBe('SourceOuter');
     expect(sourcesOutersWrapper.vm.$children[3].$props['fsLightboxIndex']).toBe(1);
     expect(sourcesOutersWrapper.vm.$children[3].$props['i']).toBe(3);
+
+    const mousedown = new Event('mousedown');
+    const touchstart = new Event('touchstart');
+    expect(sourcesOutersWrapper.element.dispatchEvent(mousedown));
+    expect(fsLightboxStore[1].core.slideSwipingDown.listener).toBeCalledWith(mousedown);
+    expect(sourcesOutersWrapper.element.dispatchEvent(touchstart));
+    expect(fsLightboxStore[1].core.slideSwipingDown.listener).toBeCalledWith(touchstart);
 });

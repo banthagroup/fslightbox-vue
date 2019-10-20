@@ -29,7 +29,7 @@ export function SlideSwipingUpActioner(
 
         isSlideSwipingHovererShownState.set(false);
 
-        container.current.classList.remove(CURSOR_GRABBING_CLASS_NAME);
+        container.classList.remove(CURSOR_GRABBING_CLASS_NAME);
 
         slideSwipingProps.isSwiping = false;
     };

@@ -8,7 +8,7 @@ const fsLightbox = {
         lightboxCloser: { closeLightbox: jest.fn() },
         swipingActioner: { runTopActionsForProps: jest.fn() }
     },
-    elements: { container: { current: { classList: { remove: jest.fn() } } } },
+    elements: { container: { classList: { remove: jest.fn() } } },
     resolve: (constructorDependency) => {
         if (constructorDependency === SlideSwipingUpActionerBucket) {
             return slideSwipingUpActionsBucket;
@@ -40,7 +40,7 @@ test('runActions', () => {
     expect(slideSwipingUpActionsBucket.runPositiveSwipedXActions).toBeCalled();
     expect(slideSwipingUpActionsBucket.runNegativeSwipedXActions).not.toBeCalled();
     expect(fsLightbox.componentsServices.isSlideSwipingHovererShown.set).toBeCalledWith(false);
-    expect(fsLightbox.elements.container.current.classList.remove).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
+    expect(fsLightbox.elements.container.classList.remove).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
     expect(fsLightbox.slideSwipingProps.isSwiping).toBe(false);
 
     fsLightbox.slideSwipingProps.swipedX = -1;
