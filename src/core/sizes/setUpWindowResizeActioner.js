@@ -23,12 +23,10 @@ export function setUpWindowResizeActioner(
         }
 
         for (let i = 0; i < data.sourcesCount; i++) {
-            if (sourcesOuters[i]) {
-                removeFromElementClassIfContains(sourcesOuters[i], TRANSFORM_TRANSITION_CLASS_NAME);
+            removeFromElementClassIfContains(sourcesOuters[i], TRANSFORM_TRANSITION_CLASS_NAME);
 
-                if (i !== stageIndexes.current) {
-                    sourcesOutersTransformers[i].negative();
-                }
+            if (i !== stageIndexes.current) {
+                sourcesOutersTransformers[i].negative();
             }
 
             // if source is Invalid or if lightbox is initialized there are no sourcesStylers

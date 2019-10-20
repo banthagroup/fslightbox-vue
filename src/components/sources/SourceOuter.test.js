@@ -13,6 +13,7 @@ test('SourceOuter', () => {
         propsData: { fsLightboxIndex: 2, i: 1 }
     });
     expect(sourceOuter.vm.$children[0].$props).toEqual({ fsLightboxIndex: 2, i: 1 });
+    expect(fsLightboxStore[2].elements.sourcesOuters[1]).toBe(sourceOuter.element);
     expect(sourceOuter.contains(Loader)).toBe(true);
 
     fsLightboxStore[2].componentsServices.hideLoaderCollection[1]();
