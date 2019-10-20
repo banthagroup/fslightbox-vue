@@ -5,7 +5,7 @@ export function setUpWindowResizeActioner(
     {
         collections: { sourcesOutersTransformers, sourcesStylers },
         core: { windowResizeActioner: self },
-        componentsStates: { toolbarButtons: { fullscreen: isFullscreenEnteredState } },
+        componentsServices: { isFullscreenOpenManager },
         data,
         elements: { sourcesOuters },
         stageIndexes
@@ -19,14 +19,16 @@ export function setUpWindowResizeActioner(
         data.maxSourceHeight = 0.9 * innerHeight;
 
         if (screen.height !== innerHeight) {
-            isFullscreenEnteredState.set(false);
+            isFullscreenOpenManager.set(false);
         }
 
         for (let i = 0; i < data.sourcesCount; i++) {
-            removeFromElementClassIfContains(sourcesOuters[i], TRANSFORM_TRANSITION_CLASS_NAME);
+            if (sourcesOuters[i]) {
+                removeFromElementClassIfContains(sourcesOuters[i], TRANSFORM_TRANSITION_CLASS_NAME);
 
-            if (i !== stageIndexes.current) {
-                sourcesOutersTransformers[i].negative();
+                if (i !== stageIndexes.current) {
+                    sourcesOutersTransformers[i].negative();
+                }
             }
 
             // if source is Invalid or if lightbox is initialized there are no sourcesStylers

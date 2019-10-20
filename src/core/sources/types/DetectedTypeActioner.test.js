@@ -1,70 +1,35 @@
-import React from 'react'
-import { CUSTOM_TYPE, IMAGE_TYPE, INVALID_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../constants/core-constants";
-import Image from "../../../components/sources/proper-sources/Imager";
-import Video from "../../../components/sources/proper-sources/Videor";
-import Youtube from "../../../components/sources/proper-sources/Youtube";
-import Invalid from "../../../components/sources/proper-sources/Invalid";
-import { SourceLoadHandler } from "../SourceLoadHandler";
 import { DetectedTypeActioner } from "./DetectedTypeActioner";
-import Custom from "../../../components/sources/proper-sources/Custom";
+import { SourceLoadHandler } from "../SourceLoadHandler";
 
 const fsLightbox = {
     collections: { sourcesLoadsHandlers: [] },
-    getState: () => lightboxState,
-    componentsStates: { sourcesInnersUpdatersCollection: [{ set: jest.fn() }] },
-    elements: { sourcesComponents: [] },
-    resolve: (constructorDependency, params) => {
-        if (constructorDependency === SourceLoadHandler) {
-            expect(params).toEqual(expectedSourceLoadHandlerParams);
-            return 'source-load-handler';
-        } else {
-            throw new Error('Invalid dependency');
-        }
-    },
-    props: {}
+    componentsServices: { setSourceComponentCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()] },
+    getIsOpen: () => false,
+    resolve: jest.fn(() => 'source-load-handler')
 };
-let expectedSourceLoadHandlerParams;
-const lightboxState = { isOpen: false };
 
-let detectedTypeActions = new DetectedTypeActioner(fsLightbox);
+let detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
 
 test('runActionsForSourceTypeAndIndex', () => {
-    expectedSourceLoadHandlerParams = [0];
-    detectedTypeActions.runActionsForSourceTypeAndIndex(IMAGE_TYPE, 0);
-    expect(fsLightbox.collections.sourcesLoadsHandlers[0]).toBe('source-load-handler');
-    expect(fsLightbox.elements.sourcesComponents[0]).toEqual( < Image
-    fsLightbox = { fsLightbox }
-    i = { 0 }
-    />);
-    expect(fsLightbox.componentsStates.sourcesInnersUpdatersCollection[0].set).not.toBeCalled();
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('invalid', 0);
+    expect(fsLightbox.resolve).not.toBeCalled();
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[0]).not.toBeCalled();
 
-    fsLightbox.props.disableThumbs = true;
-    lightboxState.isOpen = true;
-    detectedTypeActions = new DetectedTypeActioner(fsLightbox);
-    detectedTypeActions.runActionsForSourceTypeAndIndex(VIDEO_TYPE, 0);
-    expect(fsLightbox.elements.sourcesComponents[0]).toEqual( < Video
-    fsLightbox = { fsLightbox }
-    i = { 0 }
-    />);
-    expect(fsLightbox.componentsStates.sourcesInnersUpdatersCollection[0].set).toBeCalledWith(true);
+    fsLightbox.getIsOpen = () => true;
+    detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('image', 0);
+    expect(fsLightbox.resolve).toBeCalledWith(SourceLoadHandler, [0]);
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[0]).toBeCalledWith('Imager');
 
-    detectedTypeActions.runActionsForSourceTypeAndIndex(YOUTUBE_TYPE, 0);
-    expect(fsLightbox.elements.sourcesComponents[0]).toEqual( < Youtube
-    fsLightbox = { fsLightbox }
-    i = { 0 }
-    />);
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('video', 1);
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[1]).toBeCalledWith('Videor');
 
-    detectedTypeActions.runActionsForSourceTypeAndIndex(CUSTOM_TYPE, 0);
-    expect(fsLightbox.elements.sourcesComponents[0]).toEqual( < Custom
-    fsLightbox = { fsLightbox }
-    i = { 0 }
-    />);
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('youtube', 2);
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[2]).toBeCalledWith('Youtuber');
 
-    fsLightbox.collections.sourcesLoadsHandlers[0] = undefined;
-    detectedTypeActions.runActionsForSourceTypeAndIndex(INVALID_TYPE, 0);
-    expect(fsLightbox.collections.sourcesLoadsHandlers[0]).toBeUndefined();
-    expect(fsLightbox.elements.sourcesComponents[0]).toEqual( < Invalid
-    fsLightbox = { fsLightbox }
-    i = { 0 }
-    />);
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('custom', 3);
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[3]).toBeCalledWith('Customer');
+
+    detectedTypeActioner.runActionsForSourceTypeAndIndex('invalid', 4);
+    expect(fsLightbox.componentsServices.setSourceComponentCollection[4]).toBeCalledWith('Invalider');
 });

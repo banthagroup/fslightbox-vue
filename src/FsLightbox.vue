@@ -5,6 +5,7 @@
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex"/>
     </div>
 </template>
+
 <script>
     import { fsLightboxStore } from "./fsLightboxStore";
     import { FsLightbox } from "./FsLightbox";
@@ -27,6 +28,10 @@
             types: Array,
             type: String,
 
+            //sources
+            videosPosters: Array,
+            maxYoutubeVideoDimensions: Object,
+
             // preferences
             slideDistance: { type: Number, default: 0.3 },
             openOnMount: Boolean,
@@ -34,10 +39,13 @@
         data() {
             return {
                 isOpen: this.openOnMount
-            }
+            };
         },
         created() {
             this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
+
+            fsLightboxStore[this.fsLightboxIndex].getIsOpen = () => this.isOpen;
+            fsLightboxStore[this.fsLightboxIndex].setIsOpen = (value) => this.isOpen = value;
         },
         mounted() {
             runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);

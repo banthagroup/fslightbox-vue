@@ -19,7 +19,7 @@ export function setUpLightboxOpenActioner(fsLightbox) {
     self.runActions = () => {
         stageManager.updateStageIndexes();
         document.documentElement.classList.add(OPEN_CLASS_NAME);
-        // windowResizeActioner.runActions();
+        windowResizeActioner.runActions();
         scrollbarRecompensor.addRecompense();
         // globalEventsController.attachListeners();
         // sourcesOutersTransformers[stageIndexes.current].zero();

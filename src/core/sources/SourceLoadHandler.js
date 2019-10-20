@@ -22,7 +22,7 @@ export function SourceLoadHandler({ elements: { sources }, props: { maxYoutubeVi
     };
 
     this.handleCustomLoad = () => {
-        const source = sources[i].current;
+        const source = sources[i];
         this.handleCustomLoad = handleLoadAndGetFurtherActionsFunction(source.offsetWidth, source.offsetHeight);
     };
 

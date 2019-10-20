@@ -5,7 +5,7 @@ import Loader from "../helpers/Loader.vue";
 
 fsLightboxStore[2] = {
     elements: { sourcesOuters: [] },
-    componentsServices: { isSourceLoadedManagersCollection: [] }
+    componentsServices: { hideLoaderCollection: [] }
 };
 
 test('SourceOuter', () => {
@@ -15,6 +15,6 @@ test('SourceOuter', () => {
     expect(sourceOuter.vm.$children[0].$props).toEqual({ fsLightboxIndex: 2, i: 1 });
     expect(sourceOuter.contains(Loader)).toBe(true);
 
-    fsLightboxStore[2].componentsServices.isSourceLoadedManagersCollection[1].set(true);
+    fsLightboxStore[2].componentsServices.hideLoaderCollection[1]();
     expect(sourceOuter.contains(Loader)).toBe(false);
 });
