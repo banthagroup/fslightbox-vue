@@ -59,6 +59,17 @@
         watch: {
             toggler: function () {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
+            },
+            slide: function (newSlide) {
+                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
+            },
+            sourceIndex: function (newSourceIndex) {
+                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSourceIndex);
+            },
+            source: function (newSource) {
+                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
+                    this.sources.indexOf(newSource)
+                );
             }
         },
         created() {

@@ -1,10 +1,12 @@
 <template>
-    <FsLightbox
-        :toggler="toggler"
-        :sources="testSources"
-        :custom-sources="[null, null, null, null, Custom]"
-        :open-on-mount="true"
-    />
+    <div>
+        <button @click="toggler = !toggler">Toggle Lightbox</button>
+        <FsLightbox
+            :toggler="toggler"
+            :sources="testSources"
+            :custom-sources="[null, null, null, null, Custom]"
+        />
+    </div>
 </template>
 
 <script>
@@ -20,11 +22,6 @@
                 toggler: false,
                 testSources: testSources
             }
-        },
-        created() {
-            // setInterval(() => {
-            //     this.toggler = !this.toggler;
-            // }, 2000);
         }
     }
 </script>

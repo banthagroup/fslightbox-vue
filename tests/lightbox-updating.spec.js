@@ -1,6 +1,7 @@
 import FsLightbox from "../src/FsLightbox.vue";
-import { testSources } from "./__tests-services__/testVars";
+import { TEST_YOUTUBE_URL, testSources } from "./__tests-services__/testVars";
 import { mount } from "@vue/test-utils";
+import { fsLightboxStore } from "../src/fsLightboxStore";
 
 jest.useFakeTimers();
 
@@ -15,6 +16,20 @@ test('updating toggler', async () => {
     expect(fsLightbox.contains('div')).toBe(true);
 });
 
-test('updating source', () => {
+test('updating slide', () => {
+    const fsLightbox = mount(FsLightbox, {
+        propsData: { sources: testSources, toggler: false, slide: 2 }
+    });
 
+    const fsLightboxInstance = fsLightboxStore[fsLightbox.vm.fsLightboxIndex];
+    expect(fsLightboxInstance.stageIndexes.current).toBe(1);
+
+    fsLightbox.setProps({ slide: 1 });
+    expect(fsLightboxInstance.stageIndexes.current).toBe(0);
+
+    fsLightbox.setProps({ sourceIndex: 1 });
+    expect(fsLightboxInstance.stageIndexes.current).toBe(1);
+
+    fsLightbox.setProps({ source: TEST_YOUTUBE_URL });
+    expect(fsLightboxInstance.stageIndexes.current).toBe(2);
 });
