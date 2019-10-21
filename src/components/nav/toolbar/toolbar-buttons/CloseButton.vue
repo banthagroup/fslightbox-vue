@@ -17,7 +17,7 @@
         props: { fsLightboxIndex: Number },
         data() {
             return {
-                onClick: fsLightboxStore[this.fsLightboxIndex].core.lightboxCloser.closeLightbox
+                onClick: fsLightboxStore[this.fsLightboxIndex].core.lightboxCloser.close
             }
         }
     }

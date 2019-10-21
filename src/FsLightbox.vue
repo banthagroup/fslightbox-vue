@@ -16,14 +16,26 @@
     import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
     import { runLightboxMountedActions } from "./core/main-component/mounting/runLightboxMountedActions";
 
+    let updatedCallback;
+
     export default {
-        components: { SlideButtons, SourcesOutersWrapper, Nav, SlideSwipingHoverer },
         props: {
             toggler: Boolean,
             sources: Array,
 
             // custom sources
             customSources: Array,
+
+            // slide number controlling
+            slide: Number,
+            source: String,
+            sourceIndex: Number,
+
+            // events
+            onOpen: Function,
+            onClose: Function,
+            onInit: Function,
+            onShow: Function,
 
             // types
             disableLocalStorage: Boolean,
@@ -38,20 +50,44 @@
             slideDistance: { type: Number, default: 0.3 },
             openOnMount: Boolean,
         },
+        components: { SlideButtons, SourcesOutersWrapper, Nav, SlideSwipingHoverer },
         data() {
             return {
                 isOpen: this.openOnMount
             };
         },
+        watch: {
+            toggler: function () {
+                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
+            }
+        },
         created() {
             this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
 
-            fsLightboxStore[this.fsLightboxIndex].getIsOpen = () => this.isOpen;
-            fsLightboxStore[this.fsLightboxIndex].setIsOpen = (value) => this.isOpen = value;
+            const isLightboxOpenManger = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
+            isLightboxOpenManger.get = () => this.isOpen;
+            isLightboxOpenManger.set = (value, callback) => {
+                this.isOpen = value;
+
+                if (callback) {
+                    updatedCallback = callback;
+                }
+            };
         },
         mounted() {
             fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
             runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
+        },
+        updated() {
+            if (!fsLightboxStore[this.fsLightboxIndex].elements.container) {
+                fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
+            }
+
+            if (updatedCallback) {
+                updatedCallback();
+            }
+
+            updatedCallback = null;
         }
     };
 </script>

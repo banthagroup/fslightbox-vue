@@ -3,7 +3,7 @@ import { getScrollbarWidth } from "../../scrollbar/getScrollbarWidth";
 
 export function runLightboxMountedActions(
     {
-        core: { lightboxOpenActioner: { runActions: runLightboxOpeningActions } },
+        core: { lightboxOpenActioner: { runActions } },
         data,
         props: { openOnMount }
     }
@@ -12,6 +12,6 @@ export function runLightboxMountedActions(
     data.scrollbarWidth = getScrollbarWidth();
 
     if (openOnMount) {
-        runLightboxOpeningActions();
+        runActions();
     }
 }

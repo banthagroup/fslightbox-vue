@@ -1,25 +1,23 @@
-import { LightboxUpdateActioner } from "./LightboxUpdateActioner";
-import { getLightboxUpdaterConditioner } from "./getLightboxUpdaterConditioner";
+export function setUpLightboxUpdater(
+    {
+        componentsServices: { isLightboxOpenManager },
+        core: { lightboxUpdater: self, lightboxCloser, lightboxOpener, slideIndexChanger },
+        stageIndexes
+    }
+) {
+    self.handleTogglerUpdate = () => {
+        isLightboxOpenManager.get() ?
+            lightboxCloser.close() :
+            lightboxOpener.open();
+    };
 
-export function setUpLightboxUpdater({ core: { lightboxUpdater: self, }, data: { sources }, getProps, resolve }) {
-    const updatingActioner = resolve(LightboxUpdateActioner);
-    const lightboxUpdaterConditioner = getLightboxUpdaterConditioner();
-
-    self.handleUpdate = (previousProps) => {
-        const currentProps = getProps();
-        lightboxUpdaterConditioner.setPrevProps(previousProps);
-        lightboxUpdaterConditioner.setCurrProps(currentProps);
-
-        if (lightboxUpdaterConditioner.hasTogglerPropChanged()) {
-            updatingActioner.runTogglerUpdateActions();
+    self.runCurrentStageIndexUpdateActionsFor = (newSlideSourceIndex) => {
+        if (newSlideSourceIndex === stageIndexes.current) {
+            return;
         }
 
-        if (lightboxUpdaterConditioner.hasSourcePropChanged()) {
-            updatingActioner.runCurrentStageIndexUpdateActionsFor(sources.indexOf(currentProps.source));
-        } else if (lightboxUpdaterConditioner.hasSourceIndexPropChanged()) {
-            updatingActioner.runCurrentStageIndexUpdateActionsFor(currentProps.sourceIndex);
-        } else if (lightboxUpdaterConditioner.hasSlidePropChanged()) {
-            updatingActioner.runCurrentStageIndexUpdateActionsFor(currentProps.slide - 1);
-        }
+        (isLightboxOpenManager.get()) ?
+            slideIndexChanger.jumpTo(newSlideSourceIndex) :
+            stageIndexes.current = newSlideSourceIndex;
     };
 }
