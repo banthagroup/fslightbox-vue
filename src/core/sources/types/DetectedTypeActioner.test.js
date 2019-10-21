@@ -3,8 +3,10 @@ import { SourceLoadHandler } from "../SourceLoadHandler";
 
 const fsLightbox = {
     collections: { sourcesLoadsHandlers: [] },
-    componentsServices: { setSourceComponentCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()] },
-    getIsOpen: () => false,
+    componentsServices: {
+        isLightboxOpenManager: { get: () => false },
+        setSourceComponentCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
+    },
     resolve: jest.fn(() => 'source-load-handler')
 };
 
@@ -15,7 +17,7 @@ test('runActionsForSourceTypeAndIndex', () => {
     expect(fsLightbox.resolve).not.toBeCalled();
     expect(fsLightbox.componentsServices.setSourceComponentCollection[0]).not.toBeCalled();
 
-    fsLightbox.getIsOpen = () => true;
+    fsLightbox.componentsServices.isLightboxOpenManager.get = () => true;
     detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
     detectedTypeActioner.runActionsForSourceTypeAndIndex('image', 0);
     expect(fsLightbox.resolve).toBeCalledWith(SourceLoadHandler, [0]);

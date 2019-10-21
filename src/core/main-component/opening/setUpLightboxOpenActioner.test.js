@@ -1,6 +1,6 @@
-import { setUpLightboxOpenActioner } from "./setUpLightboxOpenActioner";
 import * as initializeLightboxObject from "../initializing/initializeLightbox";
 import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
+import { setUpLightboxOpenActioner } from "./setUpLightboxOpenActioner";
 
 const fsLightbox = {
     collections: { sourcesOutersTransformers: [{ zero: jest.fn() }] },
@@ -21,14 +21,11 @@ const scrollbarRecompensor = fsLightbox.core.scrollbarRecompensor;
 const stageManager = fsLightbox.core.stageManager;
 const windowResizeActioner = fsLightbox.core.windowResizeActioner;
 initializeLightboxObject.initializeLightbox = jest.fn();
-
-const lightboxOpenActioner = fsLightbox.core.lightboxOpenActioner;
+document.documentElement.classList.add = jest.fn();
 setUpLightboxOpenActioner(fsLightbox);
 
-document.documentElement.classList.add = jest.fn();
-
-test('runActions', () => {
-    lightboxOpenActioner.runActions();
+test('open', () => {
+    fsLightbox.core.lightboxOpenActioner.runActions();
     expect(stageManager.updateStageIndexes).toBeCalled();
     expect(document.documentElement.classList.add).toBeCalledWith(OPEN_CLASS_NAME);
     expect(windowResizeActioner.runActions).toBeCalled();
@@ -40,7 +37,7 @@ test('runActions', () => {
     expect(initializeLightboxObject.initializeLightbox).not.toBeCalled();
 
     fsLightbox.data.isInitialized = false;
-    lightboxOpenActioner.runActions();
+    fsLightbox.core.lightboxOpenActioner.runActions();
     expect(eventsDispatcher.dispatch).toBeCalledTimes(3);
     expect(initializeLightboxObject.initializeLightbox).toBeCalled();
 });

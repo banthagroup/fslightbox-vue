@@ -2,7 +2,7 @@ import { KeyboardController } from "./KeyboardController";
 
 const fsLightbox = {
     core: {
-        lightboxCloser: { closeLightbox: jest.fn() },
+        lightboxCloser: { close: jest.fn() },
         fullscreenToggler: { enterFullscreen: jest.fn() },
         slideChangeFacade: { changeToPrevious: jest.fn(), changeToNext: jest.fn() },
     }
@@ -10,7 +10,7 @@ const fsLightbox = {
 const slideChangeFacade = fsLightbox.core.slideChangeFacade;
 const keyboardController = new KeyboardController(fsLightbox);
 
-fsLightbox.core.lightboxCloser.closeLightbox = jest.fn();
+fsLightbox.core.lightboxCloser.close = jest.fn();
 slideChangeFacade.changeToNext = jest.fn();
 slideChangeFacade.changeToPrevious = jest.fn();
 
@@ -22,28 +22,28 @@ const getEventForKeyCode = (keyCode) => {
 
 test('listener', () => {
     keyboardController.listener(getEventForKeyCode(27));
-    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalled();
+    expect(fsLightbox.core.lightboxCloser.close).toBeCalled();
     expect(slideChangeFacade.changeToPrevious).not.toBeCalled();
     expect(slideChangeFacade.changeToNext).not.toBeCalled();
     expect(e.preventDefault).not.toBeCalled();
     expect(fsLightbox.core.fullscreenToggler.enterFullscreen).not.toBeCalled();
 
     keyboardController.listener(getEventForKeyCode(37));
-    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalledTimes(1);
+    expect(fsLightbox.core.lightboxCloser.close).toBeCalledTimes(1);
     expect(slideChangeFacade.changeToPrevious).toBeCalled();
     expect(slideChangeFacade.changeToNext).not.toBeCalled();
     expect(e.preventDefault).not.toBeCalled();
     expect(fsLightbox.core.fullscreenToggler.enterFullscreen).not.toBeCalled();
 
     keyboardController.listener(getEventForKeyCode(39));
-    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalledTimes(1);
+    expect(fsLightbox.core.lightboxCloser.close).toBeCalledTimes(1);
     expect(slideChangeFacade.changeToPrevious).toBeCalledTimes(1);
     expect(slideChangeFacade.changeToNext).toBeCalled();
     expect(e.preventDefault).not.toBeCalled();
     expect(fsLightbox.core.fullscreenToggler.enterFullscreen).not.toBeCalled();
 
     keyboardController.listener(getEventForKeyCode(122));
-    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalledTimes(1);
+    expect(fsLightbox.core.lightboxCloser.close).toBeCalledTimes(1);
     expect(slideChangeFacade.changeToPrevious).toBeCalledTimes(1);
     expect(slideChangeFacade.changeToNext).toBeCalled();
     expect(e.preventDefault).toBeCalled();

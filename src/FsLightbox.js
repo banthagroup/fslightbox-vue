@@ -28,6 +28,7 @@ export function FsLightbox(props) {
     };
 
     this.componentsServices = {
+        isLightboxOpenManager: {},
         setSlideNumber: null,
         isFullscreenOpenManager: {},
         hideLoaderCollection: [],

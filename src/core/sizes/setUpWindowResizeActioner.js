@@ -18,7 +18,7 @@ export function setUpWindowResizeActioner(
             data.maxSourceWidth = 0.9 * innerWidth;
         data.maxSourceHeight = 0.9 * innerHeight;
 
-        if (screen.height !== innerHeight) {
+        if (screen.height !== innerHeight && isFullscreenOpenManager.set) {
             isFullscreenOpenManager.set(false);
         }
 

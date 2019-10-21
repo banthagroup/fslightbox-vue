@@ -1,12 +1,10 @@
 export function setUpLightboxOpener(
     {
-        setMainComponentState,
-        core: { lightboxOpener: self, lightboxOpenActioner }
+        componentsServices: { isLightboxOpenManager },
+        core: { lightboxOpener: self, lightboxOpenActioner },
     }
 ) {
-    self.openLightbox = () => {
-        setMainComponentState({
-            isOpen: true,
-        }, lightboxOpenActioner.runActions);
+    self.open = () => {
+        isLightboxOpenManager.set(true, lightboxOpenActioner.runActions);
     };
 }

@@ -2,7 +2,6 @@ import { setUpLightboxOpener } from "./main-component/opening/setUpLightboxOpene
 import { setUpFullscreenToggler } from "./fullscreen/setUpFullscreenToggler";
 import { setUpWindowResizeActioner } from "./sizes/setUpWindowResizeActioner";
 import { setUpLightboxCloser } from "./main-component/closing/setUpLightboxCloser";
-import { setUpLightboxOpenActioner } from "./main-component/opening/setUpLightboxOpenActioner";
 import { setUpScrollbarRecompensor } from "./scrollbar/setUpScrollbarRecompensor";
 import { setUpSlideSwipingDown } from "./slide/swiping/down/setUpSlideSwipingDown";
 import { setUpLightboxUpdater } from "./main-component/updating/setUpLightboxUpdater";
@@ -12,6 +11,7 @@ import { setUpEventsDispatcher } from "./events/setUpEventsDispatcher";
 import { setUpSlideChangeFacade } from "./slide/setUpSlideChangeFacade";
 import { setUpClassFacade } from "./elements/setUpClassFacade";
 import { setUpGlobalEventsController } from "./events/setUpGlobalEventsController";
+import { setUpLightboxOpenActioner } from "./main-component/opening/setUpLightboxOpenActioner";
 
 export function setUpCore(fsLightbox) {
     setUpClassFacade(fsLightbox);
@@ -19,9 +19,9 @@ export function setUpCore(fsLightbox) {
     setUpFullscreenToggler(fsLightbox);
     setUpGlobalEventsController(fsLightbox);
     setUpLightboxCloser(fsLightbox);
-    // setUpLightboxOpener(fsLightbox);
+    setUpLightboxOpener(fsLightbox);
     setUpLightboxOpenActioner(fsLightbox);
-    // setUpLightboxUpdater(fsLightbox);
+    setUpLightboxUpdater(fsLightbox);
     setUpScrollbarRecompensor(fsLightbox);
     setUpSlideChangeFacade(fsLightbox);
     setUpSlideIndexChanger(fsLightbox);

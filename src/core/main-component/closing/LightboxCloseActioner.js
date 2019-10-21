@@ -3,14 +3,14 @@ import { ANIMATION_TIME } from "../../../constants/css-constants";
 
 export function LightboxCloseActioner(
     {
+        componentsServices: { isFullscreenOpenManager, isLightboxOpenManager },
         core: {
             eventsDispatcher,
             fullscreenToggler,
             globalEventsController,
             scrollbarRecompensor
         },
-        elements: { container: lightboxContainer },
-        setMainComponentState,
+        elements,
         slideSwipingProps
     }
 ) {
@@ -18,25 +18,29 @@ export function LightboxCloseActioner(
 
     this.runActions = () => {
         this.isLightboxFadingOut = true;
-        lightboxContainer.current.classList.add(FADE_OUT_STRONG_CLASS_NAME);
+
+        elements.container.classList.add(FADE_OUT_STRONG_CLASS_NAME);
+
         globalEventsController.removeListeners();
 
-        // if (isFullscreenOpenState.get()) {
-        //     fullscreenToggler.enterFullscreen();
-        // }
+        if (isFullscreenOpenManager.get()) {
+            fullscreenToggler.exitFullscreen();
+        }
 
         setTimeout(() => {
             this.isLightboxFadingOut = false;
+
             slideSwipingProps.isSwiping = false;
-            lightboxContainer.current.classList.remove(FADE_OUT_STRONG_CLASS_NAME);
+
+            elements.container.classList.remove(FADE_OUT_STRONG_CLASS_NAME);
+
             document.documentElement.classList.remove(OPEN_CLASS_NAME);
+
             scrollbarRecompensor.removeRecompense();
 
-            setMainComponentState({
-                isOpen: false
-            }, () => {
-                eventsDispatcher.dispatch('onClose');
-            });
+            isLightboxOpenManager.set(false);
+
+            eventsDispatcher.dispatch('onClose');
         }, ANIMATION_TIME - 30);
     };
 }
