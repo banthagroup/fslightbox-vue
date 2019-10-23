@@ -8,7 +8,8 @@ fsLightboxStore[2] = {
         setSourceComponentCollection: []
     },
     elements: {
-        sourcesInners: []
+        sourcesInners: [],
+        sourcesComponents: []
     }
 };
 
