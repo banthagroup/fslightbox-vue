@@ -90,9 +90,7 @@
             runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
         },
         updated() {
-            if (!fsLightboxStore[this.fsLightboxIndex].elements.container) {
-                fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
-            }
+            fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
 
             if (updatedCallback) {
                 updatedCallback();

@@ -22,11 +22,12 @@
         components: { Imager, Videor, Youtuber, Customer, Invalider },
         data() {
             return {
-                sourceComponent: null
+                sourceComponent: fsLightboxStore[this.fsLightboxIndex].elements.sourcesComponents[this.i]
             }
         },
         created() {
             fsLightboxStore[this.fsLightboxIndex].componentsServices.setSourceComponentCollection[this.i] = (sourceComponent) => {
+                fsLightboxStore[this.fsLightboxIndex].elements.sourcesComponents[this.i] = sourceComponent;
                 this.sourceComponent = sourceComponent;
             };
         },
