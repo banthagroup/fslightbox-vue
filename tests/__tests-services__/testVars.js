@@ -9,3 +9,10 @@ export const testSources = [
     TEST_YOUTUBE_URL,
     TEST_INVALID_URL
 ];
+
+export const testTypes = [
+    'image',
+    'video',
+    'youtube',
+    'invalid'
+];

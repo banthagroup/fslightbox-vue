@@ -42,7 +42,7 @@
             types: Array,
             type: String,
 
-            //sources
+            // sources
             videosPosters: Array,
             maxYoutubeVideoDimensions: Object,
 

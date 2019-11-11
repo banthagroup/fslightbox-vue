@@ -1,10 +1,10 @@
 <template>
     <div>
-        <button @click="toggler = !toggler">Toggle Lightbox</button>
+        <button id="btn-toggler" @click="toggler = !toggler">Toggle Lightbox</button>
 
         <button id="btn-first-slide" @click="openLightboxOnSlide(1)">Open on 1 slide</button>
         <button id="btn-second-slide" @click="openLightboxOnIndex(1)">Open on 2 slide</button>
-        <button id="btn-third-slide" @click="openLightboxOnSource(TEST_YOUTUBE_URL)">Open on 3 slide</button>
+        <button id="btn-third-slide" @click="changeSlideToSource(TEST_YOUTUBE_URL)">Change slide to 3</button>
 
         <FsLightbox
             :toggler="toggler"
@@ -45,9 +45,8 @@
                 this.sourceIndex = index;
                 this.toggler = !this.toggler;
             },
-            openLightboxOnSource: function (source) {
+            changeSlideToSource: function (source) {
                 this.source = source;
-                this.toggler = !this.toggler;
             }
         }
     }

@@ -1,3 +1,3 @@
 <template>
-    <h1>I'm custom component</h1>
+    <h6>I'm custom component</h6>
 </template>

@@ -2,12 +2,13 @@ import { renderTestLightboxUsingComponent } from "./__tests-services__/test-ligh
 import TestSlideChangingComponent from "./__tests-services__/test-lightbox/TestSlideChangingComponent.vue";
 
 jest.useFakeTimers();
-const fsLightbox = renderTestLightboxUsingComponent(TestSlideChangingComponent);
+renderTestLightboxUsingComponent(TestSlideChangingComponent);
 
 test('props slide management', async () => {
     const btnFirstSlide = document.getElementById('btn-first-slide');
     const btnSecondSlide = document.getElementById('btn-second-slide');
     const btnThirdSlide = document.getElementById('btn-third-slide');
+    const btnToggler = document.getElementById('btn-toggler');
 
     // opening lightbox with props on 2 slide
     await btnSecondSlide.dispatchEvent(new Event('click'));
@@ -29,7 +30,7 @@ test('props slide management', async () => {
     expect(sourcesOuters[3].style.transform).toBe('translateX(-1400px)');
     expect(sourcesOuters[4].style.transform).toBe('translateX(-1400px)');
 
-    fsLightbox.core.lightboxCloser.close();
+    await btnToggler.dispatchEvent(new Event('click'));
     await jest.runAllTimers();
     expect(document.getElementsByClassName('fslightbox-container')).toHaveLength(0);
 
