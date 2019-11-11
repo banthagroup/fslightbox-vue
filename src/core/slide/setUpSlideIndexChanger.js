@@ -12,7 +12,7 @@ export function setUpSlideIndexChanger(
     {
         collections: { sourcesOutersTransformers },
         componentsServices,
-        core: { classFacade, slideIndexChanger: self, stageManager },
+        core: { classFacade, slideIndexChanger: self, sourceDisplayFacade, stageManager },
         elements: { sourcesInners },
         stageIndexes
     }
@@ -25,6 +25,7 @@ export function setUpSlideIndexChanger(
         stageIndexes.current = i;
         stageManager.updateStageIndexes();
         componentsServices.setSlideNumber(i + 1);
+        sourceDisplayFacade.displayStageSourcesIfNotYet();
     };
 
     self.jumpTo = (i) => {

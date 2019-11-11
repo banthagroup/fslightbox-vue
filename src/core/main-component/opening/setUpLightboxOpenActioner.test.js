@@ -1,6 +1,6 @@
+import { setUpLightboxOpenActioner } from "./setUpLightboxOpenActioner";
 import * as initializeLightboxObject from "../initializing/initializeLightbox";
 import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
-import { setUpLightboxOpenActioner } from "./setUpLightboxOpenActioner";
 
 const fsLightbox = {
     collections: { sourcesOutersTransformers: [{ zero: jest.fn() }] },
@@ -9,6 +9,7 @@ const fsLightbox = {
         lightboxOpenActioner: {},
         globalEventsController: { attachListeners: jest.fn() },
         scrollbarRecompensor: { addRecompense: jest.fn() },
+        sourceDisplayFacade: { displayStageSourcesIfNotYet: jest.fn() },
         stageManager: { updateStageIndexes: jest.fn() },
         windowResizeActioner: { runActions: jest.fn() }
     },
@@ -21,11 +22,14 @@ const scrollbarRecompensor = fsLightbox.core.scrollbarRecompensor;
 const stageManager = fsLightbox.core.stageManager;
 const windowResizeActioner = fsLightbox.core.windowResizeActioner;
 initializeLightboxObject.initializeLightbox = jest.fn();
-document.documentElement.classList.add = jest.fn();
+
+const lightboxOpenActioner = fsLightbox.core.lightboxOpenActioner;
 setUpLightboxOpenActioner(fsLightbox);
 
-test('open', () => {
-    fsLightbox.core.lightboxOpenActioner.runActions();
+document.documentElement.classList.add = jest.fn();
+
+test('runActions', () => {
+    lightboxOpenActioner.runActions();
     expect(stageManager.updateStageIndexes).toBeCalled();
     expect(document.documentElement.classList.add).toBeCalledWith(OPEN_CLASS_NAME);
     expect(windowResizeActioner.runActions).toBeCalled();
@@ -34,10 +38,12 @@ test('open', () => {
     expect(fsLightbox.collections.sourcesOutersTransformers[0].zero).toBeCalled();
     expect(eventsDispatcher.dispatch).toBeCalledWith('onOpen');
     expect(eventsDispatcher.dispatch).toBeCalledWith('onShow');
+    expect(fsLightbox.core.sourceDisplayFacade.displayStageSourcesIfNotYet).toBeCalled();
     expect(initializeLightboxObject.initializeLightbox).not.toBeCalled();
 
     fsLightbox.data.isInitialized = false;
-    fsLightbox.core.lightboxOpenActioner.runActions();
+    lightboxOpenActioner.runActions();
     expect(eventsDispatcher.dispatch).toBeCalledTimes(3);
+    expect(fsLightbox.core.sourceDisplayFacade.displayStageSourcesIfNotYet).toBeCalledTimes(1);
     expect(initializeLightboxObject.initializeLightbox).toBeCalled();
 });

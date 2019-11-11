@@ -16,6 +16,7 @@ const fsLightbox = {
     core: {
         classFacade: { removeFromEachElementClassIfContains: jest.fn() },
         slideIndexChanger: {},
+        sourceDisplayFacade: { displayStageSourcesIfNotYet: jest.fn() },
         stageManager: { updateStageIndexes: jest.fn() }
     },
     elements: {
@@ -45,6 +46,7 @@ test('changeTo', () => {
     expect(fsLightbox.stageIndexes.current).toBe(1);
     expect(fsLightbox.core.stageManager.updateStageIndexes).toBeCalled();
     expect(fsLightbox.componentsServices.setSlideNumber).toBeCalledWith(2);
+    expect(fsLightbox.core.sourceDisplayFacade.displayStageSourcesIfNotYet).toBeCalled();
 });
 
 test('jumpTo', () => {
