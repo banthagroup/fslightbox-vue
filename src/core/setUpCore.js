@@ -12,6 +12,7 @@ import { setUpSlideChangeFacade } from "./slide/setUpSlideChangeFacade";
 import { setUpClassFacade } from "./elements/setUpClassFacade";
 import { setUpGlobalEventsController } from "./events/setUpGlobalEventsController";
 import { setUpLightboxOpenActioner } from "./main-component/opening/setUpLightboxOpenActioner";
+import { setUpSourceDisplayFacade } from "./sources/setUpSourceDisplayFacade";
 
 export function setUpCore(fsLightbox) {
     setUpClassFacade(fsLightbox);
@@ -26,6 +27,7 @@ export function setUpCore(fsLightbox) {
     setUpSlideChangeFacade(fsLightbox);
     setUpSlideIndexChanger(fsLightbox);
     setUpSlideSwipingDown(fsLightbox);
+    setUpSourceDisplayFacade(fsLightbox);
     setUpStageManager(fsLightbox);
     setUpWindowResizeActioner(fsLightbox);
 }

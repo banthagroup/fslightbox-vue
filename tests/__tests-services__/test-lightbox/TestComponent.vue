@@ -13,9 +13,9 @@
 </template>
 
 <script>
-    import FsLightbox from "../src/FsLightbox.vue";
-    import Custom from "./ExampleCustom.vue";
-    import { testSources } from "../tests/__tests-services__/testVars";
+    import FsLightbox from "../../../src/FsLightbox.vue";
+    import Custom from "./TestCustomSource.vue";
+    import { testSources } from "../testVars";
 
     export default {
         components: { FsLightbox, Custom },

@@ -32,7 +32,7 @@ export function FsLightbox(props) {
         setSlideNumber: null,
         isFullscreenOpenManager: {},
         hideLoaderCollection: [],
-        setSourceComponentCollection: [],
+        updateSourceInnerCollection: [],
         isSlideSwipingHovererShownManager: {}
     };
 
@@ -72,7 +72,7 @@ export function FsLightbox(props) {
         slideChangeFacade: {},
         slideIndexChanger: {},
         slideSwipingDown: {},
-        sourceLoadActioner: {},
+        sourceDisplayFacade: {},
         stageManager: {},
         windowResizeActioner: {}
     };

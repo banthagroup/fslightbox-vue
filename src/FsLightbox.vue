@@ -57,9 +57,6 @@
             };
         },
         watch: {
-            toggler: function () {
-                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
-            },
             slide: function (newSlide) {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
             },
@@ -70,6 +67,13 @@
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
                     this.sources.indexOf(newSource)
                 );
+            },
+            /**
+             * Toggler watcher must be after slide change watchers -
+             * if both are updated simultaneously slide change must be called first
+             */
+            toggler: function () {
+                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
             }
         },
         created() {

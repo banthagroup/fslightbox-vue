@@ -1,5 +1,5 @@
-import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
 import { initializeLightbox } from "../initializing/initializeLightbox";
+import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
 
 export function setUpLightboxOpenActioner(fsLightbox) {
     const {
@@ -9,6 +9,7 @@ export function setUpLightboxOpenActioner(fsLightbox) {
             lightboxOpenActioner: self,
             globalEventsController,
             scrollbarRecompensor,
+            sourceDisplayFacade,
             stageManager,
             windowResizeActioner
         },
@@ -25,8 +26,11 @@ export function setUpLightboxOpenActioner(fsLightbox) {
         sourcesOutersTransformers[stageIndexes.current].zero();
         eventsDispatcher.dispatch('onOpen');
 
-        (data.isInitialized) ?
-            eventsDispatcher.dispatch('onShow') :
+        if (data.isInitialized) {
+            eventsDispatcher.dispatch('onShow');
+            sourceDisplayFacade.displayStageSourcesIfNotYet();
+        } else {
             initializeLightbox(fsLightbox);
-    }
+        }
+    };
 }
