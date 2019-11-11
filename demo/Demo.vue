@@ -7,6 +7,7 @@
             :toggler="toggler"
             :slide="slide"
             :sources="testSources"
+            :videos-posters="[null, '/demo/img/1.jpeg']"
             :custom-sources="[null, null, null, null, Custom]"
         />
     </div>
