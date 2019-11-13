@@ -3607,6 +3607,11 @@ fsevents@^1.2.7:
     nan "^2.12.1"
     node-pre-gyp "^0.12.0"
 
+fslightbox-vue@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/fslightbox-vue/-/fslightbox-vue-0.5.0.tgz#db59d2857b2399959912eff4bd2921371131ab20"
+  integrity sha512-h2Q7g653HukL0HQbieEhzPI/uvHGaOwLCGVIXq3peqU8AdbZQSjrFsKe9R0nq0yTzfu9oDyiO8JMdFhYNaxcGw==
+
 fstream@^1.0.0, fstream@^1.0.12:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/fstream/-/fstream-1.0.12.tgz#4e8ba8ee2d48be4f7d0de505455548eae5932045"

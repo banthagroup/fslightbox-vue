@@ -1,5 +1,5 @@
 import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/testLightbox";
-import TestSlideChangingComponent from "./__tests-services__/test-lightbox/TestSlideChangingComponent.vue";
+import TestSlideChangingComponent from "./__tests-services__/test-lightbox/TestSlideChangingLightbox.vue";
 
 jest.useFakeTimers();
 renderTestLightboxUsingComponent(TestSlideChangingComponent);

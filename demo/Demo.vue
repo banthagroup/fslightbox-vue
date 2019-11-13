@@ -14,12 +14,12 @@
 </template>
 
 <script>
-    import FsLightbox from "../src/FsLightbox.vue";
+    import FsLightbox from "fslightbox-vue";
     import Custom from "./ExampleCustom.vue";
     import { testSources } from "../tests/__tests-services__/testVars";
 
     export default {
-        components: { FsLightbox, Custom },
+        components: { FsLightbox },
         data() {
             return {
                 Custom: Custom,

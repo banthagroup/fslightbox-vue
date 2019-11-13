@@ -16,6 +16,7 @@ Website: https://fslightbox.com/vue
  npm install --save-dev fslightbox-vue
 ```
 
+
 ### Example
 
 ```vue
