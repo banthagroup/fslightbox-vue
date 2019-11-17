@@ -5,7 +5,7 @@ Website: https://fslightbox.com/vue
 
 | Dependency | Version |
 | --- | --- |
-| vue | at least 2.6.0 |
+| vue | at least 2.5.0 |
 
 
 ## Basic usage
