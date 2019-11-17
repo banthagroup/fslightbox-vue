@@ -1,5 +1,5 @@
 import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/testLightbox";
-import TestOpenComponent from "./__tests-services__/test-lightbox/TestOpenComponent.vue";
+import TestOpenComponent from "./__tests-services__/test-lightbox/TestOpenLightbox.vue";
 
 const fsLightbox = renderTestLightboxUsingComponent(TestOpenComponent);
 

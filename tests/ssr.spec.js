@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TestOpenComponent from "./__tests-services__/test-lightbox/TestOpenComponent.vue";
+import TestOpenComponent from "./__tests-services__/test-lightbox/TestOpenLightbox.vue";
 import { createRenderer } from "vue-server-renderer";
 
 // simulating server behaviour - deleting window and document

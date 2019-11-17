@@ -10,6 +10,7 @@
 /.npmignore
 /gulpfile.babel.js
 /index.html
+/jest-setup.js
 /setupTests.js
 /webpack-prod.config.js
 /webpack.config.js

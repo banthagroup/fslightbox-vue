@@ -1,5 +1,5 @@
 import { fsLightboxStore } from "../../fsLightboxStore";
-import Nav from "./Nav";
+import Nav from "./Naver";
 import SlideNumber from "./SlideNumber";
 import { shallowMount } from "@vue/test-utils";
 

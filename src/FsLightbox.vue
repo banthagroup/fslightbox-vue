@@ -1,6 +1,6 @@
 <template>
     <div v-if="isOpen" ref="container" class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
-        <Nav :fs-lightbox-index="this.fsLightboxIndex"/>
+        <Naver :fs-lightbox-index="this.fsLightboxIndex"/>
         <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex"/>
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex"/>
         <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex"/>
@@ -10,7 +10,7 @@
 <script>
     import { fsLightboxStore } from "./fsLightboxStore";
     import { FsLightbox } from "./FsLightbox";
-    import Nav from './components/nav/Nav.vue';
+    import Naver from './components/nav/Naver.vue';
     import SourcesOutersWrapper from "./components/sources/SourcesOutersWrapper.vue";
     import SlideButtons from "./components/SlideButtons.vue";
     import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
@@ -50,7 +50,7 @@
             slideDistance: { type: Number, default: 0.3 },
             openOnMount: Boolean,
         },
-        components: { SlideButtons, SourcesOutersWrapper, Nav, SlideSwipingHoverer },
+        components: { SlideButtons, SourcesOutersWrapper, Naver, SlideSwipingHoverer },
         data() {
             return {
                 isOpen: this.openOnMount

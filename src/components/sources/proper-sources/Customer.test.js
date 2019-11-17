@@ -2,6 +2,8 @@ import { fsLightboxStore } from "../../../fsLightboxStore";
 import { mount } from "@vue/test-utils";
 import Customer from "./Customer.vue";
 import ExampleCustom from "../../../../demo/ExampleCustom.vue";
+import TestCustomSourceWithProps
+    from "../../../../tests/__tests-services__/test-lightbox/TestCustomSourceWithProps.vue";
 import { SOURCE_CLASS_NAME } from "../../../constants/classes-names";
 
 fsLightboxStore[2] = {
@@ -10,7 +12,7 @@ fsLightboxStore[2] = {
     props: { customSources: [null, ExampleCustom] }
 };
 
-test('Customer', () => {
+test('Customer - only component', () => {
     mount(Customer, {
         propsData: { fsLightboxIndex: 2, i: 1 }
     });
@@ -19,5 +21,22 @@ test('Customer', () => {
     expect(fsLightboxStore[2].elements.sources[1].tagName).toBe('IFRAME');
     expect(fsLightboxStore[2].elements.sources[1].classList.contains(SOURCE_CLASS_NAME)).toBe(true);
 
+    expect(fsLightboxStore[2].collections.sourcesLoadsHandlers[1].handleCustomLoad).toBeCalled();
+});
+
+test('Customer - component with props', () => {
+    fsLightboxStore[2].props.customSources[1] = {
+        component: TestCustomSourceWithProps,
+        props: {
+            firstProp: 'first-prop',
+            secondProp: 'second-prop'
+        }
+    };
+
+    mount(Customer, {
+        propsData: { fsLightboxIndex: 2, i: 1 }
+    });
+
+    expect(fsLightboxStore[2].elements.sources[1].innerHTML).toContain('<p>first-prop</p> <p>second-prop</p>');
     expect(fsLightboxStore[2].collections.sourcesLoadsHandlers[1].handleCustomLoad).toBeCalled();
 });
