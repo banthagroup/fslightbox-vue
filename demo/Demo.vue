@@ -11,6 +11,7 @@
             :videos-posters="[null, '/demo/img/1.jpeg']"
             :custom-sources="[null, null, null, null, { component: Custom, props: {firstProp: 'oejoej', secondProp: 'oaeuaoeu'}}]"
             :onInit="action"
+            :disable-local-storage="true"
         />
     </div>
 </template>
@@ -31,12 +32,12 @@
             }
         },
         methods: {
-            openLightboxOnSlide: function (number) {
+            openLightboxOnSlide: function(number) {
                 this.slide = number;
                 this.toggler = !this.toggler;
             },
             action() {
-                console.log(1);
+
             }
         }
     }

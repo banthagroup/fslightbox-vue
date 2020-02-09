@@ -16,9 +16,19 @@
             }
         },
         created() {
-            const isSlideSwipingHovererShownManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isSlideSwipingHovererShownManager;
-            isSlideSwipingHovererShownManager.get = () => this.isSlideSwipingHovererShown;
-            isSlideSwipingHovererShownManager.set = (value) => this.isSlideSwipingHovererShown = value;
+            const { componentsServices } = fsLightboxStore[this.fsLightboxIndex];
+
+            componentsServices.showSlideSwipingHoverer = () => {
+                if (!this.isSlideSwipingHovererShown) {
+                    this.isSlideSwipingHovererShown = true;
+                }
+            };
+
+            componentsServices.hideSlideSwipingHoverer = () => {
+                if (this.isSlideSwipingHovererShown) {
+                    this.isSlideSwipingHovererShown = false;
+                }
+            };
         }
     }
 </script>

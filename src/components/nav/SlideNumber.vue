@@ -1,8 +1,10 @@
 <template>
-    <div class="fslightbox-slide-number-container fslightbox-flex-centered">
-        <div>{{ slide }}</div>
-        <div class="fslightbox-slash">/</div>
-        <div>{{ sourcesCount }}</div>
+    <div ref="source-outer" class="fslightbox-slide-number-container">
+        <div ref="source-inner" class="fslightbox-flex-centered">
+            <span>{{ slide }}</span>
+            <span class="fslightbox-slash" />
+            <span>{{ sourcesCount }}</span>
+        </div>
     </div>
 </template>
 
@@ -19,6 +21,11 @@
         },
         created() {
             fsLightboxStore[this.fsLightboxIndex].componentsServices.setSlideNumber = (number) => this.slide = number;
+        },
+        mounted() {
+            if (this.$refs['source-inner'].offsetWidth > 55) {
+                this.$refs['source-outer'].style.justifyContent = 'flex-start';
+            }
         }
     }
 </script>

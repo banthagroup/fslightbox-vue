@@ -3,7 +3,7 @@ import { shallowMount } from "@vue/test-utils";
 import SlideSwipingHoverer from "./SlideSwipingHoverer";
 
 fsLightboxStore[2] = {
-    componentsServices: { isSlideSwipingHovererShownManager: {} }
+    componentsServices: { hideSlideSwipingHoverer: null, showSlideSwipingHoverer: null }
 };
 
 test('SlideSwipingHoverer', () => {
@@ -13,11 +13,9 @@ test('SlideSwipingHoverer', () => {
 
     expect(slideSwipingHoverer.contains('div')).toBe(false);
 
-    fsLightboxStore[2].componentsServices.isSlideSwipingHovererShownManager.set(true);
+    fsLightboxStore[2].componentsServices.showSlideSwipingHoverer();
     expect(slideSwipingHoverer.contains('div')).toBe(true);
-    expect(fsLightboxStore[2].componentsServices.isSlideSwipingHovererShownManager.get()).toBe(true);
 
-    fsLightboxStore[2].componentsServices.isSlideSwipingHovererShownManager.set(false);
+    fsLightboxStore[2].componentsServices.hideSlideSwipingHoverer();
     expect(slideSwipingHoverer.contains('div')).toBe(false);
-    expect(fsLightboxStore[2].componentsServices.isSlideSwipingHovererShownManager.get()).toBe(false);
 });

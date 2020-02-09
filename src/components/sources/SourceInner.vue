@@ -1,7 +1,7 @@
 <template>
     <div ref="ref">
         <component
-            v-if="sourceComponent && isSourceInStage"
+            v-if="current === i || (!loadOnlyCurrentSource && isSourceInStage)"
             :is="sourceComponent"
             :fs-lightbox-index="fsLightboxIndex"
             :i="i"
@@ -36,9 +36,18 @@
             fsLightboxStore[this.fsLightboxIndex].elements.sourcesInners[this.i] = this.$refs['ref'];
         },
         methods: {
-            attachComponentDataToObject: function (object) {
-                object.sourceComponent = fsLightboxStore[this.fsLightboxIndex].elements.sourcesComponents[this.i];
-                object.isSourceInStage = fsLightboxStore[this.fsLightboxIndex].core.stageManager.isSourceInStage(this.i);
+            attachComponentDataToObject: function(object) {
+                const {
+                    core: { stageManager: { isSourceInStage } },
+                    elements: { sourcesComponents },
+                    props: { loadOnlyCurrentSource },
+                    stageIndexes: { current }
+                } = fsLightboxStore[this.fsLightboxIndex];
+
+                object.sourceComponent = sourcesComponents[this.i];
+                object.isSourceInStage = isSourceInStage(this.i);
+                object.current = current;
+                object.loadOnlyCurrentSource = loadOnlyCurrentSource;
             }
         }
     }
