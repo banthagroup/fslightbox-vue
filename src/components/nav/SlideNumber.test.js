@@ -10,10 +10,10 @@ test('SlideNumber', () => {
     };
 
     const slideNumber = mount(SlideNumber, { propsData: { fsLightboxIndex: 0 } });
-    expect(slideNumber.element.children[0].innerHTML).toBe('2');
-    expect(slideNumber.element.children[1].innerHTML).toBe('/');
-    expect(slideNumber.element.children[2].innerHTML).toBe('3');
+    const slideNumberInnerChildren = slideNumber.element.firstElementChild.children;
+    expect(slideNumberInnerChildren[0].innerHTML).toBe('2');
+    expect(slideNumberInnerChildren[2].innerHTML).toBe('3');
 
     fsLightboxStore[0].componentsServices.setSlideNumber(1);
-    expect(slideNumber.element.children[0].innerHTML).toBe('1');
+    expect(slideNumberInnerChildren[0].innerHTML).toBe('1');
 });

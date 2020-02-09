@@ -1,13 +1,14 @@
 <template>
     <div v-if="isOpen" ref="container" class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
-        <Naver :fs-lightbox-index="this.fsLightboxIndex"/>
-        <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex"/>
-        <SlideButtons :fs-lightbox-index="this.fsLightboxIndex"/>
-        <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex"/>
+        <Naver :fs-lightbox-index="this.fsLightboxIndex" />
+        <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex" />
+        <SlideButtons :fs-lightbox-index="this.fsLightboxIndex" />
+        <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex" />
     </div>
 </template>
 
 <script>
+    import "./core/styles/styles-injection/styles-injection";
     import { fsLightboxStore } from "./fsLightboxStore";
     import { FsLightbox } from "./FsLightbox";
     import Naver from './components/nav/Naver.vue';
@@ -47,6 +48,7 @@
             maxYoutubeVideoDimensions: Object,
 
             // preferences
+            loadOnlyCurrentSource: Boolean,
             slideDistance: { type: Number, default: 0.3 },
             openOnMount: Boolean,
         },
@@ -57,13 +59,13 @@
             };
         },
         watch: {
-            slide: function (newSlide) {
+            slide: function(newSlide) {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
             },
-            sourceIndex: function (newSourceIndex) {
+            sourceIndex: function(newSourceIndex) {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSourceIndex);
             },
-            source: function (newSource) {
+            source: function(newSource) {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
                     this.sources.indexOf(newSource)
                 );
@@ -72,7 +74,7 @@
              * Toggler watcher must be after slide change watchers -
              * if both are updated simultaneously slide change must be called first
              */
-            toggler: function () {
+            toggler: function() {
                 fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
             }
         },

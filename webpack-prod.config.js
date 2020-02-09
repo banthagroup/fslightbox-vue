@@ -1,14 +1,7 @@
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
-    entry: "./src/index.js",
-    output: {
-        path: path.join(__dirname, ''),
-        libraryTarget: "commonjs2",
-        filename: "./index.js",
-    },
+const baseConfig = {
     resolve: {
         alias: {
             "vue": path.resolve(__dirname, './node_modules/vue'),
@@ -48,11 +41,27 @@ module.exports = {
         ]
     },
     plugins: [
-        new CopyPlugin([
-            { from: './index.js', to: './dist' },
-            { from: './package.json', to: './dist' },
-            { from: './README.md', to: './dist' }
-        ]),
-        new VueLoaderPlugin(),
+        new VueLoaderPlugin()
     ]
 };
+
+const packageConfig = Object.assign({
+    entry: './src/index.js',
+    output: {
+        path: path.join(__dirname, ''),
+        libraryTarget: "commonjs2",
+        filename: "./dist/index.js",
+    }
+}, baseConfig);
+
+
+const umdConfig = Object.assign({
+    entry: './src/umd.js',
+    output: {
+        path: path.join(__dirname, ''),
+        libraryTarget: "umd",
+        filename: "./dist/fslightbox.umd.js",
+    }
+}, baseConfig);
+
+module.exports = [packageConfig, umdConfig];

@@ -3,7 +3,7 @@ import { SlideSwipingUpActioner } from "./SlideSwipingUpActioner";
 import { CURSOR_GRABBING_CLASS_NAME } from "../../../../constants/classes-names";
 
 const fsLightbox = {
-    componentsServices: { isSlideSwipingHovererShownManager: { set: jest.fn() } },
+    componentsServices: { hideSlideSwipingHoverer: jest.fn() },
     core: {
         lightboxCloser: { close: jest.fn() },
         swipingActioner: { runTopActionsForProps: jest.fn() }
@@ -28,6 +28,7 @@ const slideSwipingUpActions = new SlideSwipingUpActioner(fsLightbox);
 
 test('resetSwiping', () => {
     slideSwipingUpActions.runNoSwipeActions();
+    expect(fsLightbox.componentsServices.hideSlideSwipingHoverer).toBeCalled();
     expect(fsLightbox.core.lightboxCloser.close).not.toBeCalled();
     expect(fsLightbox.slideSwipingProps.isSwiping).toBe(false);
     fsLightbox.slideSwipingProps.isSourceDownEventTarget = false;
@@ -39,7 +40,7 @@ test('runActions', () => {
     slideSwipingUpActions.runActions();
     expect(slideSwipingUpActionsBucket.runPositiveSwipedXActions).toBeCalled();
     expect(slideSwipingUpActionsBucket.runNegativeSwipedXActions).not.toBeCalled();
-    expect(fsLightbox.componentsServices.isSlideSwipingHovererShownManager.set).toBeCalledWith(false);
+    expect(fsLightbox.componentsServices.hideSlideSwipingHoverer).toBeCalled();
     expect(fsLightbox.elements.container.classList.remove).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
     expect(fsLightbox.slideSwipingProps.isSwiping).toBe(false);
 

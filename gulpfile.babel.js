@@ -13,7 +13,14 @@ function buildCSS() {
     );
 }
 
-const dist = gulp.series(buildCSS);
+function copyPackageFiles() {
+    return gulp.src([
+        './package.json',
+        './README.md'
+    ]).pipe(gulp.dest('./dist'))
+}
+
+const dist = gulp.series(buildCSS, copyPackageFiles);
 
 export {
     dist

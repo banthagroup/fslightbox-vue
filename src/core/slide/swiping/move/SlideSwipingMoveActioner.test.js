@@ -3,7 +3,7 @@ import { CURSOR_GRABBING_CLASS_NAME } from "../../../../constants/classes-names"
 import * as getClientXFromEventObject from "../../../../helpers/events/getClientXFromEvent";
 
 const fsLightbox = {
-    componentsServices: { isSlideSwipingHovererShownManager: { get: () => true, set: jest.fn() } },
+    componentsServices: { showSlideSwipingHoverer: jest.fn() },
     collections: {
         sourcesOutersTransformers: [
             {
@@ -42,14 +42,9 @@ test('simple actions', () => {
     slideSwipingMoveActions = new SlideSwipingMoveActioner(fsLightbox);
     slideSwipingMoveActions.runActionsForEvent(e);
 
-    expect(fsLightbox.componentsServices.isSlideSwipingHovererShownManager.set).not.toBeCalled();
+    expect(fsLightbox.componentsServices.showSlideSwipingHoverer).toBeCalled();
     expect(fsLightbox.elements.container.classList.add).toBeCalledWith(CURSOR_GRABBING_CLASS_NAME);
     expect(fsLightbox.slideSwipingProps.swipedX).toBe(-50);
-
-
-    fsLightbox.componentsServices.isSlideSwipingHovererShownManager.get = () => false;
-    setUpAndCallRunActionsForEventWithEmptyEvent();
-    expect(fsLightbox.componentsServices.isSlideSwipingHovererShownManager.set).toBeCalledWith(true);
 });
 
 describe('transforming stage sources holders by swiped difference value', () => {

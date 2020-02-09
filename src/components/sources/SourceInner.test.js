@@ -8,8 +8,10 @@ fsLightboxStore[2] = {
     core: { stageManager: { isSourceInStage: jest.fn(() => true) } },
     elements: {
         sourcesInners: [],
-        sourcesComponents: []
-    }
+        sourcesComponents: [undefined, 'Videor']
+    },
+    props: { loadOnlyCurrentSource: true },
+    stageIndexes: { current: 0 }
 };
 
 test('SourceInner', () => {
@@ -30,13 +32,11 @@ test('SourceInner', () => {
     fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     assertSourceNotRendered();
 
-    fsLightboxStore[2].elements.sourcesComponents[1] = 'Videor';
-    fsLightboxStore[2].core.stageManager.isSourceInStage = jest.fn(() => false);
+    fsLightboxStore[2].core.stageManager.isSourceInStage = () => true;
     fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     assertSourceNotRendered();
-    expect(fsLightboxStore[2].core.stageManager.isSourceInStage).toBeCalledWith(1);
 
-    fsLightboxStore[2].core.stageManager.isSourceInStage = jest.fn(() => true);
+    fsLightboxStore[2].props.loadOnlyCurrentSource = false;
     fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     expect(sourceInner.vm.$children.length).toBe(1);
     expect(sourceInner.contains(Videor)).toBe(true);
