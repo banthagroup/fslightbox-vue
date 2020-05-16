@@ -23,11 +23,11 @@
         data() {
             const {
                 core: { slideChangeFacade: { changeToPrevious, changeToNext } },
-                data: { sourcesCount }
+                data: { sources }
             } = fsLightboxStore[this.fsLightboxIndex];
 
             return {
-                sourcesCount: sourcesCount,
+                sourcesCount: sources.length,
                 changeToPrevious: changeToPrevious,
                 changeToNext: changeToNext
             }

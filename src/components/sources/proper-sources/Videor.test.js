@@ -4,8 +4,9 @@ import Videor from "./Videor";
 
 fsLightboxStore[2] = {
     collections: { sourcesLoadsHandlers: [null, { handleVideoLoad: jest.fn() }] },
+    data: { sources: [null, 'http://example.com/'] },
     elements: { sources: [] },
-    props: { sources: [null, 'http://example.com/'] }
+    props: {}
 };
 
 test('Videor', () => {

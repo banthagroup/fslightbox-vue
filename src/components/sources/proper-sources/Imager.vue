@@ -16,7 +16,7 @@
         data() {
             const {
                 collections: { sourcesLoadsHandlers },
-                props: { sources }
+                data: { sources }
             } = fsLightboxStore[this.fsLightboxIndex];
 
             return {

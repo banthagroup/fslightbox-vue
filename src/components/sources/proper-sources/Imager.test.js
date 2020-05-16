@@ -4,8 +4,8 @@ import Imager from "./Imager";
 
 fsLightboxStore[2] = {
     collections: { sourcesLoadsHandlers: [null, { handleImageLoad: jest.fn() }] },
+    data: { sources: [null, 'http://example.com/'] },
     elements: { sources: [] },
-    props: { sources: [null, 'http://example.com/'] }
 };
 
 test('Imager', () => {

@@ -4,8 +4,8 @@ import Youtuber from "./Youtuber";
 
 fsLightboxStore[2] = {
     collections: { sourcesLoadsHandlers: [null, { handleYoutubeLoad: jest.fn() }] },
-    elements: { sources: [] },
-    props: { sources: [null, 'https://www.youtube.com/watch?v=xshEZzpS4CQ'] }
+    data: { sources: [null, 'https://www.youtube.com/watch?v=xshEZzpS4CQ'] },
+    elements: { sources: [] }
 };
 
 test('Youtuber', () => {

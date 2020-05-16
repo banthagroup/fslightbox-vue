@@ -1,13 +1,13 @@
-import { getSourcesCount } from "./core/sources/getSourcesCount";
 import { getInitialCurrentIndex } from "./core/stage/getInitialCurrentIndex";
 import { setUpCore } from "./core/setUpCore";
 import { getSourcesOutersTransformersCollection } from "./core/collections/getSourcesOutersTransformersCollection";
+import { getMergedSourcesAndCustomSources } from './core/sources/getMergedSourcesAndCustomSources';
 
 export function FsLightbox(props) {
     this.props = props;
 
     this.data = {
-        sourcesCount: getSourcesCount(this),
+        sources: getMergedSourcesAndCustomSources(this),
         isInitialized: false,
         maxSourceWidth: 0,
         maxSourceHeight: 0,

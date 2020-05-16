@@ -8,8 +8,8 @@ import { SOURCE_CLASS_NAME } from "../../../constants/classes-names";
 
 fsLightboxStore[2] = {
     collections: { sourcesLoadsHandlers: [null, { handleCustomLoad: jest.fn() }] },
+    data: { sources: [null, ExampleCustom] },
     elements: { sources: [] },
-    props: { customSources: [null, ExampleCustom] }
 };
 
 test('Customer - only component', () => {
@@ -25,7 +25,7 @@ test('Customer - only component', () => {
 });
 
 test('Customer - component with props', () => {
-    fsLightboxStore[2].props.customSources[1] = {
+    fsLightboxStore[2].data.sources[1] = {
         component: TestCustomSourceWithProps,
         props: {
             firstProp: 'first-prop',

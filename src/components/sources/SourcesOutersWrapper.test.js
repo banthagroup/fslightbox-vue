@@ -5,7 +5,7 @@ import SourceOuter from "./SourceOuter.vue";
 
 fsLightboxStore[1] = {
     core: { slideSwipingDown: { listener: jest.fn() } },
-    data: { sourcesCount: 4 },
+    data: { sources: { length: 4 } },
     elements: {
         sourcesOutersWrapper: null
     }

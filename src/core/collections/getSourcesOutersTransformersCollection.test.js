@@ -2,7 +2,7 @@ import { getSourcesOutersTransformersCollection } from "./getSourcesOutersTransf
 import { SourceOuterTransformer } from "../transforms/SourceOuterTransformer";
 
 const fsLightbox = {
-    data: { sourcesCount: 2 },
+    data: { sources: { length: 2 } },
     resolve: jest.fn(() => 'source-outer-transformer')
 };
 

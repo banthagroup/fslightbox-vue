@@ -50,7 +50,7 @@ const packageConfig = Object.assign({
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: "commonjs2",
-        filename: "./dist/index.js",
+        filename: "./index.js",
     }
 }, baseConfig);
 

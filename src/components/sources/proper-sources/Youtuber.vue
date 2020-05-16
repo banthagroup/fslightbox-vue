@@ -16,7 +16,7 @@
         data() {
             return {
                 src: `https://www.youtube.com/embed/${
-                    getYoutubeVideoIdFromUrl(fsLightboxStore[this.fsLightboxIndex].props.sources[this.i])
+                    getYoutubeVideoIdFromUrl(fsLightboxStore[this.fsLightboxIndex].data.sources[this.i])
                 }`
             }
         },

@@ -4,7 +4,7 @@
          @mousedown="listener"
          @touchstart="listener">
         <SourceOuter
-            v-for="(n, i) in sourcesCount"
+            v-for="(n, i) in sources.length"
             :key="i"
             :i="i"
             :fs-lightbox-index="fsLightboxIndex"
@@ -22,11 +22,11 @@
         data() {
             const {
                 core: { slideSwipingDown: { listener } },
-                data: { sourcesCount }
+                data: { sources }
             } = fsLightboxStore[this.fsLightboxIndex];
 
             return {
-                sourcesCount: sourcesCount,
+                sources: sources,
                 listener: listener
             }
         },

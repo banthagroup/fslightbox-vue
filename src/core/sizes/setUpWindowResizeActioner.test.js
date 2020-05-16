@@ -9,7 +9,7 @@ const fsLightbox = {
     },
     core: { windowResizeActioner: {} },
     componentsServices: { isFullscreenOpenManager: { set: jest.fn() } },
-    data: { sourcesCount: 2 },
+    data: { sources: { length: 2 } },
     elements: { sourcesOuters: ['first-source-outer', 'second-source-outer'] },
     stageIndexes: { current: 0 }
 };

@@ -2,13 +2,15 @@ import { initializeLightbox } from "./initializeLightbox";
 import * as createSourcesObject from "../../sources/creating/createSources";
 
 const fsLightbox = {
-    data: {
-        isInitialized: false
-    },
+    data: { isInitialized: false },
     core: {
         eventsDispatcher: {
             dispatch: jest.fn()
         }
+    },
+    props: {
+        sources: ['first', undefined, 'third'],
+        customSources: [undefined, 'second', undefined, 'fourth']
     }
 };
 

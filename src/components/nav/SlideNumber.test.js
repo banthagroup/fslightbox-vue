@@ -5,7 +5,7 @@ import { fsLightboxStore } from "../../fsLightboxStore";
 test('SlideNumber', () => {
     fsLightboxStore[0] = {
         componentsServices: {},
-        data: { sourcesCount: 3 },
+        data: { sources: { length: 3 } },
         stageIndexes: { current: 1 }
     };
 

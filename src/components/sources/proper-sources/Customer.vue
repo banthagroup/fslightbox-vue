@@ -1,5 +1,9 @@
 <template>
-    <component :is="component" v-bind="componentProps" ref="ref"></component>
+    <component
+        :is="component"
+        v-bind="componentProps"
+        ref="ref"
+    />
 </template>
 
 <script>
@@ -9,8 +13,8 @@
     export default {
         props: { fsLightboxIndex: Number, i: Number },
         data() {
-            const customSource = fsLightboxStore[this.fsLightboxIndex].props.customSources[this.i];
-            const data = { component: customSource };
+            const customSource = fsLightboxStore[this.fsLightboxIndex].data.sources[this.i];
+            const data = { component: customSource, componentProps: {} };
 
             if (customSource.component) {
                 data.component = customSource.component;

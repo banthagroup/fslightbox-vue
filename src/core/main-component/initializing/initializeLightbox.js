@@ -1,7 +1,11 @@
 import { createSources } from "../../sources/creating/createSources";
 
 export function initializeLightbox(fsLightbox) {
-    const { data, core: { eventsDispatcher } } = fsLightbox;
+    const {
+        core: { eventsDispatcher },
+        data
+    } = fsLightbox;
+
 
     data.isInitialized = true;
     createSources(fsLightbox);

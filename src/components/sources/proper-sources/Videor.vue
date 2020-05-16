@@ -4,7 +4,7 @@
            ref="ref"
            :poster="poster"
            controls>
-        <source :src="src"/>
+        <source :src="src" />
     </video>
 </template>
 
@@ -16,7 +16,8 @@
         data() {
             const {
                 collections: { sourcesLoadsHandlers },
-                props: { sources, videosPosters }
+                data: { sources },
+                props: { videosPosters }
             } = fsLightboxStore[this.fsLightboxIndex];
 
             return {

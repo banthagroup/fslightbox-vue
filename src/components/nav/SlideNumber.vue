@@ -16,7 +16,7 @@
         data() {
             return {
                 slide: fsLightboxStore[this.fsLightboxIndex].stageIndexes.current + 1,
-                sourcesCount: fsLightboxStore[this.fsLightboxIndex].data.sourcesCount
+                sourcesCount: fsLightboxStore[this.fsLightboxIndex].data.sources.length
             }
         },
         created() {

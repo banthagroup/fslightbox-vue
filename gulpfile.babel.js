@@ -15,6 +15,7 @@ function buildCSS() {
 
 function copyPackageFiles() {
     return gulp.src([
+        './index.js',
         './package.json',
         './README.md'
     ]).pipe(gulp.dest('./dist'))

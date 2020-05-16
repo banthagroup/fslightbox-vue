@@ -7,25 +7,26 @@
         <FsLightbox
             :toggler="toggler"
             :slide="slide"
-            :sources="testSources"
             :videos-posters="[null, '/demo/img/1.jpeg']"
-            :custom-sources="[null, null, null, null, { component: Custom, props: {firstProp: 'oejoej', secondProp: 'oaeuaoeu'}}]"
+            :sources="['img']"
             :onInit="action"
             :disable-local-storage="true"
+            :load-only-current-source="true"
         />
     </div>
 </template>
 
 <script>
-    import FsLightbox from "../src/FsLightbox.vue";
-    import Custom from "../tests/__tests-services__/test-lightbox/TestCustomSourceWithProps.vue";
+    import ExampleCustom from "./ExampleCustom.vue";
     import { testSources } from "../tests/__tests-services__/testVars";
 
     export default {
-        components: { FsLightbox },
+        components: { FsLightbox: () => import('fslightbox-vue') },
         data() {
+            testSources.push({ component: ExampleCustom, props: { siema: 'jd' } });
+
             return {
-                Custom: Custom,
+                ExampleCustom: ExampleCustom,
                 toggler: false,
                 slide: 1,
                 testSources: testSources
