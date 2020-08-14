@@ -8,101 +8,101 @@
 </template>
 
 <script>
-    import "./core/styles/styles-injection/styles-injection";
-    import { fsLightboxStore } from "./fsLightboxStore";
-    import { FsLightbox } from "./FsLightbox";
-    import Naver from './components/nav/Naver.vue';
-    import SourcesOutersWrapper from "./components/sources/SourcesOutersWrapper.vue";
-    import SlideButtons from "./components/SlideButtons.vue";
-    import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
-    import { runLightboxMountedActions } from "./core/main-component/mounting/runLightboxMountedActions";
+import "./core/styles/styles-injection/styles-injection";
+import { fsLightboxStore } from "./fsLightboxStore";
+import { FsLightbox } from "./FsLightbox";
+import Naver from './components/nav/Naver.vue';
+import SourcesOutersWrapper from "./components/sources/SourcesOutersWrapper.vue";
+import SlideButtons from "./components/SlideButtons.vue";
+import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
+import { runLightboxMountedActions } from "./core/main-component/mounting/runLightboxMountedActions";
 
-    let updatedCallback;
+let updatedCallback;
 
-    export default {
-        props: {
-            toggler: Boolean,
-            sources: Array,
+export default {
+    props: {
+        toggler: Boolean,
+        sources: Array,
+        customSources: Array, // deprecated 1.1.0
 
-            // custom sources
-            customSources: Array,
+        // slide number controlling
+        slide: Number,
+        source: String,
+        sourceIndex: Number,
 
-            // slide number controlling
-            slide: Number,
-            source: String,
-            sourceIndex: Number,
+        // events
+        onOpen: Function,
+        onClose: Function,
+        onInit: Function,
+        onShow: Function,
 
-            // events
-            onOpen: Function,
-            onClose: Function,
-            onInit: Function,
-            onShow: Function,
+        // types
+        disableLocalStorage: Boolean,
+        types: Array,
+        type: String,
 
-            // types
-            disableLocalStorage: Boolean,
-            types: Array,
-            type: String,
+        // sources
+        customAttributes: Array,
+        videosPosters: Array, // deprecated 1.1.0
+        maxYoutubeVideoDimensions: Object,
 
-            // sources
-            videosPosters: Array,
-            maxYoutubeVideoDimensions: Object,
-
-            // preferences
-            loadOnlyCurrentSource: Boolean,
-            slideDistance: { type: Number, default: 0.3 },
-            openOnMount: Boolean,
+        // preferences
+        loadOnlyCurrentSource: Boolean,
+        slideDistance: { type: Number, default: 0.3 },
+        openOnMount: Boolean,
+        exitFullscreenOnClose: Boolean
+    },
+    components: { SlideButtons, SourcesOutersWrapper, Naver, SlideSwipingHoverer },
+    data () {
+        return {
+            isOpen: this.openOnMount
+        };
+    },
+    watch: {
+        slide: function (newSlide) {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
         },
-        components: { SlideButtons, SourcesOutersWrapper, Naver, SlideSwipingHoverer },
-        data() {
-            return {
-                isOpen: this.openOnMount
-            };
+        sourceIndex: function (newSourceIndex) {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSourceIndex);
         },
-        watch: {
-            slide: function(newSlide) {
-                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
-            },
-            sourceIndex: function(newSourceIndex) {
-                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSourceIndex);
-            },
-            source: function(newSource) {
-                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
-                    this.sources.indexOf(newSource)
-                );
-            },
-            /**
-             * Toggler watcher must be after slide change watchers -
-             * if both are updated simultaneously slide change must be called first
-             */
-            toggler: function() {
-                fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
-            }
+        source: function (newSource) {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
+                this.sources.indexOf(newSource)
+            );
         },
-        created() {
-            this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
-
-            const isLightboxOpenManger = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
-            isLightboxOpenManger.get = () => this.isOpen;
-            isLightboxOpenManger.set = (value, callback) => {
-                this.isOpen = value;
-
-                if (callback) {
-                    updatedCallback = callback;
-                }
-            };
-        },
-        mounted() {
-            fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
-            runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
-        },
-        updated() {
-            fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
-
-            if (updatedCallback) {
-                updatedCallback();
-            }
-
-            updatedCallback = null;
+        /**
+         * Toggler watcher must be after slide change watchers -
+         * if both are updated simultaneously slide change must be called first
+         */
+        toggler: function () {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
         }
-    };
+    },
+    created () {
+        this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
+
+        const isLightboxOpenManger = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
+        isLightboxOpenManger.get = () => this.isOpen;
+        isLightboxOpenManger.set = (value, callback) => {
+            this.isOpen = value;
+
+            if (callback) {
+                updatedCallback = callback;
+            }
+        };
+    },
+    mounted () {
+        fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
+        runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
+    },
+    updated () {
+        fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
+
+        if (updatedCallback) {
+            updatedCallback();
+        }
+
+        updatedCallback = null;
+    }
+};
 </script>

@@ -14,7 +14,7 @@ fsLightboxStore[2] = {
     stageIndexes: { current: 0 }
 };
 
-test('SourceInner', () => {
+test('SourceInner', async () => {
     const sourceInner = shallowMount(SourceInner, {
         propsData: {
             fsLightboxIndex: 2,
@@ -29,17 +29,17 @@ test('SourceInner', () => {
 
     assertSourceNotRendered();
 
-    fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
+    await fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     assertSourceNotRendered();
 
     fsLightboxStore[2].core.stageManager.isSourceInStage = () => true;
-    fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
+    await fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     assertSourceNotRendered();
 
     fsLightboxStore[2].props.loadOnlyCurrentSource = false;
-    fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
+    await fsLightboxStore[2].componentsServices.updateSourceInnerCollection[1]();
     expect(sourceInner.vm.$children.length).toBe(1);
-    expect(sourceInner.contains(Videor)).toBe(true);
+    expect(sourceInner.findComponent(Videor).exists()).toBe(true);
     expect(sourceInner.vm.$children[0].$props).toEqual({
         fsLightboxIndex: 2,
         i: 1

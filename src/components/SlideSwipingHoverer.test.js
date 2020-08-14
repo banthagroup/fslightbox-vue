@@ -6,16 +6,16 @@ fsLightboxStore[2] = {
     componentsServices: { hideSlideSwipingHoverer: null, showSlideSwipingHoverer: null }
 };
 
-test('SlideSwipingHoverer', () => {
+test('SlideSwipingHoverer', async () => {
     const slideSwipingHoverer = shallowMount(SlideSwipingHoverer, {
         propsData: { fsLightboxIndex: 2 }
     });
 
-    expect(slideSwipingHoverer.contains('div')).toBe(false);
+    expect(slideSwipingHoverer.find('div').exists()).toBe(false);
 
-    fsLightboxStore[2].componentsServices.showSlideSwipingHoverer();
-    expect(slideSwipingHoverer.contains('div')).toBe(true);
+    await fsLightboxStore[2].componentsServices.showSlideSwipingHoverer();
+    expect(slideSwipingHoverer.find('div').exists()).toBe(true);
 
-    fsLightboxStore[2].componentsServices.hideSlideSwipingHoverer();
-    expect(slideSwipingHoverer.contains('div')).toBe(false);
+    await fsLightboxStore[2].componentsServices.hideSlideSwipingHoverer();
+    expect(slideSwipingHoverer.find('div').exists()).toBe(false);
 });

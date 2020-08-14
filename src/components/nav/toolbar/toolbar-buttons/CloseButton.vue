@@ -9,16 +9,16 @@
 </template>
 
 <script>
-    import ToolbarButton from "../ToolbarButton.vue";
-    import { fsLightboxStore } from "../../../../fsLightboxStore";
+import ToolbarButton from "../ToolbarButton.vue";
+import { fsLightboxStore } from "../../../../fsLightboxStore";
 
-    export default {
-        components: { ToolbarButton },
-        props: { fsLightboxIndex: Number },
-        data() {
-            return {
-                onClick: fsLightboxStore[this.fsLightboxIndex].core.lightboxCloser.close
-            }
+export default {
+    components: { ToolbarButton },
+    props: { fsLightboxIndex: Number },
+    data() {
+        return {
+            onClick: fsLightboxStore[this.fsLightboxIndex].core.lightboxCloser.closeLightbox
         }
     }
+}
 </script>

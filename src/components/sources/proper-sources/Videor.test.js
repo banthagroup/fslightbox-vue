@@ -1,32 +1,39 @@
-import { fsLightboxStore } from "../../../fsLightboxStore";
 import { shallowMount } from "@vue/test-utils";
-import Videor from "./Videor";
+import { fsLightboxStore } from "../../../fsLightboxStore";
+import Videor from "./Videor.vue";
 
 fsLightboxStore[2] = {
-    collections: { sourcesLoadsHandlers: [null, { handleVideoLoad: jest.fn() }] },
-    data: { sources: [null, 'http://example.com/'] },
+    collections: { sourcesLoadsHandlers: [null, { handleVideoLoad: () => {} }] },
+    data: { sources: [null, null, 'example'] },
     elements: { sources: [] },
-    props: {}
+    props: {
+        customAttributes: [
+            {
+                poster: 'first-custom-poster'
+            },
+            {
+                poster: 'second-custom-poster'
+            }
+        ],
+        videosPosters: ['first-poster', 'second-poster']
+    }
 };
+let video;
 
-test('Videor', () => {
-    let videor = shallowMount(Videor, {
-        propsData: { fsLightboxIndex: 2, i: 1 }
-    });
+describe('custom attributes and poster', () => {
+    test('poster is set and customAttribute is set', () => {
+        video = shallowMount(Videor, {
+            propsData: { fsLightboxIndex: 2, i: 1 }
+        });
+        expect(video.attributes()['poster']).toBe('second-poster');
+    })
 
-    expect(fsLightboxStore[2].elements.sources[1]).toBe(videor.element);
-    expect(videor.element.poster).toBe('');
-    expect(videor.element.firstChild.src).toBe('http://example.com/');
-
-    const e = new Event('loadedmetadata');
-    videor.element.dispatchEvent(e);
-    expect(fsLightboxStore[2].collections.sourcesLoadsHandlers[1].handleVideoLoad).toBeCalledWith(e);
-
-
-    fsLightboxStore[2].props.videosPosters = [null, 'http://videoposter.com/'];
-    videor = shallowMount(Videor, {
-        propsData: { fsLightboxIndex: 2, i: 1 }
-    });
-
-    expect(videor.element.poster).toBe('http://videoposter.com/');
-});
+    test('customAttribute is set and poster is not set', () => {
+        fsLightboxStore[2].props.customAttributes[1] = { poster: 'second-custom-poster' };
+        delete fsLightboxStore[2].props.videosPosters[1];
+        video = shallowMount(Videor, {
+            propsData: { fsLightboxIndex: 2, i: 1 }
+        });
+        expect(video.attributes()['poster']).toBe('second-custom-poster');
+    })
+})

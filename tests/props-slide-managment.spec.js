@@ -14,7 +14,7 @@ test('props slide management', async () => {
     await btnSecondSlide.dispatchEvent(new Event('click'));
     expect(document.getElementsByClassName('fslightbox-container')).toHaveLength(1);
 
-    const sourcesOuters = document.getElementsByClassName('fslightbox-source-outer');
+    let sourcesOuters = document.querySelectorAll('[data-test-class="source-outer"]');
     expect(sourcesOuters[0].style.transform).toBe('translateX(-1400px)');
     expect(sourcesOuters[1].style.transform).toBe('translateX(0px)');
     expect(sourcesOuters[2].style.transform).toBe('translateX(-1400px)');
@@ -30,12 +30,12 @@ test('props slide management', async () => {
     expect(sourcesOuters[3].style.transform).toBe('translateX(-1400px)');
     expect(sourcesOuters[4].style.transform).toBe('translateX(-1400px)');
 
+    // opening lightbox on slide 1 after closing
     await btnToggler.dispatchEvent(new Event('click'));
     await jest.runAllTimers();
     expect(document.getElementsByClassName('fslightbox-container')).toHaveLength(0);
-
-    // opening lightbox on slide 1 after closing
     await btnFirstSlide.dispatchEvent(new Event('click'));
+    sourcesOuters = document.querySelectorAll('[data-test-class="source-outer"]');
     expect(sourcesOuters[0].style.transform).toBe('translateX(0px)');
     expect(sourcesOuters[1].style.transform).toBe('translateX(-1400px)');
     expect(sourcesOuters[2].style.transform).toBe('translateX(-1400px)');

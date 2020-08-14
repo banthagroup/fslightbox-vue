@@ -2,7 +2,7 @@ export function KeyboardController({ core: { lightboxCloser, fullscreenToggler, 
     this.listener = (e) => {
         switch (e.keyCode) {
             case 27:
-                lightboxCloser.close();
+                lightboxCloser.closeLightbox();
                 break;
             case 37:
                 slideChangeFacade.changeToPrevious();

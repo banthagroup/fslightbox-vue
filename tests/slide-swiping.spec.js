@@ -11,7 +11,7 @@ const fsLightbox = mount(FsLightbox, {
     propsData: { sources: testSources, toggler: false, openOnMount: true }
 });
 
-const sourcesOutersWrapper = fsLightbox.find(SourcesOutersWrapper);
+const sourcesOutersWrapper = fsLightbox.findComponent(SourcesOutersWrapper);
 
 let requestAnimationFrameCallback;
 window.requestAnimationFrame = (callback) => {
@@ -22,7 +22,7 @@ const mousedown = new Event('mousedown');
 const mousemove = new Event('mousemove');
 const mouseup = new Event('mouseup');
 
-test('slide swiping', () => {
+test('slide swiping', async () => {
     // previous
     mousedown.clientX = 100;
     sourcesOutersWrapper.element.dispatchEvent(mousedown);
@@ -31,7 +31,7 @@ test('slide swiping', () => {
     document.dispatchEvent(mousemove);
 
     document.dispatchEvent(mouseup);
-    jest.runTimersToTime(ANIMATION_TIME);
+    jest.advanceTimersByTime(ANIMATION_TIME);
 
     expect(fsLightboxStore[0].stageIndexes).toEqual({
         previous: 2,
@@ -49,7 +49,7 @@ test('slide swiping', () => {
     document.dispatchEvent(mousemove);
 
     document.dispatchEvent(mouseup);
-    jest.runTimersToTime(ANIMATION_TIME);
+    jest.advanceTimersByTime(ANIMATION_TIME);
 
     expect(fsLightboxStore[0].stageIndexes).toEqual({
         previous: 3,
@@ -67,12 +67,12 @@ test('slide swiping', () => {
     document.dispatchEvent(mousemove);
 
     document.dispatchEvent(mouseup);
-    jest.runTimersToTime(ANIMATION_TIME);
+    await jest.advanceTimersByTime(ANIMATION_TIME - 30);
 
     expect(fsLightboxStore[0].stageIndexes).toEqual({
         previous: 3,
         current: 0,
         next: 1
     });
-    expect(fsLightbox.html()).toBe(undefined);
+    expect(fsLightbox.html()).toBeFalsy();
 });

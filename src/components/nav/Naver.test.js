@@ -9,9 +9,9 @@ fsLightboxStore[0] = {
 
 test('Nav', () => {
     let nav = shallowMount(Nav, { propsData: { fsLightboxIndex: 0 } });
-    expect(nav.contains(SlideNumber)).toBe(false);
+    expect(nav.findComponent(SlideNumber).exists()).toBe(false);
 
     fsLightboxStore[0].data.sources.length = 2;
     nav = shallowMount(Nav, { propsData: { fsLightboxIndex: 0 } });
-    expect(nav.contains(SlideNumber)).toBe(true);
+    expect(nav.findComponent(SlideNumber).exists()).toBe(true);
 });

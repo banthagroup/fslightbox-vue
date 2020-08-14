@@ -19,35 +19,35 @@
 </template>
 
 <script>
-    import FsLightbox from "../../../src/FsLightbox.vue";
-    import TestCustomSource from "./TestCustomSource.vue";
-    import { TEST_YOUTUBE_URL, testSources } from "../testVars";
+import FsLightbox from "../../../src/FsLightbox.vue";
+import TestCustomSource from "./TestCustomSource.vue";
+import { TEST_YOUTUBE_URL, testSources } from "../testVars";
 
-    export default {
-        components: { FsLightbox, TestCustomSource },
-        data() {
-            return {
-                TEST_YOUTUBE_URL: TEST_YOUTUBE_URL,
-                TestCustomSource: TestCustomSource,
-                toggler: false,
-                slide: null,
-                sourceIndex: null,
-                source: null,
-                testSources: testSources
-            }
+export default {
+    components: { FsLightbox, TestCustomSource },
+    data() {
+        return {
+            TEST_YOUTUBE_URL: TEST_YOUTUBE_URL,
+            TestCustomSource: TestCustomSource,
+            toggler: false,
+            slide: null,
+            sourceIndex: null,
+            source: null,
+            testSources: testSources
+        }
+    },
+    methods: {
+        openLightboxOnSlide: function (number) {
+            this.slide = number;
+            this.toggler = !this.toggler;
         },
-        methods: {
-            openLightboxOnSlide: function (number) {
-                this.slide = number;
-                this.toggler = !this.toggler;
-            },
-            openLightboxOnIndex: function (index) {
-                this.sourceIndex = index;
-                this.toggler = !this.toggler;
-            },
-            changeSlideToSource: function (source) {
-                this.source = source;
-            }
+        openLightboxOnIndex: function (index) {
+            this.sourceIndex = index;
+            this.toggler = !this.toggler;
+        },
+        changeSlideToSource: function (source) {
+            this.source = source;
         }
     }
+}
 </script>

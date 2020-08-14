@@ -7,8 +7,8 @@ export function setUpLightboxUpdater(
 ) {
     self.handleTogglerUpdate = () => {
         isLightboxOpenManager.get() ?
-            lightboxCloser.close() :
-            lightboxOpener.open();
+            lightboxCloser.closeLightbox() :
+            lightboxOpener.openLightbox();
     };
 
     self.runCurrentStageIndexUpdateActionsFor = (newSlideSourceIndex) => {

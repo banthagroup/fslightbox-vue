@@ -2,32 +2,37 @@
     <video class="fslightbox-source fslightbox-video"
            @loadedmetadata="onLoad"
            ref="ref"
-           :poster="poster"
-           controls>
+           controls
+           v-bind="attributes">
         <source :src="src" />
     </video>
 </template>
 
 <script>
-    import { fsLightboxStore } from "../../../fsLightboxStore";
+import { fsLightboxStore } from "../../../fsLightboxStore";
 
-    export default {
-        props: { fsLightboxIndex: Number, i: Number },
-        data() {
-            const {
-                collections: { sourcesLoadsHandlers },
-                data: { sources },
-                props: { videosPosters }
-            } = fsLightboxStore[this.fsLightboxIndex];
+export default {
+    props: { fsLightboxIndex: Number, i: Number },
+    data() {
+        const {
+            collections: { sourcesLoadsHandlers },
+            data: { sources },
+            props: { customAttributes, videosPosters }
+        } = fsLightboxStore[this.fsLightboxIndex];
 
-            return {
-                onLoad: sourcesLoadsHandlers[this.i].handleVideoLoad,
-                src: sources[this.i],
-                poster: videosPosters && videosPosters[this.i]
-            }
-        },
-        mounted() {
-            fsLightboxStore[this.fsLightboxIndex].elements.sources[this.i] = this.$refs['ref'];
+        const attributes = (customAttributes && customAttributes[this.i]) ? customAttributes[this.i] : {}
+        if (videosPosters && videosPosters[this.i]) {
+            attributes['poster'] = videosPosters[this.i]
         }
-    };
+
+        return {
+            onLoad: sourcesLoadsHandlers[this.i].handleVideoLoad,
+            src: sources[this.i],
+            attributes: attributes
+        }
+    },
+    mounted() {
+        fsLightboxStore[this.fsLightboxIndex].elements.sources[this.i] = this.$refs['ref'];
+    }
+};
 </script>

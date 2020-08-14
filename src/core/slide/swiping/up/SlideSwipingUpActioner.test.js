@@ -5,7 +5,7 @@ import { CURSOR_GRABBING_CLASS_NAME } from "../../../../constants/classes-names"
 const fsLightbox = {
     componentsServices: { hideSlideSwipingHoverer: jest.fn() },
     core: {
-        lightboxCloser: { close: jest.fn() },
+        lightboxCloser: { closeLightbox: jest.fn() },
         swipingActioner: { runTopActionsForProps: jest.fn() }
     },
     elements: { container: { classList: { remove: jest.fn() } } },
@@ -29,11 +29,11 @@ const slideSwipingUpActions = new SlideSwipingUpActioner(fsLightbox);
 test('resetSwiping', () => {
     slideSwipingUpActions.runNoSwipeActions();
     expect(fsLightbox.componentsServices.hideSlideSwipingHoverer).toBeCalled();
-    expect(fsLightbox.core.lightboxCloser.close).not.toBeCalled();
+    expect(fsLightbox.core.lightboxCloser.closeLightbox).not.toBeCalled();
     expect(fsLightbox.slideSwipingProps.isSwiping).toBe(false);
     fsLightbox.slideSwipingProps.isSourceDownEventTarget = false;
     slideSwipingUpActions.runNoSwipeActions();
-    expect(fsLightbox.core.lightboxCloser.close).toBeCalled();
+    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalled();
 });
 
 test('runActions', () => {

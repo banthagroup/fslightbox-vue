@@ -30,7 +30,7 @@ test('events', async () => {
     expect(onShow).not.toBeCalled();
 
     await fsLightbox.setProps({ toggler: true });
-    await jest.runTimersToTime(ANIMATION_TIME - 30);
+    await jest.advanceTimersByTime(ANIMATION_TIME - 30);
     expect(onInit).toBeCalledTimes(1);
     expect(onOpen).toBeCalledTimes(1);
     expect(onClose).toBeCalled();

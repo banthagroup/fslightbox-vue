@@ -2,7 +2,7 @@ import SlideNumber from "./SlideNumber.vue";
 import { mount } from "@vue/test-utils";
 import { fsLightboxStore } from "../../fsLightboxStore";
 
-test('SlideNumber', () => {
+test('SlideNumber', async () => {
     fsLightboxStore[0] = {
         componentsServices: {},
         data: { sources: { length: 3 } },
@@ -14,6 +14,6 @@ test('SlideNumber', () => {
     expect(slideNumberInnerChildren[0].innerHTML).toBe('2');
     expect(slideNumberInnerChildren[2].innerHTML).toBe('3');
 
-    fsLightboxStore[0].componentsServices.setSlideNumber(1);
+    await fsLightboxStore[0].componentsServices.setSlideNumber(1);
     expect(slideNumberInnerChildren[0].innerHTML).toBe('1');
 });

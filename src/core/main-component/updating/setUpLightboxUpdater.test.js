@@ -4,8 +4,8 @@ const fsLightbox = {
     componentsServices: { isLightboxOpenManager: { get: () => false } },
     core: {
         lightboxUpdater: {},
-        lightboxCloser: { close: jest.fn() },
-        lightboxOpener: { open: jest.fn() },
+        lightboxCloser: { closeLightbox: jest.fn() },
+        lightboxOpener: { openLightbox: jest.fn() },
         slideIndexChanger: { jumpTo: jest.fn() }
     },
     stageIndexes: { current: 0 }
@@ -15,13 +15,13 @@ setUpLightboxUpdater(fsLightbox);
 
 test('handleTogglerUpdate', () => {
     lightboxUpdater.handleTogglerUpdate();
-    expect(fsLightbox.core.lightboxOpener.open).toBeCalled();
-    expect(fsLightbox.core.lightboxCloser.close).not.toBeCalled();
+    expect(fsLightbox.core.lightboxOpener.openLightbox).toBeCalled();
+    expect(fsLightbox.core.lightboxCloser.closeLightbox).not.toBeCalled();
 
     fsLightbox.componentsServices.isLightboxOpenManager.get = () => true;
     lightboxUpdater.handleTogglerUpdate();
-    expect(fsLightbox.core.lightboxOpener.open).toBeCalledTimes(1);
-    expect(fsLightbox.core.lightboxCloser.close).toBeCalled();
+    expect(fsLightbox.core.lightboxOpener.openLightbox).toBeCalledTimes(1);
+    expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalled();
 });
 
 test('runCurrentStageIndexUpdateActionsFor', () => {

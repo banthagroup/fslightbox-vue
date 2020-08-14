@@ -4,7 +4,7 @@ export function setUpLightboxOpener(
         core: { lightboxOpener: self, lightboxOpenActioner },
     }
 ) {
-    self.open = () => {
+    self.openLightbox = () => {
         isLightboxOpenManager.set(true, lightboxOpenActioner.runActions);
     };
 }

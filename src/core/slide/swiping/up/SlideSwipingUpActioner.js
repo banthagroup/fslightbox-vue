@@ -16,7 +16,7 @@ export function SlideSwipingUpActioner(
         componentsServices.hideSlideSwipingHoverer();
 
         if (!slideSwipingProps.isSourceDownEventTarget) {
-            lightboxCloser.close();
+            lightboxCloser.closeLightbox();
         }
 
         slideSwipingProps.isSwiping = false;

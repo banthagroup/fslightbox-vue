@@ -6,40 +6,54 @@
 
         <FsLightbox
             :toggler="toggler"
-            :slide="slide"
-            :videos-posters="[null, '/demo/img/1.jpeg']"
-            :sources="['img']"
+            :videos-posters="[null, null]"
+            :sources="testSources"
             :onInit="action"
             :disable-local-storage="true"
             :load-only-current-source="true"
+            :custom-attributes="[
+                {
+                    alt: 'siema',
+                    elo: 'dupas'
+                },
+                {
+                    poster: 'supa-poster',
+                    bombster: 'supa-bombster'
+                },
+                {
+                    supaat: 'supa'
+                }
+            ]"
         />
     </div>
 </template>
 
 <script>
-    import ExampleCustom from "./ExampleCustom.vue";
-    import { testSources } from "../tests/__tests-services__/testVars";
+import ExampleCustom from "./ExampleCustom.vue";
+import { testSources } from "../tests/__tests-services__/testVars";
+import FsLightbox from "../src/FsLightbox.vue";
 
-    export default {
-        components: { FsLightbox: () => import('fslightbox-vue') },
-        data() {
-            testSources.push({ component: ExampleCustom, props: { siema: 'jd' } });
+export default {
+    components: {
+        FsLightbox
+    },
+    data() {
+        testSources.push({ component: ExampleCustom, props: { siema: 'jd' } });
 
-            return {
-                ExampleCustom: ExampleCustom,
-                toggler: false,
-                slide: 1,
-                testSources: testSources
-            }
+        return {
+            ExampleCustom: ExampleCustom,
+            toggler: false,
+            slide: 1,
+            testSources: testSources
+        }
+    },
+    methods: {
+        openLightboxOnSlide: function (number) {
+            this.toggler = !this.toggler;
         },
-        methods: {
-            openLightboxOnSlide: function(number) {
-                this.slide = number;
-                this.toggler = !this.toggler;
-            },
-            action() {
+        action() {
 
-            }
         }
     }
+}
 </script>
