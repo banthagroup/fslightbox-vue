@@ -1,14 +1,19 @@
 export function setUpLightboxUpdater(
     {
-        componentsServices: { isLightboxOpenManager },
+        componentsServices: { isLightboxRenderedManager },
         core: { lightboxUpdater: self, lightboxCloser, lightboxOpener, slideIndexChanger },
+        data,
         stageIndexes
     }
 ) {
     self.handleTogglerUpdate = () => {
-        isLightboxOpenManager.get() ?
-            lightboxCloser.closeLightbox() :
+        if (isLightboxRenderedManager.get()) {
+            lightboxCloser.closeLightbox();
+        } else if (data.isInitialized) {
             lightboxOpener.openLightbox();
+        } else {
+            lightboxOpener.initializeAndOpenLightbox();
+        }
     };
 
     self.runCurrentStageIndexUpdateActionsFor = (newSlideSourceIndex) => {
@@ -16,7 +21,7 @@ export function setUpLightboxUpdater(
             return;
         }
 
-        (isLightboxOpenManager.get()) ?
+        (isLightboxRenderedManager.get()) ?
             slideIndexChanger.jumpTo(newSlideSourceIndex) :
             stageIndexes.current = newSlideSourceIndex;
     };

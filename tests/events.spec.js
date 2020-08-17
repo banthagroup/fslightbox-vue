@@ -11,7 +11,7 @@ const onClose = jest.fn();
 const onShow = jest.fn();
 
 test('events', async () => {
-    const fsLightbox = mount(FsLightbox, {
+    const fsLightbox = await mount(FsLightbox, {
         propsData: {
             toggler: false,
             openOnMount: true,

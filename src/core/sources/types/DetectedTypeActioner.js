@@ -4,7 +4,7 @@ import { SourceLoadHandler } from "../SourceLoadHandler";
 export function DetectedTypeActioner(fsLightbox) {
     const {
         collections: { sourcesLoadsHandlers },
-        componentsServices: { isLightboxOpenManager, updateSourceInnerCollection },
+        componentsServices: { isLightboxRenderedManager, updateSourceInnerCollection },
         elements: { sourcesComponents },
         resolve
     } = fsLightbox;
@@ -36,7 +36,7 @@ export function DetectedTypeActioner(fsLightbox) {
 
         sourcesComponents[i] = componentName;
 
-        if (isLightboxOpenManager.get()) {
+        if (isLightboxRenderedManager.get()) {
             updateSourceInnerCollection[i]();
         }
     };

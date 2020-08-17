@@ -1,4 +1,3 @@
-import { initializeLightbox } from "../initializing/initializeLightbox";
 import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
 
 export function setUpLightboxOpenActioner(fsLightbox) {
@@ -13,12 +12,13 @@ export function setUpLightboxOpenActioner(fsLightbox) {
             stageManager,
             windowResizeActioner
         },
-        data,
         stageIndexes
     } = fsLightbox;
 
-    self.runActions = () => {
+    self.runInitializedLightboxActions = () => {
         stageManager.updateStageIndexes();
+
+        sourceDisplayFacade.displayStageSourcesIfNotYet();
 
         document.documentElement.classList.add(OPEN_CLASS_NAME);
 
@@ -30,12 +30,5 @@ export function setUpLightboxOpenActioner(fsLightbox) {
         sourcesOutersTransformers[stageIndexes.current].zero();
 
         eventsDispatcher.dispatch('onOpen');
-
-        if (data.isInitialized) {
-            eventsDispatcher.dispatch('onShow');
-            sourceDisplayFacade.displayStageSourcesIfNotYet();
-        } else {
-            initializeLightbox(fsLightbox);
-        }
     };
 }

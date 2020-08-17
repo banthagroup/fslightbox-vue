@@ -1,13 +1,11 @@
-import { getInitialCurrentIndex } from "./core/stage/getInitialCurrentIndex";
-import { setUpCore } from "./core/setUpCore";
-import { getSourcesOutersTransformersCollection } from "./core/collections/getSourcesOutersTransformersCollection";
-import { getMergedSourcesAndCustomSources } from './core/sources/getMergedSourcesAndCustomSources';
+import { setUpLightboxUpdater } from "./core/main-component/updating/setUpLightboxUpdater";
+import { setUpLightboxOpener } from "./core/main-component/opening/setUpLightboxOpener";
 
 export function FsLightbox(props) {
     this.props = props;
 
     this.data = {
-        sources: getMergedSourcesAndCustomSources(this),
+        sources: null, // sources are set up at initialize
         isInitialized: false,
         maxSourceWidth: 0,
         maxSourceHeight: 0,
@@ -21,14 +19,15 @@ export function FsLightbox(props) {
         swipedX: 0
     };
 
-    this.stageIndexes = {
-        previous: undefined,
-        current: getInitialCurrentIndex(this),
-        next: undefined
-    };
+    /**
+     * @property { Number } previous
+     * @property { Number } current
+     * @property { Number } next
+     */
+    this.stageIndexes = {};
 
     this.componentsServices = {
-        isLightboxOpenManager: {},
+        isLightboxRenderedManager: {},
         setSlideNumber: null,
         isFullscreenOpenManager: {},
         hideLoaderCollection: [],
@@ -52,12 +51,10 @@ export function FsLightbox(props) {
     };
 
     this.collections = {
-        sourcesOutersTransformers: getSourcesOutersTransformersCollection(this),
-        sourcesLoadsHandlers: [],
-        // after source load its size adjuster will be stored in this array so it may be later resized
+        sourcesOutersTransformers: [], // set up during lightbox initialize
+        sourcesLoadsHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
         sourcesStylers: [],
-        // if lightbox is unmounted pending xhrs need to be aborted
-        xhrs: []
+        xhrs: [] // if lightbox is unmounted pending xhrs need to be aborted
     };
 
     this.core = {
@@ -78,5 +75,8 @@ export function FsLightbox(props) {
         windowResizeActioner: {}
     };
 
-    setUpCore(this);
+    // setting up dependencies required to initialize lightbox
+    // rest of the core is set up at initialize, because lightbox gets props on first open not at mount
+    setUpLightboxUpdater(this);
+    setUpLightboxOpener(this);
 }

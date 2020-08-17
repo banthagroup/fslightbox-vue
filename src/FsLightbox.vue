@@ -1,5 +1,6 @@
 <template>
-    <div v-if="isOpen" ref="container" class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
+    <div v-if="isRendered" ref="container"
+         class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
         <Naver :fs-lightbox-index="this.fsLightboxIndex" />
         <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex" />
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex" />
@@ -53,9 +54,9 @@ export default {
         exitFullscreenOnClose: Boolean
     },
     components: { SlideButtons, SourcesOutersWrapper, Naver, SlideSwipingHoverer },
-    data () {
+    data() {
         return {
-            isOpen: this.openOnMount
+            isRendered: false
         };
     },
     watch: {
@@ -78,24 +79,24 @@ export default {
             fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
         }
     },
-    created () {
+    created() {
         this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
 
-        const isLightboxOpenManger = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
-        isLightboxOpenManger.get = () => this.isOpen;
-        isLightboxOpenManger.set = (value, callback) => {
-            this.isOpen = value;
+        const isLightboxRenderedManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxRenderedManager;
+        isLightboxRenderedManager.get = () => this.isRendered;
+        isLightboxRenderedManager.set = (value, callback) => {
+            this.isRendered = value;
 
             if (callback) {
                 updatedCallback = callback;
             }
         };
     },
-    mounted () {
+    mounted() {
         fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
         runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
     },
-    updated () {
+    updated() {
         fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
 
         if (updatedCallback) {

@@ -4,7 +4,7 @@ import { SourceLoadHandler } from "../SourceLoadHandler";
 const fsLightbox = {
     collections: { sourcesLoadsHandlers: [] },
     componentsServices: {
-        isLightboxOpenManager: { get: () => false },
+        isLightboxRenderedManager: { get: () => false },
         updateSourceInnerCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
     },
     elements: { sourcesComponents: [] },
@@ -19,7 +19,7 @@ test('runActionsForSourceTypeAndIndex', () => {
     expect(fsLightbox.elements.sourcesComponents[0]).toBe('Invalider');
     expect(fsLightbox.componentsServices.updateSourceInnerCollection[0]).not.toBeCalled();
 
-    fsLightbox.componentsServices.isLightboxOpenManager.get = () => true;
+    fsLightbox.componentsServices.isLightboxRenderedManager.get = () => true;
     detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
     detectedTypeActioner.runActionsForSourceTypeAndIndex('image', 0);
     expect(fsLightbox.resolve).toBeCalledWith(SourceLoadHandler, [0]);

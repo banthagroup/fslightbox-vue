@@ -12,9 +12,9 @@ export function setUpSourceDisplayFacade(
             return;
         }
 
-        for (let i in stageIndexes) {
-            if (stageIndexes[i] !== undefined) {
-                updateSourceInnerCollection[stageIndexes[i]]();
+        for (let name in stageIndexes) {
+            if (stageIndexes[name] !== undefined) {
+                updateSourceInnerCollection[stageIndexes[name]]();
             }
         }
     };

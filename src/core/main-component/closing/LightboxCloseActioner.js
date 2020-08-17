@@ -3,7 +3,7 @@ import { ANIMATION_TIME } from "../../../constants/css-constants";
 
 export function LightboxCloseActioner(
     {
-        componentsServices: { isFullscreenOpenManager, isLightboxOpenManager },
+        componentsServices: { isFullscreenOpenManager, isLightboxRenderedManager },
         core: {
             eventsDispatcher,
             fullscreenToggler,
@@ -39,7 +39,7 @@ export function LightboxCloseActioner(
 
             scrollbarRecompensor.removeRecompense();
 
-            isLightboxOpenManager.set(false);
+            isLightboxRenderedManager.set(false);
 
             eventsDispatcher.dispatch('onClose');
         }, ANIMATION_TIME - 30);
