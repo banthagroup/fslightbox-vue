@@ -2,6 +2,8 @@ import { setUpLightboxUpdater } from "./core/main-component/updating/setUpLightb
 import { setUpLightboxOpener } from "./core/main-component/opening/setUpLightboxOpener";
 
 export function FsLightbox(props) {
+    // we can cache props at lightbox create, because before opening lightbox props are never used
+    // so there is no threat of destructuring props that is not set yet
     this.props = props;
 
     this.data = {

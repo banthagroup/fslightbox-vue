@@ -1,4 +1,4 @@
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/testLightbox";
+import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
 import TestOpenLightbox from "./__tests-services__/test-lightbox/TestOpenLightbox.vue";
 
 test('rendering each type of source', async () => {

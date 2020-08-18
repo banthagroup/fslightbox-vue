@@ -1,4 +1,4 @@
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/testLightbox";
+import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
 import TestSingleSourceLightbox from "./__tests-services__/test-lightbox/TestSingleSourceLightbox";
 
 jest.useFakeTimers();

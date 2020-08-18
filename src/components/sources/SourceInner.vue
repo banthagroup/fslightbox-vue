@@ -1,5 +1,5 @@
 <template>
-    <div ref="ref">
+    <div ref="ref" class="soueouoeu">
         <component
             v-if="current === i || (!loadOnlyCurrentSource && isSourceInStage)"
             :is="sourceComponent"

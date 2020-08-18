@@ -1,5 +1,5 @@
 import TestLightboxWithNoSourcesAtMount from "./__tests-services__/test-lightbox/TestLightboxWithNoSourcesAtMount.vue";
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/testLightbox";
+import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
 import { testSources } from "./__tests-services__/testVars";
 
 describe('mounting lightbox with empty array as sources, setting up sources that are state and then opening lightbox', () => {

@@ -6,9 +6,10 @@
 
         <FsLightbox
             :toggler="toggler"
-            :sources="testSources"
+            :sources="gallery.items"
             :slide="slide"
             :types="testTypes"
+            :load-only-current-source="loadOnlyCurrentSource"
         />
     </div>
 </template>
@@ -29,6 +30,7 @@ export default {
             galleryVisible: true,
             testTypes: testTypes,
             testSources: testSources,
+            loadOnlyCurrentSource: false,
             gallery: {
                 posts: testSources,
                 items: []
@@ -40,18 +42,18 @@ export default {
         }
     },
     mounted() {
-        // setTimeout(() => {
-        //     this.showGallery(1);
-        //
-        //     setTimeout(() => {
-        //         this.toggler = !this.toggler;
-        //
-        //         setTimeout(() => {
-        //             this.slide = 4;
-        //             this.toggler = !this.toggler;
-        //         }, 1000);
-        //     }, 1000)
-        // }, 1000)
+        setTimeout(() => {
+            this.showGallery(1);
+            //
+            //     setTimeout(() => {
+            //         this.toggler = !this.toggler;
+            //
+            //         setTimeout(() => {
+            //             this.slide = 4;
+            //             this.toggler = !this.toggler;
+            //         }, 1000);
+            //     }, 1000)
+        }, 1000)
     },
     methods: {
         openLightboxOnSlide: function (number) {
@@ -59,7 +61,8 @@ export default {
             this.toggler = !this.toggler;
         },
         async showGallery(idx) {
-            // this.gallery.items = this.gallery.posts.slice();
+            this.gallery.items = this.gallery.posts.slice();
+            this.loadOnlyCurrentSource = true;
             this.slide = 3;
             this.toggler = !this.toggler;
         }
