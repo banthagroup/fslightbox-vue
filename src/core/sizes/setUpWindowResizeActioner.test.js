@@ -4,12 +4,12 @@ import { TRANSFORM_TRANSITION_CLASS_NAME } from "../../constants/classes-names";
 
 const fsLightbox = {
     collections: {
-        sourcesOutersTransformers: [{ negative: jest.fn() }, { negative: jest.fn() }],
-        sourcesStylers: [undefined, { styleSize: jest.fn() }]
+        sourceMainWrappersTransformers: [{ negative: jest.fn() }, { negative: jest.fn() }],
+        sourceSizers: [undefined, { adjustSize: jest.fn() }]
     },
     core: { windowResizeActioner: {} },
     data: { sources: { length: 2 } },
-    elements: { sourcesOuters: ['first-source-outer', 'second-source-outer'] },
+    elements: { sourceMainWrappers: ['first-source-outer', 'second-source-outer'] },
     stageIndexes: { current: 0 }
 };
 innerWidth = 991;
@@ -28,9 +28,9 @@ test('runActions', () => {
     expect(removeFromElementClassIfContainsObject.removeFromElementClassIfContains).toBeCalledWith(
         'second-source-outer', TRANSFORM_TRANSITION_CLASS_NAME
     );
-    expect(fsLightbox.collections.sourcesOutersTransformers[0].negative).not.toBeCalled();
-    expect(fsLightbox.collections.sourcesOutersTransformers[1].negative).toBeCalled();
-    expect(fsLightbox.collections.sourcesStylers[1].styleSize).toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrappersTransformers[0].negative).not.toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrappersTransformers[1].negative).toBeCalled();
+    expect(fsLightbox.collections.sourceSizers[1].adjustSize).toBeCalled();
 
     innerWidth = 992;
     windowResizeActioner.runActions();

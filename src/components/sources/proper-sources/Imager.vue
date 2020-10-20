@@ -21,7 +21,10 @@ export default {
         } = fsLightboxStore[this.fsLightboxIndex];
 
         return {
-            onLoad: sourcesLoadsHandlers[this.i].handleImageLoad,
+            onLoad: (e) => {
+                console.log('load');
+                sourcesLoadsHandlers[this.i].handleImageLoad(e)
+            },
             src: sources[this.i],
             customAttributes: customAttributes && customAttributes[this.i]
         }

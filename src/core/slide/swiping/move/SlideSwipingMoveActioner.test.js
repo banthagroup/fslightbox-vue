@@ -5,7 +5,7 @@ import * as getClientXFromEventObject from "../../../../helpers/events/getClient
 const fsLightbox = {
     componentsServices: { showSlideSwipingHoverer: jest.fn() },
     collections: {
-        sourcesOutersTransformers: [
+        sourceMainWrappersTransformers: [
             {
                 byValue: () => ({
                     negative: () => {},
@@ -60,7 +60,7 @@ describe('transforming stage sources holders by swiped difference value', () => 
     };
 
     beforeAll(() => {
-        fsLightbox.collections.sourcesOutersTransformers[3] = {
+        fsLightbox.collections.sourceMainWrappersTransformers[3] = {
             byValue: (value) => {
                 if (value === expectedByValue) {
                     return {
@@ -69,7 +69,7 @@ describe('transforming stage sources holders by swiped difference value', () => 
                 }
             }
         };
-        fsLightbox.collections.sourcesOutersTransformers[5] = {
+        fsLightbox.collections.sourceMainWrappersTransformers[5] = {
             byValue: (value) => {
                 if (value === expectedByValue) {
                     return {
@@ -78,7 +78,7 @@ describe('transforming stage sources holders by swiped difference value', () => 
                 }
             }
         };
-        fsLightbox.collections.sourcesOutersTransformers[9] = {
+        fsLightbox.collections.sourceMainWrappersTransformers[9] = {
             byValue: (value) => {
                 if (value === expectedByValue) {
                     return {

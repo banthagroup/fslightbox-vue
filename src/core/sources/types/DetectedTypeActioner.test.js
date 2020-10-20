@@ -5,7 +5,7 @@ const fsLightbox = {
     collections: { sourcesLoadsHandlers: [] },
     componentsServices: {
         isLightboxRenderedManager: { get: () => false },
-        updateSourceInnerCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
+        updateSourceDirectWrapperCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
     },
     elements: { sourcesComponents: [] },
     resolve: jest.fn(() => 'source-load-handler')
@@ -17,14 +17,14 @@ test('runActionsForSourceTypeAndIndex', () => {
     detectedTypeActioner.runActionsForSourceTypeAndIndex('invalid', 0);
     expect(fsLightbox.resolve).not.toBeCalled();
     expect(fsLightbox.elements.sourcesComponents[0]).toBe('Invalider');
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[0]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).not.toBeCalled();
 
     fsLightbox.componentsServices.isLightboxRenderedManager.get = () => true;
     detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
     detectedTypeActioner.runActionsForSourceTypeAndIndex('image', 0);
     expect(fsLightbox.resolve).toBeCalledWith(SourceLoadHandler, [0]);
     expect(fsLightbox.elements.sourcesComponents[0]).toBe('Imager');
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[0]).toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).toBeCalled();
 
     detectedTypeActioner.runActionsForSourceTypeAndIndex('video', 1);
     expect(fsLightbox.elements.sourcesComponents[1]).toBe('Videor');

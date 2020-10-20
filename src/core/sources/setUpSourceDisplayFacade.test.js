@@ -3,7 +3,7 @@ import { setUpSourceDisplayFacade } from "./setUpSourceDisplayFacade";
 const fsLightbox = {
     core: { sourceDisplayFacade: {} },
     componentsServices: {
-        updateSourceInnerCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
+        updateSourceDirectWrapperCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
     },
     props: { loadOnlyCurrentSource: true },
     stageIndexes: { previous: 0, current: 3, next: 4 }
@@ -14,18 +14,18 @@ const sourceDisplayFacade = fsLightbox.core.sourceDisplayFacade;
 
 test('displayStageSourcesIfNotYet', () => {
     sourceDisplayFacade.displayStageSourcesIfNotYet();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[0]).not.toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[1]).not.toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[2]).not.toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[3]).toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[4]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[1]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[2]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[3]).toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[4]).not.toBeCalled();
 
     fsLightbox.props.loadOnlyCurrentSource = false;
     setUpSourceDisplayFacade(fsLightbox);
     sourceDisplayFacade.displayStageSourcesIfNotYet();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[0]).toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[1]).not.toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[2]).not.toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[3]).toBeCalled();
-    expect(fsLightbox.componentsServices.updateSourceInnerCollection[4]).toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[1]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[2]).not.toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[3]).toBeCalled();
+    expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[4]).toBeCalled();
 });

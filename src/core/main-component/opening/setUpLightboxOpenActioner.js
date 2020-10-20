@@ -2,7 +2,7 @@ import { OPEN_CLASS_NAME } from "../../../constants/classes-names";
 
 export function setUpLightboxOpenActioner(fsLightbox) {
     const {
-        collections: { sourcesOutersTransformers },
+        collections: { sourceMainWrappersTransformers },
         core: {
             eventsDispatcher,
             lightboxOpenActioner: self,
@@ -27,7 +27,7 @@ export function setUpLightboxOpenActioner(fsLightbox) {
         globalEventsController.attachListeners();
 
         windowResizeActioner.runActions();
-        sourcesOutersTransformers[stageIndexes.current].zero();
+        sourceMainWrappersTransformers[stageIndexes.current].zero();
 
         eventsDispatcher.dispatch('onOpen');
     };

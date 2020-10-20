@@ -1,7 +1,7 @@
 import { testSources } from "./__tests-services__/testVars";
 import FsLightbox from "../src/FsLightbox.vue";
 import { mount } from "@vue/test-utils";
-import SourcesOutersWrapper from "../src/components/sources/SourcesOutersWrapper.vue";
+import SourceWrappersContainer from "../src/components/sources/SourceWrappersContainer.vue";
 import { fsLightboxStore } from "../src/fsLightboxStore";
 import { ANIMATION_TIME } from "../src/constants/css-constants";
 
@@ -11,7 +11,7 @@ const fsLightbox = mount(FsLightbox, {
     propsData: { sources: testSources, toggler: false, openOnMount: true }
 });
 
-const sourcesOutersWrapper = fsLightbox.findComponent(SourcesOutersWrapper);
+const sourceWrappersContainer = fsLightbox.findComponent(SourceWrappersContainer);
 
 let requestAnimationFrameCallback;
 window.requestAnimationFrame = (callback) => {
@@ -30,7 +30,7 @@ test('siema', () => {
 test('slide swiping', async () => {
     // previous
     mousedown.clientX = 100;
-    sourcesOutersWrapper.element.dispatchEvent(mousedown);
+    sourceWrappersContainer.element.dispatchEvent(mousedown);
 
     mousemove.clientX = 200;
     document.dispatchEvent(mousemove);
@@ -46,7 +46,7 @@ test('slide swiping', async () => {
 
     // next
     mousedown.clientX = 1000;
-    sourcesOutersWrapper.element.dispatchEvent(mousedown);
+    sourceWrappersContainer.element.dispatchEvent(mousedown);
 
     requestAnimationFrameCallback();
 
@@ -64,7 +64,7 @@ test('slide swiping', async () => {
 
     // closing
     mousedown.clientX = 333;
-    sourcesOutersWrapper.element.dispatchEvent(mousedown);
+    sourceWrappersContainer.element.dispatchEvent(mousedown);
 
     requestAnimationFrameCallback();
 

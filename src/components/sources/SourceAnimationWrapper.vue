@@ -28,12 +28,12 @@ export default {
         return data;
     },
     created() {
-        fsLightboxStore[this.fsLightboxIndex].componentsServices.updateSourceInnerCollection[this.i] = () => {
+        fsLightboxStore[this.fsLightboxIndex].componentsServices.updateSourceDirectWrapperCollection[this.i] = () => {
             this.attachComponentDataToObject(this);
         };
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourcesInners[this.i] = this.$refs['ref'];
+        fsLightboxStore[this.fsLightboxIndex].elements.sourceAnimationWrappers[this.i] = this.$refs['ref'];
     },
     methods: {
         attachComponentDataToObject: function (object) {

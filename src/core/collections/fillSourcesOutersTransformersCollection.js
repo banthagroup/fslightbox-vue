@@ -1,13 +1,13 @@
-import { SourceOuterTransformer } from "../transforms/SourceOuterTransformer";
+import { SourceMainWrapperTransformer } from "../transforms/SourceMainWrapperTransformer";
 
 export function fillSourcesOutersTransformersCollection(
     {
-        collections: { sourcesOutersTransformers },
+        collections: { sourceMainWrappersTransformers },
         data: { sources },
         resolve
     }
 ) {
     for (let i = 0; i < sources.length; i++) {
-        sourcesOutersTransformers[i] = resolve(SourceOuterTransformer, [i]);
+        sourceMainWrappersTransformers[i] = resolve(SourceMainWrapperTransformer, [i]);
     }
 }

@@ -2,7 +2,7 @@
     <div v-if="isRendered" ref="container"
          class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
         <Naver :fs-lightbox-index="this.fsLightboxIndex" />
-        <SourcesOutersWrapper :fs-lightbox-index="this.fsLightboxIndex" />
+        <SourceWrappersContainer :fs-lightbox-index="this.fsLightboxIndex" />
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex" />
         <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex" />
     </div>
@@ -13,7 +13,7 @@ import "./core/styles/styles-injection/styles-injection";
 import { fsLightboxStore } from "./fsLightboxStore";
 import { FsLightbox } from "./FsLightbox";
 import Naver from './components/nav/Naver.vue';
-import SourcesOutersWrapper from "./components/sources/SourcesOutersWrapper.vue";
+import SourceWrappersContainer from "./components/sources/SourceWrappersContainer.vue";
 import SlideButtons from "./components/SlideButtons.vue";
 import SlideSwipingHoverer from "./components/SlideSwipingHoverer.vue";
 import { runLightboxMountedActions } from "./core/main-component/mounting/runLightboxMountedActions";
@@ -53,7 +53,7 @@ export default {
         openOnMount: Boolean,
         exitFullscreenOnClose: Boolean
     },
-    components: { SlideButtons, SourcesOutersWrapper, Naver, SlideSwipingHoverer },
+    components: { SlideButtons, SourceWrappersContainer, Naver, SlideSwipingHoverer },
     data() {
         return {
             isRendered: false

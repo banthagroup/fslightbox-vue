@@ -13,11 +13,11 @@
         mounted() {
             const {
                 componentsServices: { hideLoaderCollection },
-                elements: { sourcesOuters }
+                elements: { sourceMainWrappers }
             } = fsLightboxStore[this.fsLightboxIndex];
 
             hideLoaderCollection[this.i]();
-            sourcesOuters[this.i].classList.add(FADE_IN_STRONG_CLASS_NAME);
+            sourceMainWrappers[this.i].classList.add(FADE_IN_STRONG_CLASS_NAME);
         }
     };
 </script>

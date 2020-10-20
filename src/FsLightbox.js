@@ -33,17 +33,17 @@ export function FsLightbox(props) {
         setSlideNumber: null,
         isFullscreenOpenManager: {},
         hideLoaderCollection: [],
-        updateSourceInnerCollection: [],
+        updateSourceDirectWrapperCollection: [],
         showSlideSwipingHoverer: null,
         hideSlideSwipingHoverer: null
     };
 
     this.elements = {
         container: null,
-        sourcesOutersWrapper: null,
+        sourceWrappersContainer: null,
         sources: [],
-        sourcesOuters: [],
-        sourcesInners: [],
+        sourceMainWrappers: [],
+        sourceAnimationWrappers: [],
         sourcesComponents: []
     };
 
@@ -53,9 +53,9 @@ export function FsLightbox(props) {
     };
 
     this.collections = {
-        sourcesOutersTransformers: [], // set up during lightbox initialize
+        sourceMainWrappersTransformers: [], // set up during lightbox initialize
         sourcesLoadsHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
-        sourcesStylers: [],
+        sourceSizers: [],
         xhrs: [] // if lightbox is unmounted pending xhrs need to be aborted
     };
 

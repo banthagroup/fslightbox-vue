@@ -1,4 +1,4 @@
-export function SourceOuterTransformer({ elements: { sourcesOuters }, props: { slideDistance } }, i) {
+export function SourceMainWrapperTransformer({ elements: { sourceMainWrappers }, props: { slideDistance } }, i) {
     const realSlideDistance = slideDistance + 1;
     let additionalTransformValue = 0;
 
@@ -20,7 +20,7 @@ export function SourceOuterTransformer({ elements: { sourcesOuters }, props: { s
     };
 
     const setFinalTransformAndCleanTransformer = (value) => {
-        sourcesOuters[i].style.transform = `translateX(${ value + additionalTransformValue }px)`;
+        sourceMainWrappers[i].style.transform = `translateX(${ value + additionalTransformValue }px)`;
         additionalTransformValue = 0;
     };
 

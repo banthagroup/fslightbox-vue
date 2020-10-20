@@ -8,7 +8,6 @@
             :toggler="toggler"
             :sources="gallery.items"
             :slide="slide"
-            :types="testTypes"
             :load-only-current-source="loadOnlyCurrentSource"
         />
     </div>
@@ -42,8 +41,10 @@ export default {
         }
     },
     mounted() {
+        this.showGallery(1);
+
         setTimeout(() => {
-            this.showGallery(1);
+            // this.showGallery(1);
             //
             //     setTimeout(() => {
             //         this.toggler = !this.toggler;

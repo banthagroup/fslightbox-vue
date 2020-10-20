@@ -3,7 +3,7 @@ import { getClientXFromEvent } from "../../../../helpers/events/getClientXFromEv
 
 export function SlideSwipingMoveActioner(
     {
-        collections: { sourcesOutersTransformers },
+        collections: { sourceMainWrappersTransformers },
         componentsServices,
         elements,
         slideSwipingProps,
@@ -29,7 +29,7 @@ export function SlideSwipingMoveActioner(
     };
 
     const transformSourceHolderAtIndexToPosition = (index, position) => {
-        sourcesOutersTransformers[index]
+        sourceMainWrappersTransformers[index]
             .byValue(slideSwipingProps.swipedX)
             [position]();
     };

@@ -1,4 +1,4 @@
-export function SourceStyler({ data, elements: { sources } }, i, defaultWidth, defaultHeight) {
+export function SourceSizer({ data, elements: { sources } }, i, defaultWidth, defaultHeight) {
     const ratio = defaultWidth / defaultHeight;
     let newHeight = 0;
 
@@ -8,7 +8,7 @@ export function SourceStyler({ data, elements: { sources } }, i, defaultWidth, d
      * due tu Youtube source which dimensions needs to be set in advance.
      * In this case we are calculating dimensions mathematically.
      */
-    this.styleSize = () => {
+    this.adjustSize = () => {
         newHeight = data.maxSourceWidth / ratio;
 
         // wider than higher

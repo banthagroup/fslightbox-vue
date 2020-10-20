@@ -3,7 +3,7 @@
          ref="ref"
          @mousedown="listener"
          @touchstart="listener">
-        <SourceOuter
+        <SourceMainWrapper
             v-for="(n, i) in sources.length"
             :key="i"
             :i="i"
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import SourceOuter from './SourceOuter.vue';
+import SourceMainWrapper from './SourceMainWrapper.vue';
 import { fsLightboxStore } from "../../fsLightboxStore";
 
 export default {
     props: { fsLightboxIndex: Number },
-    components: { SourceOuter },
+    components: { SourceMainWrapper },
     data() {
         const {
             core: { slideSwipingDown: { listener } },
@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourcesOutersWrapper = this.$refs['ref'];
+        fsLightboxStore[this.fsLightboxIndex].elements.sourceWrappersContainer = this.$refs['ref'];
     }
 }
 </script>

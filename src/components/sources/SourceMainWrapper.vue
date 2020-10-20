@@ -1,19 +1,19 @@
 <template>
     <div data-test-class="source-outer" ref="ref"
          class="fslightbox-absoluted fslightbox-full-dimension fslightbox-flex-centered">
-        <SourceInner :fs-lightbox-index="fsLightboxIndex" :i="i" />
+        <SourceAnimationWrapper :fs-lightbox-index="fsLightboxIndex" :i="i" />
         <Loader v-if="!isSourceLoaded" />
     </div>
 </template>
 
 <script>
-import SourceInner from "./SourceInner.vue";
+import SourceAnimationWrapper from "./SourceAnimationWrapper.vue";
 import Loader from "../helpers/Loader.vue";
 import { fsLightboxStore } from "../../fsLightboxStore";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
-    components: { SourceInner, Loader },
+    components: { SourceAnimationWrapper, Loader },
     data() {
         return {
             isSourceLoaded: false
@@ -23,7 +23,7 @@ export default {
         fsLightboxStore[this.fsLightboxIndex].componentsServices.hideLoaderCollection[this.i] = () => this.isSourceLoaded = true;
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourcesOuters[this.i] = this.$refs.ref;
+        fsLightboxStore[this.fsLightboxIndex].elements.sourceMainWrappers[this.i] = this.$refs.ref;
     }
 }
 </script>
