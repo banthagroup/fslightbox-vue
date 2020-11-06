@@ -7,8 +7,8 @@ export function FsLightbox(props) {
     this.props = props;
 
     this.data = {
-        sources: null, // sources are set up at initialize
         isInitialized: false,
+        isFullyRendered: false,
         maxSourceWidth: 0,
         maxSourceHeight: 0,
         scrollbarWidth: 0,
@@ -53,7 +53,7 @@ export function FsLightbox(props) {
     };
 
     this.collections = {
-        sourceMainWrappersTransformers: [], // set up during lightbox initialize
+        sourceMainWrapperTransformers: [], // set up during lightbox initialize
         sourcesLoadsHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
         sourceSizers: [],
         xhrs: [] // if lightbox is unmounted pending xhrs need to be aborted

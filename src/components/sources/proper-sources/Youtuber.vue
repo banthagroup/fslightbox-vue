@@ -15,10 +15,7 @@ import { fsLightboxStore } from "../../../fsLightboxStore";
 export default {
     props: { fsLightboxIndex: Number, i: Number },
     data() {
-        const {
-            data: { sources },
-            props: { customAttributes }
-        } = fsLightboxStore[this.fsLightboxIndex]
+        const { props: { customAttributes, sources } } = fsLightboxStore[this.fsLightboxIndex]
 
         return {
             src: `https://www.youtube.com/embed/${

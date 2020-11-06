@@ -1,8 +1,8 @@
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
-import TestSingleSourceLightbox from "./__tests-services__/test-lightbox/TestSingleSourceLightbox";
+import { renderComponentAndGetLightbox } from "../__tests-services__/integration/renderComponentAndGetLightbox";
+import SingleSource from "../__tests-services__/integration/components/SingleSource";
 
 jest.useFakeTimers();
-renderTestLightboxUsingComponent(TestSingleSourceLightbox);
+renderComponentAndGetLightbox(SingleSource);
 
 test('reopening lightbox', async () => {
     const toggler = document.getElementById('btn-toggler');

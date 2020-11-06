@@ -18,7 +18,7 @@
 
 <script>
 import FsLightbox from '../../../src/FsLightbox.vue';
-import TestCustom from '../TestCustom.vue'
+import TestCustom from '../subcomponents/Custom.vue'
 
 export default {
     components: {

@@ -4,10 +4,10 @@ import SourceWrappersContainer from "./SourceWrappersContainer.vue";
 
 fsLightboxStore[1] = {
     core: { slideSwipingDown: { listener: jest.fn() } },
-    data: { sources: { length: 4 } },
     elements: {
         sourceWrappersContainer: null
-    }
+    },
+    props: { sources: { length: 4 } }
 };
 
 test('SourceWrappersContainer', () => {

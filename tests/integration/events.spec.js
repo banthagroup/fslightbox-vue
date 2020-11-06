@@ -1,8 +1,7 @@
-import FsLightbox from "../src/FsLightbox.vue";
+import FsLightbox from "../../src/FsLightbox.vue";
 import { mount } from "@vue/test-utils";
-import { testSources } from "./__tests-services__/testVars";
-import ExampleCustom from "../demo/ExampleCustom.vue";
-import { ANIMATION_TIME } from "../src/constants/css-constants";
+import { testSources } from "../__tests-services__/testVars";
+import { ANIMATION_TIME } from "../../src/constants/css-constants";
 
 jest.useFakeTimers();
 const onInit = jest.fn();
@@ -16,7 +15,6 @@ test('events', async () => {
             toggler: false,
             openOnMount: true,
             sources: testSources,
-            customSources: [null, null, null, null, ExampleCustom],
             onOpen: onOpen,
             onInit: onInit,
             onClose: onClose,

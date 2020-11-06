@@ -1,8 +1,8 @@
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
-import TestSlideChangingComponent from "./__tests-services__/test-lightbox/TestSlideChangingLightbox.vue";
+import { renderComponentAndGetLightbox } from "../__tests-services__/integration/renderComponentAndGetLightbox";
+import SlideChanging from "../__tests-services__/integration/components/SlideChanging.vue";
 
 jest.useFakeTimers();
-renderTestLightboxUsingComponent(TestSlideChangingComponent);
+renderComponentAndGetLightbox(SlideChanging);
 
 test('props slide management', async () => {
     const btnFirstSlide = document.getElementById('btn-first-slide');
@@ -14,7 +14,7 @@ test('props slide management', async () => {
     await btnSecondSlide.dispatchEvent(new Event('click'));
     expect(document.getElementsByClassName('fslightbox-container')).toHaveLength(1);
 
-    let sourceMainWrappers = document.querySelectorAll('[data-test-class="source-outer"]');
+    let sourceMainWrappers = document.querySelectorAll('[data-test-class="source-main-wrapper"]');
     expect(sourceMainWrappers[0].style.transform).toBe('translateX(-1400px)');
     expect(sourceMainWrappers[1].style.transform).toBe('translateX(0px)');
     expect(sourceMainWrappers[2].style.transform).toBe('translateX(-1400px)');
@@ -35,7 +35,7 @@ test('props slide management', async () => {
     await jest.runAllTimers();
     expect(document.getElementsByClassName('fslightbox-container')).toHaveLength(0);
     await btnFirstSlide.dispatchEvent(new Event('click'));
-    sourceMainWrappers = document.querySelectorAll('[data-test-class="source-outer"]');
+    sourceMainWrappers = document.querySelectorAll('[data-test-class="source-main-wrapper"]');
     expect(sourceMainWrappers[0].style.transform).toBe('translateX(0px)');
     expect(sourceMainWrappers[1].style.transform).toBe('translateX(-1400px)');
     expect(sourceMainWrappers[2].style.transform).toBe('translateX(-1400px)');

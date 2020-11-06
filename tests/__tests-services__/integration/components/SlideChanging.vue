@@ -12,23 +12,20 @@
             :source-index="sourceIndex"
             :source="source"
             :sources="testSources"
-            :custom-sources="[null, null, null, null, TestCustomSource]"
             :slide-distance=".4"
         />
     </div>
 </template>
 
 <script>
-import FsLightbox from "../../../src/FsLightbox.vue";
-import TestCustomSource from "./TestCustomSource.vue";
-import { TEST_YOUTUBE_URL, testSources } from "../testVars";
+import FsLightbox from "../../../../src/FsLightbox.vue";
+import { TEST_YOUTUBE_URL, testSources } from "../../testVars";
 
 export default {
-    components: { FsLightbox, TestCustomSource },
+    components: { FsLightbox },
     data() {
         return {
             TEST_YOUTUBE_URL: TEST_YOUTUBE_URL,
-            TestCustomSource: TestCustomSource,
             toggler: false,
             slide: null,
             sourceIndex: null,

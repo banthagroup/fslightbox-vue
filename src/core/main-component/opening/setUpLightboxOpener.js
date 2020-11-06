@@ -1,7 +1,6 @@
 import { createSources } from "../../sources/creating/createSources";
 import { getInitialCurrentIndex } from "../../stage/getInitialCurrentIndex";
-import { getMergedSourcesAndCustomSources } from "../../sources/getMergedSourcesAndCustomSources";
-import { fillSourcesOutersTransformersCollection } from "../../collections/fillSourcesOutersTransformersCollection";
+import { fillSourceMainWrapperTransformersCollection } from "../../collections/fillSourceMainWrapperTransformersCollection";
 import { setUpCore } from "../../setUpCore";
 
 export function setUpLightboxOpener(fsLightbox) {
@@ -21,16 +20,15 @@ export function setUpLightboxOpener(fsLightbox) {
         data.isInitialized = true;
 
         stageIndexes.current = getInitialCurrentIndex(fsLightbox);
-        data.sources = getMergedSourcesAndCustomSources(fsLightbox);
 
-        fillSourcesOutersTransformersCollection(fsLightbox);
+        fillSourceMainWrapperTransformersCollection(fsLightbox);
 
         setUpCore(fsLightbox);
 
         eventsDispatcher.dispatch('onInit');
 
         isLightboxRenderedManager.set(true, () => {
-            lightboxOpenActioner.runInitializedLightboxActions()
+            lightboxOpenActioner.runInitializedLightboxActions();
             createSources(fsLightbox);
         });
     }

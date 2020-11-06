@@ -4,7 +4,6 @@ import Videor from "./Videor.vue";
 
 fsLightboxStore[2] = {
     collections: { sourcesLoadsHandlers: [null, { handleVideoLoad: () => {} }] },
-    data: { sources: [null, null, 'example'] },
     elements: { sources: [] },
     props: {
         customAttributes: [
@@ -15,6 +14,7 @@ fsLightboxStore[2] = {
                 poster: 'second-custom-poster'
             }
         ],
+        sources: [null, null, 'example'],
         videosPosters: ['first-poster', 'second-poster']
     }
 };

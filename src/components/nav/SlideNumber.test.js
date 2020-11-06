@@ -5,7 +5,7 @@ import { fsLightboxStore } from "../../fsLightboxStore";
 test('SlideNumber', async () => {
     fsLightboxStore[0] = {
         componentsServices: {},
-        data: { sources: { length: 3 } },
+        props: { sources: { length: 3 } },
         stageIndexes: { current: 1 }
     };
 

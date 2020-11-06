@@ -24,7 +24,6 @@ export default {
     props: {
         toggler: Boolean,
         sources: Array,
-        customSources: Array, // deprecated 1.1.0
 
         // slide number controlling
         slide: Number,

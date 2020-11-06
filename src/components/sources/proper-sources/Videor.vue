@@ -16,8 +16,7 @@ export default {
     data() {
         const {
             collections: { sourcesLoadsHandlers },
-            data: { sources },
-            props: { customAttributes, videosPosters }
+            props: { customAttributes, sources, videosPosters }
         } = fsLightboxStore[this.fsLightboxIndex];
 
         const attributes = (customAttributes && customAttributes[this.i]) ? customAttributes[this.i] : {}

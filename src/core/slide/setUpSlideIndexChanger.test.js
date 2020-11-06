@@ -11,12 +11,12 @@ import * as removeFromElementClassIfContainsObject from "../../helpers/elements/
 import * as getQueuedActionObject from "../timeouts/getQueuedAction";
 
 const fsLightbox = {
-    collections: { sourceMainWrappersTransformers: [{ negative: jest.fn() }, { zero: jest.fn() }] },
+    collections: { sourceMainWrapperTransformers: [{ negative: jest.fn() }, { zero: jest.fn() }] },
     componentsServices: { setSlideNumber: jest.fn() },
     core: {
         classFacade: { removeFromEachElementClassIfContains: jest.fn() },
         slideIndexChanger: {},
-        sourceDisplayFacade: { displayStageSourcesIfNotYet: jest.fn() },
+        sourceDisplayFacade: { displaySourcesWhichShouldBeDisplayed: jest.fn() },
         stageManager: { updateStageIndexes: jest.fn() }
     },
     elements: {
@@ -46,7 +46,7 @@ test('changeTo', () => {
     expect(fsLightbox.stageIndexes.current).toBe(1);
     expect(fsLightbox.core.stageManager.updateStageIndexes).toBeCalled();
     expect(fsLightbox.componentsServices.setSlideNumber).toBeCalledWith(2);
-    expect(fsLightbox.core.sourceDisplayFacade.displayStageSourcesIfNotYet).toBeCalled();
+    expect(fsLightbox.core.sourceDisplayFacade.displaySourcesWhichShouldBeDisplayed).toBeCalled();
 });
 
 test('jumpTo', () => {
@@ -74,13 +74,13 @@ test('jumpTo', () => {
         fsLightbox.elements.sourceAnimationWrappers[1], FADE_OUT_CLASS_NAME
     );
     expect(fsLightbox.elements.sourceAnimationWrappers[1].classList.add).toBeCalledWith(FADE_IN_CLASS_NAME);
-    expect(fsLightbox.collections.sourceMainWrappersTransformers[1].zero).toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrapperTransformers[1].zero).toBeCalled();
     expect(runQueuedRemoveFadeOut).toBeCalled()
-    expect(fsLightbox.collections.sourceMainWrappersTransformers[0].negative).not.toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrapperTransformers[0].negative).not.toBeCalled();
     expect(window.setTimeout.mock.calls[0][1]).toBe(ANIMATION_TIME - 30);
     window.setTimeout.mock.calls[0][0]();
-    expect(fsLightbox.collections.sourceMainWrappersTransformers[0].negative).not.toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrapperTransformers[0].negative).not.toBeCalled();
     fsLightbox.stageIndexes.current = 1;
     window.setTimeout.mock.calls[0][0]();
-    expect(fsLightbox.collections.sourceMainWrappersTransformers[0].negative).toBeCalled();
+    expect(fsLightbox.collections.sourceMainWrapperTransformers[0].negative).toBeCalled();
 });

@@ -12,8 +12,8 @@ const fsLightbox = {
 setUpSourceDisplayFacade(fsLightbox);
 const sourceDisplayFacade = fsLightbox.core.sourceDisplayFacade;
 
-test('displayStageSourcesIfNotYet', () => {
-    sourceDisplayFacade.displayStageSourcesIfNotYet();
+test('displaySourcesWhichShouldBeDisplayed', () => {
+    sourceDisplayFacade.displaySourcesWhichShouldBeDisplayed();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).not.toBeCalled();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[1]).not.toBeCalled();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[2]).not.toBeCalled();
@@ -22,7 +22,7 @@ test('displayStageSourcesIfNotYet', () => {
 
     fsLightbox.props.loadOnlyCurrentSource = false;
     setUpSourceDisplayFacade(fsLightbox);
-    sourceDisplayFacade.displayStageSourcesIfNotYet();
+    sourceDisplayFacade.displaySourcesWhichShouldBeDisplayed();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).toBeCalled();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[1]).not.toBeCalled();
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[2]).not.toBeCalled();

@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    import FsLightbox from "../../../src/FsLightbox.vue";
-    import { TEST_IMAGE_URL } from "../testVars";
+    import FsLightbox from "../../../../src/FsLightbox.vue";
+    import { TEST_IMAGE_URL } from "../../testVars";
 
     export default {
         components: { FsLightbox },

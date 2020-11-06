@@ -1,5 +1,6 @@
 <template>
-    <div class="fslightbox-absoluted fslightbox-full-dimension"
+    <div data-test-id="source-wrappers-container"
+         class="fslightbox-absoluted fslightbox-full-dimension"
          ref="ref"
          @mousedown="listener"
          @touchstart="listener">
@@ -22,7 +23,7 @@ export default {
     data() {
         const {
             core: { slideSwipingDown: { listener } },
-            data: { sources }
+            props: { sources }
         } = fsLightboxStore[this.fsLightboxIndex];
 
         return {

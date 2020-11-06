@@ -1,5 +1,5 @@
 <template>
-    <div data-test-class="source-outer" ref="ref"
+    <div data-test-class="source-main-wrapper" ref="ref"
          class="fslightbox-absoluted fslightbox-full-dimension fslightbox-flex-centered">
         <SourceAnimationWrapper :fs-lightbox-index="fsLightboxIndex" :i="i" />
         <Loader v-if="!isSourceLoaded" />

@@ -10,7 +10,7 @@ import { getQueuedAction } from "../timeouts/getQueuedAction";
 
 export function setUpSlideIndexChanger(
     {
-        collections: { sourceMainWrappersTransformers },
+        collections: { sourceMainWrapperTransformers },
         componentsServices,
         core: { classFacade, slideIndexChanger: self, sourceDisplayFacade, stageManager },
         elements: { sourceAnimationWrappers },
@@ -25,7 +25,7 @@ export function setUpSlideIndexChanger(
         stageIndexes.current = i;
         stageManager.updateStageIndexes();
         componentsServices.setSlideNumber(i + 1);
-        sourceDisplayFacade.displayStageSourcesIfNotYet();
+        sourceDisplayFacade.displaySourcesWhichShouldBeDisplayed();
     };
 
     self.jumpTo = (i) => {
@@ -46,11 +46,11 @@ export function setUpSlideIndexChanger(
         // we cannot detect what slide will be
         runQueuedRemoveFadeOut();
 
-        sourceMainWrappersTransformers[i].zero();
+        sourceMainWrapperTransformers[i].zero();
 
         setTimeout(() => {
             if (previousI !== stageIndexes.current) {
-                sourceMainWrappersTransformers[previousI].negative();
+                sourceMainWrapperTransformers[previousI].negative();
             }
         }, ANIMATION_TIME - 30);
     };

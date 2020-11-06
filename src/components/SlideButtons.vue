@@ -14,23 +14,23 @@
 </template>
 
 <script>
-    import SlideButton from "./SlideButton.vue";
-    import { fsLightboxStore } from "../fsLightboxStore";
+import SlideButton from "./SlideButton.vue";
+import { fsLightboxStore } from "../fsLightboxStore";
 
-    export default {
-        props: { fsLightboxIndex: Number },
-        components: { SlideButton },
-        data() {
-            const {
-                core: { slideChangeFacade: { changeToPrevious, changeToNext } },
-                data: { sources }
-            } = fsLightboxStore[this.fsLightboxIndex];
+export default {
+    props: { fsLightboxIndex: Number },
+    components: { SlideButton },
+    data() {
+        const {
+            core: { slideChangeFacade: { changeToPrevious, changeToNext } },
+            props: { sources }
+        } = fsLightboxStore[this.fsLightboxIndex];
 
-            return {
-                sourcesCount: sources.length,
-                changeToPrevious: changeToPrevious,
-                changeToNext: changeToNext
-            }
+        return {
+            sourcesCount: sources.length,
+            changeToPrevious: changeToPrevious,
+            changeToNext: changeToNext
         }
     }
+}
 </script>

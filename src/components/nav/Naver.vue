@@ -14,7 +14,7 @@ export default {
     components: { SlideNumber, Toolbar },
     props: { fsLightboxIndex: Number },
     data() {
-        return { hasMoreThanSource: fsLightboxStore[this.fsLightboxIndex].data.sources.length > 1 }
+        return { hasMoreThanSource: fsLightboxStore[this.fsLightboxIndex].props.sources.length > 1 }
     }
 };
 </script>

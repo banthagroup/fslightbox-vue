@@ -1,7 +1,6 @@
 export function getInitialCurrentIndex(
     {
-        data: { sources },
-        props: { slide, sourceIndex, source },
+        props: { slide, sourceIndex, source, sources },
     }
 ) {
     let initialSourceIndex = 0;

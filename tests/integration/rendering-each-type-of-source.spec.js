@@ -1,8 +1,8 @@
-import { renderTestLightboxUsingComponent } from "./__tests-services__/test-lightbox/renderTestLightboxUsingComponent";
-import TestOpenLightbox from "./__tests-services__/test-lightbox/TestOpenLightbox.vue";
+import { renderComponentAndGetLightbox } from "../__tests-services__/integration/renderComponentAndGetLightbox";
+import BaseOpenedLightbox from "../__tests-services__/components/BaseOpenedLightbox.vue";
 
 test('rendering each type of source', async () => {
-    const fsLightbox = await renderTestLightboxUsingComponent(TestOpenLightbox);
+    const fsLightbox = await renderComponentAndGetLightbox(BaseOpenedLightbox);
 
     expect(document.getElementsByTagName('img')).toHaveLength(1);
     expect(document.getElementsByTagName('video')).toHaveLength(1);

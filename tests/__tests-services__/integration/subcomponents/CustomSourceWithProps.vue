@@ -6,10 +6,10 @@
 </template>
 
 <script>
-    export default {
-        props: {
-            firstProp: String,
-            secondProp: String
-        }
-    };
+export default {
+    props: {
+        firstProp: String,
+        secondProp: String
+    }
+};
 </script>

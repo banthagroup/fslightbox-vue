@@ -6,7 +6,7 @@ export function setUpSourceDisplayFacade(
         props: { loadOnlyCurrentSource }
     }
 ) {
-    self.displayStageSourcesIfNotYet = () => {
+    self.displaySourcesWhichShouldBeDisplayed = () => {
         if (loadOnlyCurrentSource) {
             updateSourceDirectWrapperCollection[stageIndexes.current]();
             return;

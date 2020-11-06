@@ -3,10 +3,11 @@ import { TRANSFORM_TRANSITION_CLASS_NAME } from "../../constants/classes-names";
 
 export function setUpWindowResizeActioner(
     {
-        collections: { sourceMainWrappersTransformers, sourceSizers },
+        collections: { sourceMainWrapperTransformers, sourceSizers },
         core: { windowResizeActioner: self },
         data,
         elements: { sourceMainWrappers },
+        props: { sources },
         stageIndexes
     }
 ) {
@@ -17,11 +18,11 @@ export function setUpWindowResizeActioner(
             data.maxSourceWidth = 0.9 * innerWidth;
         data.maxSourceHeight = 0.9 * innerHeight;
 
-        for (let i = 0; i < data.sources.length; i++) {
+        for (let i = 0; i < sources.length; i++) {
             removeFromElementClassIfContains(sourceMainWrappers[i], TRANSFORM_TRANSITION_CLASS_NAME);
 
             if (i !== stageIndexes.current) {
-                sourceMainWrappersTransformers[i].negative();
+                sourceMainWrapperTransformers[i].negative();
             }
 
             // if source is Invalid or if lightbox is initialized there are no sourceSizers

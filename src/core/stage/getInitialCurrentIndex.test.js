@@ -4,10 +4,8 @@ const fsLightbox = {
     props: {
         slide: null,
         sourceIndex: null,
-        source: null
-    },
-    data: {
-        sources: [],
+        source: null,
+        sources: []
     }
 };
 let retrievedIndex;
@@ -45,8 +43,8 @@ test('slide = 5, sourceIndex = 10, source = source url at index 15', () => {
     fsLightbox.props.sourceIndex = 10;
     for (let i = 0; i < 30; i++) {
         (i === 15) ?
-            fsLightbox.data.sources[i] = 'chosen-source-url' :
-            fsLightbox.data.sources[i] = 'random-source-url'
+            fsLightbox.props.sources[i] = 'chosen-source-url' :
+            fsLightbox.props.sources[i] = 'random-source-url'
     }
     fsLightbox.props.source = 'chosen-source-url';
     retrievedIndex = getInitialCurrentIndex(fsLightbox);
