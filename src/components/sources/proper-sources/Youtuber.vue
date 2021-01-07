@@ -26,13 +26,13 @@ export default {
     },
     mounted() {
         const {
-            collections: { sourcesLoadsHandlers },
+            collections: { sourceLoadHandlers },
             elements: { sources }
         } = fsLightboxStore[this.fsLightboxIndex];
 
         sources[this.i] = this.$refs['ref'];
 
-        sourcesLoadsHandlers[this.i].handleYoutubeLoad();
+        sourceLoadHandlers[this.i].handleYoutubeLoad();
     }
 };
 </script>

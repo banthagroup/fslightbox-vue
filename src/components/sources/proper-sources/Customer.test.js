@@ -7,7 +7,7 @@ import TestCustomSourceWithProps
 import { SOURCE_CLASS_NAME } from "../../../constants/classes-names";
 
 fsLightboxStore[2] = {
-    collections: { sourcesLoadsHandlers: [null, { handleCustomLoad: jest.fn() }] },
+    collections: { sourceLoadHandlers: [null, { handleCustomLoad: jest.fn() }] },
     elements: { sources: [] },
     props: { sources: [null, ExampleCustom] }
 };
@@ -21,7 +21,7 @@ test('Customer - only component', () => {
     expect(fsLightboxStore[2].elements.sources[1].tagName).toBe('IFRAME');
     expect(fsLightboxStore[2].elements.sources[1].classList.contains(SOURCE_CLASS_NAME)).toBe(true);
 
-    expect(fsLightboxStore[2].collections.sourcesLoadsHandlers[1].handleCustomLoad).toBeCalled();
+    expect(fsLightboxStore[2].collections.sourceLoadHandlers[1].handleCustomLoad).toBeCalled();
 });
 
 test('Customer - component with props', () => {
@@ -38,5 +38,5 @@ test('Customer - component with props', () => {
     });
 
     expect(fsLightboxStore[2].elements.sources[1].innerHTML).toContain('<p>first-prop</p> <p>second-prop</p>');
-    expect(fsLightboxStore[2].collections.sourcesLoadsHandlers[1].handleCustomLoad).toBeCalled();
+    expect(fsLightboxStore[2].collections.sourceLoadHandlers[1].handleCustomLoad).toBeCalled();
 });

@@ -52,7 +52,7 @@ Website: https://fslightbox.com/vue
 Available at: https://fslightbox.com/vue
 
 ## Documentation and props description
-Available at: https://fslightbox.com/vue/documentation/basic
+Available at: https://fslightbox.com/vue/documentation
 
 ## Browser Compatibility
 

@@ -3,7 +3,7 @@
            @loadedmetadata="onLoad"
            ref="ref"
            controls
-           v-bind="attributes">
+           v-bind="customAttributes">
         <source :src="src" />
     </video>
 </template>
@@ -15,19 +15,14 @@ export default {
     props: { fsLightboxIndex: Number, i: Number },
     data() {
         const {
-            collections: { sourcesLoadsHandlers },
-            props: { customAttributes, sources, videosPosters }
+            collections: { sourceLoadHandlers },
+            props: { customAttributes, sources }
         } = fsLightboxStore[this.fsLightboxIndex];
 
-        const attributes = (customAttributes && customAttributes[this.i]) ? customAttributes[this.i] : {}
-        if (videosPosters && videosPosters[this.i]) {
-            attributes['poster'] = videosPosters[this.i]
-        }
-
         return {
-            onLoad: sourcesLoadsHandlers[this.i].handleVideoLoad,
+            onLoad: sourceLoadHandlers[this.i].handleVideoLoad,
             src: sources[this.i],
-            attributes: attributes
+            customAttributes: customAttributes && customAttributes[this.i]
         }
     },
     mounted() {

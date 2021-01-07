@@ -25,8 +25,11 @@ export function setUpWindowResizeActioner(
                 sourceMainWrapperTransformers[i].negative();
             }
 
-            // if source is Invalid or if lightbox is initialized there are no sourceSizers
-            // so we need to check if it exists
+            /**
+             * Invalid type doesn't have SourceSizer so need to check if it exists.
+             * React deletes refs after removing element so even if SourceSizer exists there might be no source, e.g.
+             * after reopening
+             */
             if (sourceSizers[i]) {
                 sourceSizers[i].adjustSize();
             }

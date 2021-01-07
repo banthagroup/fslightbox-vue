@@ -20,7 +20,7 @@ export default {
         }
     },
     created() {
-        fsLightboxStore[this.fsLightboxIndex].componentsServices.hideLoaderCollection[this.i] = () => this.isSourceLoaded = true;
+        fsLightboxStore[this.fsLightboxIndex].componentsServices.hideSourceLoaderCollection[this.i] = () => this.isSourceLoaded = true;
     },
     mounted() {
         fsLightboxStore[this.fsLightboxIndex].elements.sourceMainWrappers[this.i] = this.$refs.ref;

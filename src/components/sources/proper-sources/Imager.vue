@@ -15,13 +15,13 @@ export default {
     props: { fsLightboxIndex: Number, i: Number },
     data() {
         const {
-            collections: { sourcesLoadsHandlers },
+            collections: { sourceLoadHandlers },
             props: { customAttributes, sources }
         } = fsLightboxStore[this.fsLightboxIndex];
 
         return {
             onLoad: (e) => {
-                sourcesLoadsHandlers[this.i].handleImageLoad(e)
+                sourceLoadHandlers[this.i].handleImageLoad(e)
             },
             src: sources[this.i],
             customAttributes: customAttributes && customAttributes[this.i]

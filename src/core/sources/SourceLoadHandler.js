@@ -1,36 +1,45 @@
 import { SourceLoadActioner } from "./SourceLoadActioner";
 
-export function SourceLoadHandler({ elements: { sources }, props: { maxYoutubeVideoDimensions }, resolve, }, i) {
-    this.handleImageLoad = ({ target: { width, height } }) => {
-        this.handleImageLoad = handleLoadAndGetFurtherActionsFunction(width, height);
+/**
+ * As sources are recreated on lightbox reopen SourceLoadHandler must also be recreated to run source initial load
+ * actions again.
+ */
+export function SourceLoadHandler({ elements: { sources }, props, resolve, timeout }, i) {
+    const sourceLoadActioner = resolve(SourceLoadActioner, [i]);
+
+    let wasVideoLoadCalled;
+
+    this.handleImageLoad = ({ target: { naturalWidth, naturalHeight } }) => {
+        sourceLoadActioner.runActions(naturalWidth, naturalHeight)
     };
 
     this.handleVideoLoad = ({ target: { videoWidth, videoHeight } }) => {
-        this.handleVideoLoad = handleLoadAndGetFurtherActionsFunction(videoWidth, videoHeight);
+        wasVideoLoadCalled = true;
+        sourceLoadActioner.runActions(videoWidth, videoHeight)
+    };
+
+    this.handleNotMetaDatedVideoLoad = () => {
+        if (!wasVideoLoadCalled) {
+            this.handleYoutubeLoad();
+        }
     };
 
     this.handleYoutubeLoad = () => {
         let width = 1920;
         let height = 1080;
 
-        if (maxYoutubeVideoDimensions) {
-            width = maxYoutubeVideoDimensions.width;
-            height = maxYoutubeVideoDimensions.height;
+        if (props.maxYoutubeVideoDimensions) {
+            width = props.maxYoutubeVideoDimensions.width;
+            height = props.maxYoutubeVideoDimensions.height;
         }
 
-        this.handleYoutubeLoad = handleLoadAndGetFurtherActionsFunction(width, height);
+        sourceLoadActioner.runActions(width, height);
     };
 
     this.handleCustomLoad = () => {
-        const source = sources[i];
-        this.handleCustomLoad = handleLoadAndGetFurtherActionsFunction(source.offsetWidth, source.offsetHeight);
-    };
-
-    const handleLoadAndGetFurtherActionsFunction = (defaultWidth, defaultHeight) => {
-        const sourceLoadActioner = resolve(SourceLoadActioner, [i, defaultWidth, defaultHeight]);
-
-        sourceLoadActioner.runInitialLoadActions();
-
-        return sourceLoadActioner.runNormalLoadActions;
+        timeout(() => {
+            const source = sources[i];
+            sourceLoadActioner.runActions(source.offsetWidth, source.offsetHeight);
+        });
     };
 }

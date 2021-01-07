@@ -1,19 +1,12 @@
-import { CUSTOM_TYPE, IMAGE_TYPE, INVALID_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../constants/core-constants";
-import { SourceLoadHandler } from "../SourceLoadHandler";
+import { CUSTOM_TYPE, IMAGE_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../constants/core-constants";
 
 export function DetectedTypeActioner(fsLightbox) {
     const {
-        collections: { sourcesLoadsHandlers },
-        componentsServices: { isLightboxRenderedManager, updateSourceDirectWrapperCollection },
-        elements: { sourcesComponents },
-        resolve
+        componentsServices: { isLightboxOpenManager, updateSourceDirectWrapperCollection },
+        elements: { sourcesComponents }
     } = fsLightbox;
 
     this.runActionsForSourceTypeAndIndex = (type, i) => {
-        if (type !== INVALID_TYPE) {
-            sourcesLoadsHandlers[i] = resolve(SourceLoadHandler, [i]);
-        }
-
         let componentName;
 
         switch (type) {
@@ -36,7 +29,7 @@ export function DetectedTypeActioner(fsLightbox) {
 
         sourcesComponents[i] = componentName;
 
-        if (isLightboxRenderedManager.get()) {
+        if (isLightboxOpenManager.get()) {
             updateSourceDirectWrapperCollection[i]();
         }
     };

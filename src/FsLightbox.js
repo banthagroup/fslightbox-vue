@@ -1,5 +1,5 @@
-import { setUpLightboxUpdater } from "./core/main-component/updating/setUpLightboxUpdater";
 import { setUpLightboxOpener } from "./core/main-component/opening/setUpLightboxOpener";
+import { setUpLightboxUpdater } from "./core/main-component/updating/setUpLightboxUpdater";
 
 export function FsLightbox(props) {
     // we can cache props at lightbox create, because before opening lightbox props are never used
@@ -26,13 +26,15 @@ export function FsLightbox(props) {
      * @property { Number } current
      * @property { Number } next
      */
-    this.stageIndexes = {};
+    this.stageIndexes = {
+        current: 0
+    };
 
     this.componentsServices = {
-        isLightboxRenderedManager: {},
+        isLightboxOpenManager: {},
         setSlideNumber: null,
         isFullscreenOpenManager: {},
-        hideLoaderCollection: [],
+        hideSourceLoaderCollection: [],
         updateSourceDirectWrapperCollection: [],
         showSlideSwipingHoverer: null,
         hideSlideSwipingHoverer: null
@@ -47,14 +49,9 @@ export function FsLightbox(props) {
         sourcesComponents: []
     };
 
-    this.resolve = (dependency, params = []) => {
-        params.unshift(this);
-        return new dependency(...params);
-    };
-
     this.collections = {
         sourceMainWrapperTransformers: [], // set up during lightbox initialize
-        sourcesLoadsHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
+        sourceLoadHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
         sourceSizers: [],
         xhrs: [] // if lightbox is unmounted pending xhrs need to be aborted
     };
@@ -75,6 +72,39 @@ export function FsLightbox(props) {
         sourceDisplayFacade: {},
         stageManager: {},
         windowResizeActioner: {}
+    };
+
+
+    this.getQueuedAction = (action, time) => {
+        const queue = [];
+
+        return () => {
+            queue.push(true);
+
+            this.timeout(() => {
+                queue.pop();
+
+                if (!queue.length) {
+                    action();
+                }
+            }, time);
+        };
+    };
+
+    this.resolve = (dependency, params = []) => {
+        params.unshift(this);
+        return new dependency(...params);
+    };
+
+    /**
+     * Prevents calling timeouted function on closed or unmounted lightbox.
+     */
+    this.timeout = (handler, timeout) => {
+        setTimeout(() => {
+            if (this.elements.container) {
+                handler();
+            }
+        }, timeout);
     };
 
     // setting up dependencies required to initialize lightbox

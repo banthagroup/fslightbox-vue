@@ -1,28 +1,23 @@
 import { DetectedTypeActioner } from "./DetectedTypeActioner";
-import { SourceLoadHandler } from "../SourceLoadHandler";
 
 const fsLightbox = {
-    collections: { sourcesLoadsHandlers: [] },
     componentsServices: {
-        isLightboxRenderedManager: { get: () => false },
+        isLightboxOpenManager: { get: () => false },
         updateSourceDirectWrapperCollection: [jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn()]
     },
-    elements: { sourcesComponents: [] },
-    resolve: jest.fn(() => 'source-load-handler')
+    elements: { sourcesComponents: [] }
 };
 
 let detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
 
 test('runActionsForSourceTypeAndIndex', () => {
     detectedTypeActioner.runActionsForSourceTypeAndIndex('invalid', 0);
-    expect(fsLightbox.resolve).not.toBeCalled();
     expect(fsLightbox.elements.sourcesComponents[0]).toBe('Invalider');
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).not.toBeCalled();
 
-    fsLightbox.componentsServices.isLightboxRenderedManager.get = () => true;
+    fsLightbox.componentsServices.isLightboxOpenManager.get = () => true;
     detectedTypeActioner = new DetectedTypeActioner(fsLightbox);
     detectedTypeActioner.runActionsForSourceTypeAndIndex('image', 0);
-    expect(fsLightbox.resolve).toBeCalledWith(SourceLoadHandler, [0]);
     expect(fsLightbox.elements.sourcesComponents[0]).toBe('Imager');
     expect(fsLightbox.componentsServices.updateSourceDirectWrapperCollection[0]).toBeCalled();
 

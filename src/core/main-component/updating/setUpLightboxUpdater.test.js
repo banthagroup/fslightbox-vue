@@ -1,7 +1,7 @@
-import { setUpLightboxUpdater } from "../../../../src/core/main-component/updating/setUpLightboxUpdater";
+import { setUpLightboxUpdater } from "./setUpLightboxUpdater";
 
 const fsLightbox = {
-    componentsServices: { isLightboxRenderedManager: { get: () => false } },
+    componentsServices: { isLightboxOpenManager: { get: () => false } },
     core: {
         lightboxUpdater: {},
         lightboxCloser: { closeLightbox: jest.fn() },
@@ -11,10 +11,10 @@ const fsLightbox = {
     data: {
         isInitialized: false
     },
-    stageIndexes: { current: 0 }
+    resolve: jest.fn()
 };
-const lightboxUpdater = fsLightbox.core.lightboxUpdater;
 setUpLightboxUpdater(fsLightbox);
+const lightboxUpdater = fsLightbox.core.lightboxUpdater;
 
 test('handleTogglerUpdate', () => {
     lightboxUpdater.handleTogglerUpdate();
@@ -28,25 +28,9 @@ test('handleTogglerUpdate', () => {
     expect(fsLightbox.core.lightboxOpener.openLightbox).toBeCalled();
     expect(fsLightbox.core.lightboxCloser.closeLightbox).not.toBeCalled();
 
-    fsLightbox.componentsServices.isLightboxRenderedManager.get = () => true;
+    fsLightbox.componentsServices.isLightboxOpenManager.get = () => true;
     lightboxUpdater.handleTogglerUpdate();
     expect(fsLightbox.core.lightboxOpener.initializeAndOpenLightbox).toBeCalledTimes(1);
     expect(fsLightbox.core.lightboxOpener.openLightbox).toBeCalledTimes(1);
     expect(fsLightbox.core.lightboxCloser.closeLightbox).toBeCalled();
-});
-
-test('runCurrentStageIndexUpdateActionsFor', () => {
-    fsLightbox.componentsServices.isLightboxRenderedManager.get = () => false;
-
-    lightboxUpdater.runCurrentStageIndexUpdateActionsFor(0);
-    expect(fsLightbox.core.slideIndexChanger.jumpTo).not.toBeCalled();
-
-    lightboxUpdater.runCurrentStageIndexUpdateActionsFor(1);
-    expect(fsLightbox.core.slideIndexChanger.jumpTo).not.toBeCalled();
-    expect(fsLightbox.stageIndexes.current).toBe(1);
-
-    fsLightbox.componentsServices.isLightboxRenderedManager.get = () => true;
-    lightboxUpdater.runCurrentStageIndexUpdateActionsFor(2);
-    expect(fsLightbox.core.slideIndexChanger.jumpTo).toBeCalledWith(2);
-    expect(fsLightbox.stageIndexes.current).toBe(1);
 });

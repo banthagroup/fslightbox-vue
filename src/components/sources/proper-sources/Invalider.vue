@@ -12,11 +12,11 @@
         props: { fsLightboxIndex: Number, i: Number },
         mounted() {
             const {
-                componentsServices: { hideLoaderCollection },
+                componentsServices: { hideSourceLoaderCollection },
                 elements: { sourceMainWrappers }
             } = fsLightboxStore[this.fsLightboxIndex];
 
-            hideLoaderCollection[this.i]();
+            hideSourceLoaderCollection[this.i]();
             sourceMainWrappers[this.i].classList.add(FADE_IN_STRONG_CLASS_NAME);
         }
     };

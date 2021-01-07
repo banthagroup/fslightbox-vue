@@ -3,7 +3,7 @@ import { ANIMATION_TIME } from "../../../constants/css-constants";
 
 export function LightboxCloseActioner(
     {
-        componentsServices: { isFullscreenOpenManager, isLightboxRenderedManager },
+        componentsServices: { isFullscreenOpenManager, isLightboxOpenManager },
         core: {
             eventsDispatcher,
             fullscreenToggler,
@@ -12,7 +12,8 @@ export function LightboxCloseActioner(
         },
         elements,
         props,
-        slideSwipingProps
+        slideSwipingProps,
+        timeout
     }
 ) {
     this.isLightboxFadingOut = false;
@@ -28,7 +29,7 @@ export function LightboxCloseActioner(
             fullscreenToggler.exitFullscreen();
         }
 
-        setTimeout(() => {
+        timeout(() => {
             this.isLightboxFadingOut = false;
 
             slideSwipingProps.isSwiping = false;
@@ -39,7 +40,7 @@ export function LightboxCloseActioner(
 
             scrollbarRecompensor.removeRecompense();
 
-            isLightboxRenderedManager.set(false);
+            isLightboxOpenManager.set(false);
 
             eventsDispatcher.dispatch('onClose');
         }, ANIMATION_TIME - 30);

@@ -1,25 +1,20 @@
 <template>
-    <div>
-        <div v-for="TestComponent in testComponents">
-            <button :id="TestComponent" @click="currentComponent = TestComponent" />
-            <component v-if="currentComponent === TestComponent" :is="TestComponent" />
-        </div>
-    </div>
+    <component-switcher :test-components="testComponents" />
 </template>
 
 <script>
 import BaseOpenedLightbox from "../components/BaseOpenedLightbox.vue";
+import ComponentSwitcher from "../components/ComponentSwitcher.vue";
 
 export default {
     components: {
-        BaseOpenedLightbox
+        ComponentSwitcher
     },
     data() {
         return {
-            currentComponent: null,
-            testComponents: [
-                'BaseOpenedLightbox'
-            ]
+            testComponents: {
+                'BaseOpenedLightbox': BaseOpenedLightbox
+            }
         }
     }
 }

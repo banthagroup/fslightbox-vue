@@ -1,5 +1,5 @@
 <template>
-    <div v-if="isRendered" ref="container"
+    <div v-if="isOpen" ref="container"
          class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
         <Naver :fs-lightbox-index="this.fsLightboxIndex" />
         <SourceWrappersContainer :fs-lightbox-index="this.fsLightboxIndex" />
@@ -43,7 +43,6 @@ export default {
 
         // sources
         customAttributes: Array,
-        videosPosters: Array, // deprecated 1.1.0
         maxYoutubeVideoDimensions: Object,
 
         // preferences
@@ -55,36 +54,35 @@ export default {
     components: { SlideButtons, SourceWrappersContainer, Naver, SlideSwipingHoverer },
     data() {
         return {
-            isRendered: false
+            isOpen: false
         };
     },
     watch: {
-        slide: function (newSlide) {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSlide - 1);
+        slide: function () {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
-        sourceIndex: function (newSourceIndex) {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(newSourceIndex);
+        sourceIndex: function () {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
-        source: function (newSource) {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.runCurrentStageIndexUpdateActionsFor(
-                this.sources.indexOf(newSource)
-            );
+        source: function () {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
         /**
          * Toggler watcher must be after slide change watchers -
          * if both are updated simultaneously slide change must be called first
          */
         toggler: function () {
+            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
             fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
         }
     },
     created() {
         this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
 
-        const isLightboxRenderedManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxRenderedManager;
-        isLightboxRenderedManager.get = () => this.isRendered;
-        isLightboxRenderedManager.set = (value, callback) => {
-            this.isRendered = value;
+        const isLightboxOpenManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
+        isLightboxOpenManager.get = () => this.isOpen;
+        isLightboxOpenManager.set = (value, callback) => {
+            this.isOpen = value;
 
             if (callback) {
                 updatedCallback = callback;

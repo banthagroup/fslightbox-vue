@@ -2,50 +2,50 @@ import { SourceLoadActioner } from "./SourceLoadActioner";
 import { SourceLoadHandler } from "./SourceLoadHandler";
 
 const fsLightbox = {
-    elements: { sources: [{ offsetWidth: 1111, offsetHeight: 555 }] },
+    elements: { sources: [{ offsetWidth: 123, offsetHeight: 456 }] },
     props: {},
     resolve: (constructor, params) => {
         if (constructor === SourceLoadActioner) {
-            expect(expectedSourceLoadActionerParams).toEqual(params);
+            expect(params[0]).toEqual(0);
             return sourceLoadActioner;
         } else {
             throw new Error('Invalid dependency resolved');
         }
-    }
+    },
+    timeout: (callback) => callback()
+
 };
-let expectedSourceLoadActionerParams;
-const sourceLoadActioner = { runInitialLoadActions: jest.fn(), runNormalLoadActions: jest.fn() };
-let sourceLoadHandler;
+const sourceLoadActioner = { runActions: null };
+const sourceLoadHandler = new SourceLoadHandler(fsLightbox, 0);
 
 beforeEach(() => {
-    sourceLoadHandler = new SourceLoadHandler(fsLightbox, 0);
+    sourceLoadActioner.runActions = jest.fn();
 });
 
-test('handleImageLoad', () => {
-    expectedSourceLoadActionerParams = [0, 1000, 1500];
-    sourceLoadHandler.handleImageLoad({ target: { width: 1000, height: 1500 } });
-    expect(sourceLoadHandler.handleImageLoad).toBe(sourceLoadActioner.runNormalLoadActions);
-});
+test('handleNotMetaDatedVideoLoad', () => {
+    let tempYoutubeLoad = sourceLoadHandler.handleYoutubeLoad;
+    sourceLoadHandler.handleYoutubeLoad = jest.fn();
 
-test('handleVideoLoad', () => {
-    expectedSourceLoadActionerParams = [0, 250, 100];
-    sourceLoadHandler.handleVideoLoad({ target: { videoWidth: 250, videoHeight: 100 } });
-    expect(sourceLoadHandler.handleVideoLoad).toBe(sourceLoadActioner.runNormalLoadActions);
+    sourceLoadHandler.handleNotMetaDatedVideoLoad();
+    expect(sourceLoadHandler.handleYoutubeLoad).toBeCalled();
+
+    sourceLoadHandler.handleVideoLoad({ target: { videoWidth: 2000, videoHeight: 1000 } });
+    sourceLoadHandler.handleNotMetaDatedVideoLoad();
+    expect(sourceLoadHandler.handleYoutubeLoad).toBeCalledTimes(1);
+
+    sourceLoadHandler.handleYoutubeLoad = tempYoutubeLoad;
 });
 
 test('handleYoutubeLoad', () => {
-    expectedSourceLoadActionerParams = [0, 1920, 1080];
     sourceLoadHandler.handleYoutubeLoad();
-    expect(sourceLoadHandler.handleYoutubeLoad).toBe(sourceLoadActioner.runNormalLoadActions);
+    expect(sourceLoadActioner.runActions).toBeCalledWith(1920, 1080);
 
-    expectedSourceLoadActionerParams = [0, 100, 50];
-    fsLightbox.props.maxYoutubeVideoDimensions = { width: 100, height: 50 };
-    sourceLoadHandler = new SourceLoadHandler(fsLightbox, 0);
+    fsLightbox.props.maxYoutubeVideoDimensions = { width: 111, height: 222 };
     sourceLoadHandler.handleYoutubeLoad();
+    expect(sourceLoadActioner.runActions).toBeCalledWith(111, 222);
 });
 
 test('handleCustomLoad', () => {
-    expectedSourceLoadActionerParams = [0, 1111, 555];
     sourceLoadHandler.handleCustomLoad();
-    expect(sourceLoadHandler.handleCustomLoad).toBe(sourceLoadActioner.runNormalLoadActions);
+    expect(sourceLoadActioner.runActions).toBeCalledWith(123, 456);
 });

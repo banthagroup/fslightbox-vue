@@ -20,7 +20,7 @@ export function SourceMainWrapperTransformer({ elements: { sourceMainWrappers },
     };
 
     const setFinalTransformAndCleanTransformer = (value) => {
-        sourceMainWrappers[i].style.transform = `translateX(${ value + additionalTransformValue }px)`;
+        sourceMainWrappers[i].style.transform = `translateX(${value + additionalTransformValue}px)`;
         additionalTransformValue = 0;
     };
 

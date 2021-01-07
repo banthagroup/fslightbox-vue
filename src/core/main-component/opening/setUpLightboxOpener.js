@@ -1,33 +1,33 @@
 import { createSources } from "../../sources/creating/createSources";
-import { getInitialCurrentIndex } from "../../stage/getInitialCurrentIndex";
-import { fillSourceMainWrapperTransformersCollection } from "../../collections/fillSourceMainWrapperTransformersCollection";
+import { fillIndexedCollection } from "../../collections/fillIndexedCollection";
 import { setUpCore } from "../../setUpCore";
+import { SourceLoadHandler } from "../../sources/SourceLoadHandler";
+import { SourceMainWrapperTransformer } from "../../transforms/SourceMainWrapperTransformer";
 
 export function setUpLightboxOpener(fsLightbox) {
     const {
-        componentsServices: { isLightboxRenderedManager },
+        componentsServices: { isLightboxOpenManager },
         core: { eventsDispatcher, lightboxOpener: self, lightboxOpenActioner },
-        data,
-        stageIndexes
+        data
     } = fsLightbox;
 
     self.openLightbox = () => {
         eventsDispatcher.dispatch('onShow');
-        isLightboxRenderedManager.set(true, lightboxOpenActioner.runInitializedLightboxActions);
+        fillIndexedCollection(fsLightbox, 'sourceLoadHandlers', SourceLoadHandler);
+        isLightboxOpenManager.set(true, lightboxOpenActioner.runInitializedLightboxActions);
     };
 
     self.initializeAndOpenLightbox = () => {
         data.isInitialized = true;
 
-        stageIndexes.current = getInitialCurrentIndex(fsLightbox);
-
-        fillSourceMainWrapperTransformersCollection(fsLightbox);
+        fillIndexedCollection(fsLightbox, 'sourceLoadHandlers', SourceLoadHandler);
+        fillIndexedCollection(fsLightbox, 'sourceMainWrapperTransformers', SourceMainWrapperTransformer);
 
         setUpCore(fsLightbox);
 
         eventsDispatcher.dispatch('onInit');
 
-        isLightboxRenderedManager.set(true, () => {
+        isLightboxOpenManager.set(true, () => {
             lightboxOpenActioner.runInitializedLightboxActions();
             createSources(fsLightbox);
         });

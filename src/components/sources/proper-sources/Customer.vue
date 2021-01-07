@@ -25,13 +25,13 @@ export default {
     },
     mounted() {
         const {
-            collections: { sourcesLoadsHandlers },
+            collections: { sourceLoadHandlers },
             elements: { sources }
         } = fsLightboxStore[this.fsLightboxIndex];
 
         sources[this.i] = this.$refs['ref'].$el;
         sources[this.i].classList.add(SOURCE_CLASS_NAME);
-        sourcesLoadsHandlers[this.i].handleCustomLoad();
+        sourceLoadHandlers[this.i].handleCustomLoad();
     }
 };
 </script>
