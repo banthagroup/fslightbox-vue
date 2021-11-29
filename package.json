@@ -1,39 +1,11 @@
 {
   "name": "fslightbox-vue",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Vue version of Fullscreen Lightbox. Modern and easy plugin for displaying images and videos in clean overlaying box. Display single source or create beautiful gallery with powerful lightbox.",
   "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "production": "webpack --mode production --config webpack.prod.config.js --display-modules && gulp",
-    "watch": "webpack-dev-server --mode development --host 0.0.0.0",
-    "cypress": "concurrently --kill-others \"webpack-dev-server --config ./webpack.cypress.config.js --mode development\" \"node ./node_modules/.bin/cypress open\""
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/banthagroup/fslightbox-vue"
-  },
-  "jest": {
-    "verbose": true,
-    "setupFiles": [
-      "./jest-setup.js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
-    },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/demo/",
-      "/dist/",
-      "/tests/cypress/"
-    ],
-    "collectCoverage": false
   },
   "keywords": [
     "vue lightbox",
@@ -50,45 +22,6 @@
   },
   "homepage": "https://fslightbox.com/",
   "peerDependencies": {
-    "vue": "^2.5.0",
-    "vue-template-compiler": "^2.5.0"
-  },
-  "devDependencies": {
-    "@babel/preset-env": "^7.4.4",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.4.4",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^24.7.1",
-    "babel-loader": "^8.0.5",
-    "babel-polyfill": "^6.26.0",
-    "concurrently": "^5.3.0",
-    "core-js": "^3.0.1",
-    "css-loader": "^2.1.0",
-    "cypress": "^4.12.1",
-    "dotenv": "^8.2.0",
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.2.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^4.0.2",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "jest": "^24.7.1",
-    "node-sass": "^4.12.0",
-    "prop-types": "^15.6.2",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
-    "uglifyjs-webpack-plugin": "^2.1.1",
-    "vue": "^2.6.10",
-    "vue-jest": "^3.0.5",
-    "vue-loader": "^15.7.1",
-    "vue-server-renderer": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.3.1"
-  },
-  "dependencies": {
-    "fslightbox-vue": "^1.0.4"
+    "vue": ">=2.5.0"
   }
 }
