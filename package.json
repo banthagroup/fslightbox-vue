@@ -1,6 +1,6 @@
 {
   "name": "fslightbox-vue",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Vue version of Fullscreen Lightbox. Modern and easy plugin for displaying images and videos in clean overlaying box. Display single source or create beautiful gallery with powerful lightbox.",
   "main": "index.js",
   "repository": {

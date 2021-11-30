@@ -49,8 +49,8 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.4.4",
-    "@vue/compiler-sfc": "^3.2.21",
-    "@vue/server-renderer": "^3.2.21",
+    "@vue/compiler-sfc": "^3.2.0",
+    "@vue/server-renderer": "^3.2.0",
     "@vue/test-utils": "^2.0.0-rc.16",
     "@vue/vue3-jest": "^27.0.0-alpha.3",
     "babel-jest": "^27.0.0",

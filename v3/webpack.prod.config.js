@@ -3,7 +3,11 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 const baseConfig = {
     externals: {
-        'vue': 'vue'
+        "vue": {
+            commonjs: "vue",
+            commonjs2: "vue",
+            root: "Vue"
+        }
     },
     module: {
         rules: [
