@@ -5,7 +5,7 @@ Website: https://fslightbox.com/vue
 
 | Dependency | Version |
 | --- | --- |
-| vue | at least 2.5.0 |
+| vue | >= 2.5.0 or >= 3.2.0 (Vue.js 3)|
 
 
 ## Basic usage
@@ -35,16 +35,17 @@ Website: https://fslightbox.com/vue
 </template>
 
 <script>
-    import FsLightbox from "fslightbox-vue";
+import FsLightbox from "fslightbox-vue";
+// import FsLightbox from "fslightbox-vue/v3"; for Vue v3
 
-    export default {
-        components: { FsLightbox },
-        data() {
-            return {
-                toggler: false
-            }
+export default {
+    components: { FsLightbox },
+    data() {
+        return {
+            toggler: false
         }
     }
+}
 </script>
 ```
 
@@ -62,4 +63,4 @@ Available at: https://fslightbox.com/vue/documentation
 | Firefox | Yes |
 | Safari | Yes |
 | Edge | Yes |
-| IE 11 | Yes |
+| IE 11 | Yes (Vue 3 does not support IE 11 so only FsLightbox for Vue 2) |
