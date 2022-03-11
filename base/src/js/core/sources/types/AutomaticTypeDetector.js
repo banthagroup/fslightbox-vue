@@ -44,9 +44,26 @@ export function AutomaticTypeDetector() {
             return;
         }
 
-        const headerType = automaticTypeDetectorBucket.getTypeFromResponseContentType(
+        let headerType = automaticTypeDetectorBucket.getTypeFromResponseContentType(
             xhr.getResponseHeader('content-type')
         );
+
+        if (headerType === null) {
+          const filenameExtension = url.split('.').pop();
+          switch (filenameExtension) {
+            case 'png':
+            case 'jpeg':
+            case 'jpg':
+            case 'gif':
+              headerType =  'image';
+              break;
+            case 'mp4':
+              headerType = 'video';
+              break;
+            default:
+              // nope
+          }
+        }
 
         let finalType;
         switch (headerType) {
