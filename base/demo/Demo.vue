@@ -1,15 +1,16 @@
 <template>
     <div>
-        <button @click="toggler = !toggler">Toggle Lightbox</button>
         <button @click="openLightboxOnSlide(1)">Open on 1 slide</button>
         <button @click="openLightboxOnSlide(2)">Open on 2 slide</button>
 
         <FsLightbox
             :toggler="toggler"
-            :sources="sources"
+            :sources="[
+			'https://i.imgur.com/fsyrScY.jpg',
+			'https://www.youtube.com/watch?v=xshEZzpS4CQ',
+			'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+		]"
             :slide="slide"
-            :onClose="onClose"
-            :load-only-current-source="true"
             :custom-attributes="[
                 {
                     srcSet: 'demo/img/7.jpg 600w, demo/img/5.jpg 1200w',
@@ -24,15 +25,13 @@
 </template>
 
 <script>
-import { testSources } from "<rootDir>/tests/__tests-services__/testVars";
-import FsLightbox from "./FsLightbox.vue";
+import FsLightbox from "../FsLightbox.vue";
 
 export default {
     components: { FsLightbox },
     data() {
         return {
             toggler: false,
-            sources: testSources,
             slide: 1
         }
     },
@@ -40,9 +39,6 @@ export default {
         openLightboxOnSlide: function (number) {
             this.slide = number;
             this.toggler = !this.toggler;
-        },
-        onClose() {
-            console.log('close')
         }
     }
 }
