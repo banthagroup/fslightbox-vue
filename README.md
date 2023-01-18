@@ -1,7 +1,7 @@
 # Vue Fullscreen Lightbox Basic
 
 ## Description
-A React component for displaying images, videos, or, through custom sources, anything you want in a clean overlying box.
+A Vue.js component for displaying images, videos, or, through custom sources, anything you want in a clean overlying box.
 The project's website: https://fslightbox.com.
 
 | Dependency | Version |
@@ -56,7 +56,7 @@ export default {
 ```
 
 ## Demo
-Available at: https://fslightbox.com/vue
+Available at: https://fslightbox.com/vue.
 
 ## Documentation
 Available at: https://fslightbox.com/vue/documentation.
