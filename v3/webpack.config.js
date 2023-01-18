@@ -5,7 +5,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 module.exports = {
     entry: './demo.js',
     output: {
-        path: path.resolve(__dirname, '../base')
+        path: path.resolve(__dirname, '../demo')
     },
     resolve: {
         alias: {
@@ -43,13 +43,13 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebPackPlugin({
-            template: '../base/index.html',
-            filename: '../base/index.html'
+            template: '../demo/index.html',
+            filename: '../demo/index.html'
         })
     ],
     devServer: {
         static: {
-            directory: path.resolve(__dirname, '../base')
+            directory: path.resolve(__dirname, '../demo')
         }
     }
 };
