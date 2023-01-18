@@ -1,38 +1,7 @@
 {
   "scripts": {
-    "test": "jest",
     "production": "webpack --mode production --config webpack.prod.config.js",
     "watch": "webpack-dev-server --mode development --host 0.0.0.0"
-  },
-  "jest": {
-    "setupFiles": [
-      "./jest-setup.js"
-    ],
-    "roots": [
-      "<rootDir>/../"
-    ],
-    "transform": {
-      "^.+\\.vue$": "@vue/vue2-jest",
-      "^.+\\.js$": "babel-jest"
-    },
-    "testMatch": [
-      "<rootDir>/../base/src/js/**/*.test.js",
-      "<rootDir>/../base/tests/integration/**/*.spec.js",
-      "<rootDir>/tests/integration/**/*.spec.js",
-      "<rootDir>/tests/unit/**/*.test.js"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "v2/node_modules"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "vue"
-    ],
-    "moduleNameMapper": {
-      "<rootDir>/(.+)$": "<rootDir>/$1"
-    },
-    "testEnvironment": "jsdom"
   },
   "browserslist": {
     "development": [
@@ -48,13 +17,8 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.8",
-    "@vue/test-utils": "^1.0.0",
-    "@vue/vue2-jest": "^27.0.0-alpha.3",
-    "babel-jest": "^27.0.0",
     "babel-loader": "^8.0.5",
-    "babel-polyfill": "^6.0.0",
     "html-webpack-plugin": "^4.0.0",
-    "jest": "^27.0.0",
     "vue": "^2.6.14",
     "vue-loader": "^15.0.0",
     "vue-server-renderer": "^2.6.10",

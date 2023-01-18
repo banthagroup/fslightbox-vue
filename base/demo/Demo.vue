@@ -25,7 +25,7 @@
 
 <script>
 import { testSources } from "<rootDir>/tests/__tests-services__/testVars";
-import FsLightbox from "../src/js/FsLightbox.vue";
+import FsLightbox from "./FsLightbox.vue";
 
 export default {
     components: { FsLightbox },

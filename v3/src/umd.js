@@ -1,3 +1,3 @@
-import FsLightbox from '../../base/src/js/FsLightbox.vue';
+import FsLightbox from "../../base/FsLightbox.vue";
 
 export { FsLightbox };
