@@ -1,28 +1,34 @@
 # Vue Fullscreen Lightbox Basic
-Fullscreen Lightbox is plugin for displaying images, videos and more in clean overlaying box.
 
-Website: https://fslightbox.com/vue
+## Description
+A React component for displaying images, videos, or, through custom sources, anything you want in a clean overlying box.
+The project's website: https://fslightbox.com.
 
 | Dependency | Version |
 | --- | --- |
 | vue | >= 2.5.0 or >= 3.2.0 (Vue.js 3)|
 
 
+## Installation
+### Through a package manager
+```
+ npm install fslightbox-vue
+```
+### Or, through an archive downloaded from the website
+The .tgz archive, in its entirety, should be put somewhere in the end project, for example, "./src/lib". Then run the package manager's install command with the path to that archive. The command have to be run from the directory where your project's "package.json" file is.
+``` 
+$ npm install ./src/lib/[lightbox archive name] 
+```
+For example:
+``` 
+$ npm install ./src/lib/fslightbox-react-1.0.0.tgz
+```
+
 ## Basic usage
-
-### Installation
-
-```
- npm install --save-dev fslightbox-vue
-```
-
-
-### Example
-
 ```vue
 <template>
     <div>
-        <button @click="toggler = !toggler">Toggle Lightbox</button>
+        <button @click="toggler = !toggler">Open the lightbox</button>
         <FsLightbox
             :toggler="toggler"
             :sources="[
@@ -52,15 +58,14 @@ export default {
 ## Demo
 Available at: https://fslightbox.com/vue
 
-## Documentation and props description
-Available at: https://fslightbox.com/vue/documentation
+## Documentation
+Available at: https://fslightbox.com/vue/documentation.
 
 ## Browser Compatibility
-
 | Browser | Works? |
 | --- | --- |
 | Chrome | Yes |
 | Firefox | Yes |
 | Safari | Yes |
 | Edge | Yes |
-| IE 11 | Yes (Vue 3 does not support IE 11 so only FsLightbox for Vue 2) |
+| IE 11 | Yes (Vue 3 doesn't support IE 11 so only FsLightbox for Vue 2) |
