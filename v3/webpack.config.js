@@ -22,28 +22,12 @@ module.exports = {
                 use: {
                     loader: 'vue-loader'
                 }
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader'
-                ]
             }
         ]
     },
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebPackPlugin({
-            template: '../demo/index.html',
             filename: '../demo/index.html'
         })
     ],
