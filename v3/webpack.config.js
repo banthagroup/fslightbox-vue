@@ -28,7 +28,7 @@ module.exports = {
     plugins: [
         new VueLoaderPlugin(),
         new HtmlWebPackPlugin({
-            filename: '../demo/index.html'
+            template: '../demo/index.html'
         })
     ],
     devServer: {
