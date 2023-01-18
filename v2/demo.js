@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import Demo from "../base/demo/Demo.vue";
+import Vue from "vue";
+import Demo from "../demo/Demo.vue";
 
 new Vue({
     el: "#app",
