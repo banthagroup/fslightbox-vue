@@ -1,7 +1,7 @@
 {
   "name": "fslightbox-vue",
   "version": "2.0.1",
-  "description": "Vue version of Fullscreen Lightbox. Modern and easy plugin for displaying images and videos in clean overlaying box. Display single source or create beautiful gallery with powerful lightbox.",
+  "description": "A capable Vue.js component for displaying images, videos, or, through custom sources, anything you want in a full-window overlying box.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,10 +10,9 @@
   "keywords": [
     "vue lightbox",
     "vue image lightbox",
-    "slide gallery",
-    "fslightbox",
-    "lightbox",
-    "carousel"
+    "vue slide gallery",
+    "vue fslightbox",
+    "vue image modal"
   ],
   "author": "Piotr Zdziarski",
   "license": "MIT",
