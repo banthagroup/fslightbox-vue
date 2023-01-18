@@ -37,7 +37,7 @@ const packageConfig = Object.assign({
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'commonjs2',
-        filename: '../index.js',
+        filename: '../package/index.js',
     }
 }, baseConfig);
 
@@ -47,7 +47,7 @@ const umdConfig = Object.assign({
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'umd',
-        filename: '../fslightbox.umd.js',
+        filename: '../package/fslightbox.umd.js',
     }
 }, baseConfig);
 
