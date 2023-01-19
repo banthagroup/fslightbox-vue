@@ -1,7 +1,7 @@
 <template>
     <iframe
         class="fslightbox-source fslightbox-youtube-iframe"
-        ref="ref"
+        ref="a"
         :src="src"
         allowfullscreen
         v-bind="customAttributes"
@@ -9,28 +9,39 @@
 </template>
 
 <script>
-import { getYoutubeVideoIdFromUrl } from "../../../helpers/source/getYoutubeVideoIdFromUrl";
 import { fsLightboxStore } from "../../../fsLightboxStore";
 
 export default {
-    props: { fsLightboxIndex: Number, i: Number },
-    data() {
-        const { props: { customAttributes, sources } } = fsLightboxStore[this.fsLightboxIndex]
+	props: { fsLightboxIndex: Number, i: Number },
+	created() {
+		var {
+			props: {
+				customAttributes,
+				sources
+			}
+		} = fsLightboxStore[this.fsLightboxIndex];
+		
+		var i = this.i;
+		var url = sources[i];
 
-        return {
-            src: `https://www.youtube.com/embed/${getYoutubeVideoIdFromUrl(sources[this.i])}?enablejsapi=1`,
-            customAttributes: customAttributes && customAttributes[this.i]
-        }
-    },
-    mounted() {
-        const {
-            collections: { sourceLoadHandlers },
-            elements: { sources }
-        } = fsLightboxStore[this.fsLightboxIndex];
+		var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+		var id = url.match(regExp)[2];
 
-        sources[this.i] = this.$refs['ref'];
+		var p = url.split("?")[1];
+		p = p ? p : "";
 
-        sourceLoadHandlers[this.i].handleYoutubeLoad();
-    }
-};
+		this.src = `https://www.youtube.com/embed/${id}?${p}`;
+		this.customAttributes =
+			customAttributes
+			&& customAttributes[i];
+	},
+	mounted() {
+		var fsLightbox = fsLightboxStore[this.fsLightboxIndex];
+		var i = this.i;
+
+		fsLightbox.elements.sources[i] = this.$refs.a;
+
+		fsLightbox.collections.sourceLoadHandlers[i].handleYoutubeLoad();
+	}
+}
 </script>
