@@ -33,7 +33,7 @@ $ npm install ./src/lib/fslightbox-react-1.0.0.tgz
             :toggler="toggler"
             :sources="[
                 'https://i.imgur.com/fsyrScY.jpg',
-                'https://www.youtube.com/watch?v=xshEZzpS4CQ',
+                'https://www.youtube.com/watch?v=3nQNiWdeH2Q',
                 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
             ]"
         />
