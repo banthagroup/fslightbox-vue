@@ -1,5 +1,5 @@
-import FsLightbox from "../../base/FsLightbox.vue";
+import FsLightbox from "../FsLightbox.vue";
 
-Vue.component('fs-lightbox', FsLightbox);
+Vue.component("fs-lightbox", FsLightbox);
 
 export { FsLightbox };
