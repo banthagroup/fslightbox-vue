@@ -2,6 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 
 const baseConfig = {
+	mode: "production",
     externals: {
         "vue": {
             commonjs: "vue",

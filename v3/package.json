@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "production": "webpack --mode production --config webpack.prod.config.js",
-    "watch": "webpack-dev-server --mode development --host 0.0.0.0"
+	"watch": "webpack-dev-server --mode development --host 0.0.0.0",
+	"production": "webpack --config webpack.prod.config.js"
   },
   "browserslist": {
     "development": [
