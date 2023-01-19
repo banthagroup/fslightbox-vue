@@ -1,4 +1,4 @@
-import { setUpFullscreenToggler } from "./fullscreen/setUpFullscreenToggler";
+import { sfs } from "./sfs";
 import { setUpWindowResizeActioner } from "./sizes/setUpWindowResizeActioner";
 import { setUpLightboxCloser } from "./main-component/closing/setUpLightboxCloser";
 import { setUpScrollbarRecompensor } from "./scrollbar/setUpScrollbarRecompensor";
@@ -15,7 +15,7 @@ import { setUpSourceDisplayFacade } from "./sources/setUpSourceDisplayFacade";
 export function setUpCore(fsLightbox) {
     setUpClassFacade(fsLightbox);
     setUpEventsDispatcher(fsLightbox);
-    setUpFullscreenToggler(fsLightbox);
+    sfs(fsLightbox);
     setUpGlobalEventsController(fsLightbox);
     setUpLightboxCloser(fsLightbox);
     setUpLightboxOpenActioner(fsLightbox);

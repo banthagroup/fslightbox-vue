@@ -59,7 +59,6 @@ export function FsLightbox(props) {
     this.core = {
         classFacade: {},
         eventsDispatcher: {},
-        fullscreenToggler: {},
         globalEventsController: {},
         lightboxCloser: {},
         lightboxOpener: {},
@@ -73,6 +72,7 @@ export function FsLightbox(props) {
         stageManager: {},
         windowResizeActioner: {}
     };
+    this.fs = {};
 
     this.getQueuedAction = (action, time) => {
         const queue = [];
