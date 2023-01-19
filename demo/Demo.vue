@@ -6,9 +6,6 @@
 			:toggler="toggler"
 			:sources="[
 				'1.jpg',
-				'https://www.youtube.com/watch?v=3nQNiWdeH2Q',
-				'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-				Vimeo,
 				'0'
 			]"
 		/>
@@ -17,7 +14,6 @@
 
 <script>
 import FsLightbox from "../FsLightbox.vue";
-import Vimeo from "./Vimeo.vue";
 
 export default {
 	components: { FsLightbox },
@@ -25,9 +21,6 @@ export default {
 		return {
 			toggler: false
 		}
-	},
-	created() {
-		this.Vimeo = Vimeo;
 	}
 }
 </script>
