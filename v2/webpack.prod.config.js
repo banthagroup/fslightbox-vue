@@ -34,7 +34,7 @@ const baseConfig = {
 };
 
 const packageConfig = Object.assign({
-    entry: '../base/src/js/index.js',
+    entry: '../FsLightbox.vue',
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'commonjs2',
@@ -44,7 +44,7 @@ const packageConfig = Object.assign({
 
 
 const umdConfig = Object.assign({
-    entry: './src/umd.js',
+    entry: './umd.js',
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'umd',
