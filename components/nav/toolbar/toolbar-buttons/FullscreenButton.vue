@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getButtonData(key) {
-            const { core: { fullscreenToggler: { exitFullscreen, enterFullscreen } } } = fsLightboxStore[this.fsLightboxIndex];
+            const { fs: { exitFullscreen, enterFullscreen } } = fsLightboxStore[this.fsLightboxIndex];
 
             const buttonData = (this.isFullscreenOpen) ? {
                 onClick: exitFullscreen,
