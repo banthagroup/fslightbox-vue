@@ -4,7 +4,6 @@ export const PREFIX = 'fslightbox-';
 export const FSLIGHTBOX_STYLES = `${PREFIX}styles`;
 export const CURSOR_GRABBING_CLASS_NAME = `${PREFIX}cursor-grabbing`;
 export const OPEN_CLASS_NAME = `${PREFIX}open`;
-export const TRANSFORM_TRANSITION_CLASS_NAME = `${PREFIX}transform-transition`;
 
 // animations
 export const FADE_IN_CLASS_NAME = `${PREFIX}fade-in`;
