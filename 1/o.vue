@@ -10,8 +10,8 @@
 
 <script>
 import "./c/styles/styles-injection/styles-injection";
-import { fsLightboxStore } from "./fsLightboxStore";
-import { FsLightbox } from "./FsLightbox";
+import { fsLightboxStore } from "./a";
+import { FsLightbox } from "./o";
 import Naver from './cm/nav/Naver.vue';
 import SourceWrappersContainer from "./cm/sources/SourceWrappersContainer.vue";
 import SlideButtons from "./cm/SlideButtons.vue";

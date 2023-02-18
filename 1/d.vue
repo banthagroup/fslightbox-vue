@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import FsLightbox from "../o.vue";
+import FsLightbox from "./o.vue";
 
 export default {
 	components: { FsLightbox },
