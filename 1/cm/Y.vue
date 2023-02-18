@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { a } from "../../../a";
+import { a } from "../a";
 
 export default {
 	props: { fsLightboxIndex: Number, i: Number },

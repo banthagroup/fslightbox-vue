@@ -11,15 +11,15 @@
 
 <script>
 import { a } from "../../a";
-import Imager from "./proper-sources/Imager.vue";
-import Videor from "./proper-sources/Videor.vue";
-import Youtuber from "./proper-sources/Youtuber.vue";
-import Customer from "./proper-sources/Customer.vue";
-import Invalider from "./proper-sources/Invalider.vue";
+import I from "../I.vue";
+import V from "../V.vue";
+import Y from "../Y.vue";
+import C from "../C.vue";
+import In from "../In.vue";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
-    components: { Imager, Videor, Youtuber, Customer, Invalider },
+    components: { I,V,Y,C,In },
     data() {
         const data = {};
 

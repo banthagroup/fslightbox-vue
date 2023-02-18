@@ -11,19 +11,19 @@ export function DetectedTypeActioner(fsLightbox) {
 
         switch (type) {
             case IMAGE_TYPE:
-                componentName = 'Imager';
+                componentName = 'I';
                 break;
             case VIDEO_TYPE:
-                componentName = 'Videor';
+                componentName = 'V';
                 break;
             case YOUTUBE_TYPE:
-                componentName = 'Youtuber';
+                componentName = 'Y';
                 break;
             case CUSTOM_TYPE:
-                componentName = 'Customer';
+                componentName = 'C';
                 break;
             default:
-                componentName = 'Invalider';
+                componentName = 'In';
                 break;
         }
 

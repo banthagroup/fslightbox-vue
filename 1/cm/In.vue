@@ -5,8 +5,8 @@
 </template>
 
 <script>
-    import { a } from "../../../a";
-    import { FADE_IN_STRONG_CLASS_NAME } from "../../../cn/classes-names";
+    import { a } from "../a";
+    import { FADE_IN_STRONG_CLASS_NAME } from "../cn/classes-names";
 
     export default {
         props: { fsLightboxIndex: Number, i: Number },
