@@ -1,5 +1,5 @@
 <template>
-    <div data-test-class="source-main-wrapper" ref="ref"
+    <div ref="a"
          class="fslightbox-absoluted fslightbox-full-dimension fslightbox-flex-centered">
         <Saw :fs-lightbox-index="fsLightboxIndex" :i="i" />
         <Loader v-if="!isSourceLoaded" />
@@ -23,7 +23,7 @@ export default {
         a[this.fsLightboxIndex].componentsServices.hideSourceLoaderCollection[this.i] = () => this.isSourceLoaded = true;
     },
     mounted() {
-        a[this.fsLightboxIndex].elements.sourceMainWrappers[this.i] = this.$refs.ref;
+        a[this.fsLightboxIndex].smw[this.i] = this.$refs.a;
     }
 }
 </script>

@@ -5,13 +5,14 @@ export function SourceLoadActioner(
     {
         collections: { sourceSizers },
         componentsServices: { hideSourceLoaderCollection },
-        elements: { sourceAnimationWrappers, sources },
-        resolve
+        elements: { sources },
+        resolve,
+	saw
     }, i
 ) {
     this.runActions = (defaultWidth, defaultHeight) => {
         sources[i].classList.add(OPACITY_1_CLASS_NAME);
-        sourceAnimationWrappers[i].classList.add(FADE_IN_STRONG_CLASS_NAME);
+        saw[i].classList.add(FADE_IN_STRONG_CLASS_NAME);
         hideSourceLoaderCollection[i]();
 
         runNormalLoadActions(defaultWidth, defaultHeight);

@@ -1,5 +1,5 @@
 <template>
-    <div ref="ref" class="soueouoeu">
+    <div ref="a">
         <component
             v-if="current === i || (!loadOnlyCurrentSource && isSourceInStage)"
             :is="sourceComponent"
@@ -33,7 +33,7 @@ export default {
         };
     },
     mounted() {
-        a[this.fsLightboxIndex].elements.sourceAnimationWrappers[this.i] = this.$refs['ref'];
+        a[this.fsLightboxIndex].saw[this.i] = this.$refs.a;
     },
     methods: {
         attachComponentDataToObject: function (object) {

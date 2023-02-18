@@ -41,13 +41,9 @@ export function FsLightbox(props) {
     };
 
     this.elements = {
-        container: null,
-        sourceWrappersContainer: null,
         sources: [],
-        sourceMainWrappers: [],
-        sourceAnimationWrappers: [],
         sourcesComponents: []
-    };
+    };this.saw=[];this.smw=[];
 
     this.collections = {
         sourceMainWrapperTransformers: [], // set up during lightbox initialize

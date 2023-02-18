@@ -1,7 +1,6 @@
 <template>
-    <div data-test-id="source-wrappers-container"
+    <div
          class="fslightbox-absoluted fslightbox-full-dimension"
-         ref="ref"
          @pointerdown="listener">
         <Smw
             v-for="(n, i) in sources.length"
@@ -29,9 +28,6 @@ export default {
             sources: sources,
             listener: listener
         }
-    },
-    mounted() {
-        a[this.fsLightboxIndex].elements.sourceWrappersContainer = this.$refs['ref'];
     }
 }
 </script>
