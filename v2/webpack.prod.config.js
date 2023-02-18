@@ -34,7 +34,7 @@ const baseConfig = {
 };
 
 const packageConfig = Object.assign({
-    entry: '../FsLightbox.vue',
+    entry: '../o.vue',
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'commonjs2',
