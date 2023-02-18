@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { fsLightboxStore } from "../../../fsLightboxStore";
+import { a } from "../../../a";
 
 export default {
 	props: { fsLightboxIndex: Number, i: Number },
@@ -19,7 +19,7 @@ export default {
 				customAttributes,
 				sources
 			}
-		} = fsLightboxStore[this.fsLightboxIndex];
+		} = a[this.fsLightboxIndex];
 		
 		var i = this.i;
 		var url = sources[i];
@@ -36,7 +36,7 @@ export default {
 			&& customAttributes[i];
 	},
 	mounted() {
-		var fsLightbox = fsLightboxStore[this.fsLightboxIndex];
+		var fsLightbox = a[this.fsLightboxIndex];
 		var i = this.i;
 
 		fsLightbox.elements.sources[i] = this.$refs.a;

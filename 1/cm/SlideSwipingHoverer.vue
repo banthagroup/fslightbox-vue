@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { fsLightboxStore } from "../fsLightboxStore";
+    import { a } from "../a";
 
     export default {
         props: { fsLightboxIndex: Number },
@@ -16,7 +16,7 @@
             }
         },
         created() {
-            const { componentsServices } = fsLightboxStore[this.fsLightboxIndex];
+            const { componentsServices } = a[this.fsLightboxIndex];
 
             componentsServices.showSlideSwipingHoverer = () => {
                 if (!this.isSlideSwipingHovererShown) {

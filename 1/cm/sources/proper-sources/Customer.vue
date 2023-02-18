@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { fsLightboxStore } from "../../../fsLightboxStore";
+import { a } from "../../../a";
 import { SOURCE_CLASS_NAME } from "../../../cn/classes-names";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
     data() {
-        const customSource = fsLightboxStore[this.fsLightboxIndex].props.sources[this.i];
+        const customSource = a[this.fsLightboxIndex].props.sources[this.i];
         const data = { component: customSource, componentProps: {} };
 
         if (customSource.component) {
@@ -27,7 +27,7 @@ export default {
         const {
             collections: { sourceLoadHandlers },
             elements: { sources }
-        } = fsLightboxStore[this.fsLightboxIndex];
+        } = a[this.fsLightboxIndex];
 
         sources[this.i] = this.$refs['ref'].$el;
         sources[this.i].classList.add(SOURCE_CLASS_NAME);

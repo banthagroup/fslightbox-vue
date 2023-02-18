@@ -9,7 +9,7 @@
 <script>
 import SourceAnimationWrapper from "./SourceAnimationWrapper.vue";
 import Loader from "../h/Loader.vue";
-import { fsLightboxStore } from "../../fsLightboxStore";
+import { a } from "../../a";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
@@ -20,10 +20,10 @@ export default {
         }
     },
     created() {
-        fsLightboxStore[this.fsLightboxIndex].componentsServices.hideSourceLoaderCollection[this.i] = () => this.isSourceLoaded = true;
+        a[this.fsLightboxIndex].componentsServices.hideSourceLoaderCollection[this.i] = () => this.isSourceLoaded = true;
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourceMainWrappers[this.i] = this.$refs.ref;
+        a[this.fsLightboxIndex].elements.sourceMainWrappers[this.i] = this.$refs.ref;
     }
 }
 </script>

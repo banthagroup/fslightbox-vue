@@ -14,7 +14,7 @@
 
 <script>
 import SourceMainWrapper from './SourceMainWrapper.vue';
-import { fsLightboxStore } from "../../fsLightboxStore";
+import { a } from "../../a";
 
 export default {
     props: { fsLightboxIndex: Number },
@@ -23,7 +23,7 @@ export default {
         const {
             core: { sourcesPointerDown: { listener } },
             props: { sources }
-        } = fsLightboxStore[this.fsLightboxIndex];
+        } = a[this.fsLightboxIndex];
 
         return {
             sources: sources,
@@ -31,7 +31,7 @@ export default {
         }
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourceWrappersContainer = this.$refs['ref'];
+        a[this.fsLightboxIndex].elements.sourceWrappersContainer = this.$refs['ref'];
     }
 }
 </script>

@@ -10,14 +10,14 @@
 
 <script>
 import ToolbarButton from "../ToolbarButton.vue";
-import { fsLightboxStore } from "../../../../fsLightboxStore";
+import { a } from "../../../../a";
 
 export default {
     components: { ToolbarButton },
     props: { fsLightboxIndex: Number },
     data() {
         return {
-            onClick: fsLightboxStore[this.fsLightboxIndex].core.lightboxCloser.closeLightbox
+            onClick: a[this.fsLightboxIndex].core.lightboxCloser.closeLightbox
         }
     }
 }

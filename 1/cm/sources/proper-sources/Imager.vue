@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { fsLightboxStore } from "../../../fsLightboxStore";
+import { a } from "../../../a";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
@@ -17,7 +17,7 @@ export default {
         const {
             collections: { sourceLoadHandlers },
             props: { customAttributes, sources }
-        } = fsLightboxStore[this.fsLightboxIndex];
+        } = a[this.fsLightboxIndex];
 
         return {
             onLoad: (e) => {
@@ -28,7 +28,7 @@ export default {
         }
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sources[this.i] = this.$refs['ref'];
+        a[this.fsLightboxIndex].elements.sources[this.i] = this.$refs['ref'];
     }
 };
 </script>

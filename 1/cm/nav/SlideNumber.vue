@@ -9,18 +9,18 @@
 </template>
 
 <script>
-import { fsLightboxStore } from "../../fsLightboxStore";
+import { a } from "../../a";
 
 export default {
     props: { fsLightboxIndex: Number },
     data() {
         return {
-            slide: fsLightboxStore[this.fsLightboxIndex].stageIndexes.current + 1,
-            sourcesCount: fsLightboxStore[this.fsLightboxIndex].props.sources.length
+            slide: a[this.fsLightboxIndex].stageIndexes.current + 1,
+            sourcesCount: a[this.fsLightboxIndex].props.sources.length
         }
     },
     created() {
-        fsLightboxStore[this.fsLightboxIndex].componentsServices.setSlideNumber = (number) => this.slide = number;
+        a[this.fsLightboxIndex].componentsServices.setSlideNumber = (number) => this.slide = number;
     },
     mounted() {
         if (this.$refs['source-inner'].offsetWidth > 55) {

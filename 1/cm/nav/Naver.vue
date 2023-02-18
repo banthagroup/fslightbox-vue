@@ -8,13 +8,13 @@
 <script>
 import Toolbar from "./toolbar/Toolbar.vue";
 import SlideNumber from "./SlideNumber.vue";
-import { fsLightboxStore } from "../../fsLightboxStore";
+import { a } from "../../a";
 
 export default {
     components: { SlideNumber, Toolbar },
     props: { fsLightboxIndex: Number },
     data() {
-        return { hasMoreThanSource: fsLightboxStore[this.fsLightboxIndex].props.sources.length > 1 }
+        return { hasMoreThanSource: a[this.fsLightboxIndex].props.sources.length > 1 }
     }
 };
 </script>

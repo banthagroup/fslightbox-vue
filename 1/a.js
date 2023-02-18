@@ -1,1 +1,1 @@
-export const fsLightboxStore = [];
+export var a = []

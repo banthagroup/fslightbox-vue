@@ -10,7 +10,7 @@
 
 <script>
 import "./c/styles/styles-injection/styles-injection";
-import { fsLightboxStore } from "./a";
+import { a } from "./a";
 import { FsLightbox } from "./o";
 import Naver from './cm/nav/Naver.vue';
 import SourceWrappersContainer from "./cm/sources/SourceWrappersContainer.vue";
@@ -59,27 +59,27 @@ export default {
     },
     watch: {
         slide: function () {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
+            a[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
         sourceIndex: function () {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
+            a[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
         source: function () {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
+            a[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
         },
         /**
          * Toggler watcher must be after slide change watchers -
          * if both are updated simultaneously slide change must be called first
          */
         toggler: function () {
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
-            fsLightboxStore[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
+            a[this.fsLightboxIndex].core.lightboxUpdater.handleSlideProp();
+            a[this.fsLightboxIndex].core.lightboxUpdater.handleTogglerUpdate();
         }
     },
     created() {
-        this.fsLightboxIndex = fsLightboxStore.push(new FsLightbox(this)) - 1;
+        this.fsLightboxIndex = a.push(new FsLightbox(this)) - 1;
 
-        const isLightboxOpenManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
+        const isLightboxOpenManager = a[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
         isLightboxOpenManager.get = () => this.isOpen;
         isLightboxOpenManager.set = (value, callback) => {
             this.isOpen = value;
@@ -90,11 +90,11 @@ export default {
         };
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
-        runLightboxMountedActions(fsLightboxStore[this.fsLightboxIndex]);
+        a[this.fsLightboxIndex].elements.container = this.$refs['container'];
+        runLightboxMountedActions(a[this.fsLightboxIndex]);
     },
     updated() {
-        fsLightboxStore[this.fsLightboxIndex].elements.container = this.$refs['container'];
+        a[this.fsLightboxIndex].elements.container = this.$refs['container'];
 
         if (updatedCallback) {
             updatedCallback();

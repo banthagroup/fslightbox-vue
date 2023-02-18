@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { fsLightboxStore } from "../../fsLightboxStore";
+import { a } from "../../a";
 import Imager from "./proper-sources/Imager.vue";
 import Videor from "./proper-sources/Videor.vue";
 import Youtuber from "./proper-sources/Youtuber.vue";
@@ -28,12 +28,12 @@ export default {
         return data;
     },
     created() {
-        fsLightboxStore[this.fsLightboxIndex].componentsServices.updateSourceDirectWrapperCollection[this.i] = () => {
+        a[this.fsLightboxIndex].componentsServices.updateSourceDirectWrapperCollection[this.i] = () => {
             this.attachComponentDataToObject(this);
         };
     },
     mounted() {
-        fsLightboxStore[this.fsLightboxIndex].elements.sourceAnimationWrappers[this.i] = this.$refs['ref'];
+        a[this.fsLightboxIndex].elements.sourceAnimationWrappers[this.i] = this.$refs['ref'];
     },
     methods: {
         attachComponentDataToObject: function (object) {
@@ -42,7 +42,7 @@ export default {
                 elements: { sourcesComponents },
                 props: { loadOnlyCurrentSource },
                 stageIndexes: { current }
-            } = fsLightboxStore[this.fsLightboxIndex];
+            } = a[this.fsLightboxIndex];
 
             object.sourceComponent = sourcesComponents[this.i];
             object.isSourceInStage = isSourceInStage(this.i);

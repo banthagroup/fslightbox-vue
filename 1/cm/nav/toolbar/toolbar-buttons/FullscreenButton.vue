@@ -10,7 +10,7 @@
 
 <script>
 import ToolbarButton from "../ToolbarButton.vue";
-import { fsLightboxStore } from "../../../../fsLightboxStore";
+import { a } from "../../../../a";
 
 export default {
     components: { ToolbarButton },
@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getButtonData(key) {
-            const { fs: { exitFullscreen, enterFullscreen } } = fsLightboxStore[this.fsLightboxIndex];
+            const { fs: { exitFullscreen, enterFullscreen } } = a[this.fsLightboxIndex];
 
             const buttonData = (this.isFullscreenOpen) ? {
                 onClick: exitFullscreen,
@@ -42,7 +42,7 @@ export default {
         }
     },
     created() {
-        const isFullscreenOpenStateManager = fsLightboxStore[this.fsLightboxIndex].componentsServices.isFullscreenOpenManager;
+        const isFullscreenOpenStateManager = a[this.fsLightboxIndex].componentsServices.isFullscreenOpenManager;
 
         isFullscreenOpenStateManager.get = () => this.isFullscreenOpen;
         isFullscreenOpenStateManager.set = (value) => this.isFullscreenOpen = value;
