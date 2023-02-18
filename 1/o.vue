@@ -2,7 +2,7 @@
     <div v-if="isOpen" ref="container"
          class="fslightbox-container fslightbox-full-dimension fslightbox-fade-in-strong">
         <Naver :fs-lightbox-index="this.fsLightboxIndex" />
-        <SourceWrappersContainer :fs-lightbox-index="this.fsLightboxIndex" />
+        <Swc :fs-lightbox-index="this.fsLightboxIndex" />
         <SlideButtons :fs-lightbox-index="this.fsLightboxIndex" />
         <SlideSwipingHoverer :fs-lightbox-index="this.fsLightboxIndex" />
     </div>
@@ -13,7 +13,7 @@ import "./c/styles/styles-injection/styles-injection";
 import { a } from "./a";
 import { FsLightbox } from "./o";
 import Naver from './cm/nav/Naver.vue';
-import SourceWrappersContainer from "./cm/sources/SourceWrappersContainer.vue";
+import Swc from "./cm/Swc.vue";
 import SlideButtons from "./cm/SlideButtons.vue";
 import SlideSwipingHoverer from "./cm/SlideSwipingHoverer.vue";
 import { runLightboxMountedActions } from "./c/main-component/mounting/runLightboxMountedActions";

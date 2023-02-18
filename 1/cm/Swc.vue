@@ -3,7 +3,7 @@
          class="fslightbox-absoluted fslightbox-full-dimension"
          ref="ref"
          @pointerdown="listener">
-        <SourceMainWrapper
+        <Smw
             v-for="(n, i) in sources.length"
             :key="i"
             :i="i"
@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import SourceMainWrapper from './SourceMainWrapper.vue';
-import { a } from "../../a";
+import Smw from './Smw.vue';
+import { a } from "../a";
 
 export default {
     props: { fsLightboxIndex: Number },
-    components: { SourceMainWrapper },
+    components: { Smw },
     data() {
         const {
             core: { sourcesPointerDown: { listener } },
