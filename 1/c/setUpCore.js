@@ -11,6 +11,7 @@ import { setUpClassFacade } from "./elements/setUpClassFacade";
 import { setUpGlobalEventsController } from "./events/setUpGlobalEventsController";
 import { setUpLightboxOpenActioner } from "./main-component/opening/setUpLightboxOpenActioner";
 import { setUpSourceDisplayFacade } from "./sources/setUpSourceDisplayFacade";
+import{sws}from"./sws";
 
 export function setUpCore(fsLightbox) {
     setUpClassFacade(fsLightbox);
@@ -26,5 +27,6 @@ export function setUpCore(fsLightbox) {
     setUpSourceDisplayFacade(fsLightbox);
     setUpStageManager(fsLightbox);
     setUpWindowResizeActioner(fsLightbox);
+	sws(fsLightbox);
 }
 
