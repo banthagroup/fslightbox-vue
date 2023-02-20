@@ -1,6 +1,6 @@
 import { createSources } from "../../sources/creating/createSources";
 import { fillIndexedCollection } from "../../collections/fillIndexedCollection";
-import { setUpCore } from "../../setUpCore";
+import { s } from "../../s";
 import { SourceLoadHandler } from "../../sources/SourceLoadHandler";
 import { SourceMainWrapperTransformer } from "../../transforms/SourceMainWrapperTransformer";
 
@@ -23,7 +23,7 @@ export function setUpLightboxOpener(fsLightbox) {
         fillIndexedCollection(fsLightbox, 'sourceLoadHandlers', SourceLoadHandler);
         fillIndexedCollection(fsLightbox, 'sourceMainWrapperTransformers', SourceMainWrapperTransformer);
 
-        setUpCore(fsLightbox);
+        s(fsLightbox);
 
         eventsDispatcher.dispatch('onInit');
 
