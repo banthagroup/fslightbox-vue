@@ -1,4 +1,4 @@
-import { SourcesPointerUpActionerBucket } from "./SourcesPointerUpActionerBucket";
+import { ab } from "./ab";
 import { CURSOR_GRABBING_CLASS_NAME } from "../../../../cn/classes-names";
 
 export function SourcesPointerUpActioner(
@@ -10,7 +10,7 @@ export function SourcesPointerUpActioner(
         sourcePointerProps
     }
 ) {
-    const slideSwipingUpActionsBucket = resolve(SourcesPointerUpActionerBucket);
+    var ab = resolve(ab);
 
     this.runNoSwipeActions = () => {
         componentsServices.hideSlideSwipingHoverer();
@@ -24,9 +24,9 @@ export function SourcesPointerUpActioner(
 
     this.runActions = () => {
         if (sourcePointerProps.swipedX > 0) {
-            slideSwipingUpActionsBucket.runPositiveSwipedXActions();
+            ab.p()
         } else {
-            slideSwipingUpActionsBucket.runNegativeSwipedXActions();
+            ab.n()
         }
 
         componentsServices.hideSlideSwipingHoverer();
