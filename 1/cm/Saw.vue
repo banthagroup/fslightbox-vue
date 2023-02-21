@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import { a } from "../../a";
-import I from "../I.vue";
-import V from "../V.vue";
-import Y from "../Y.vue";
-import C from "../C.vue";
-import In from "../In.vue";
+import { a } from "../a";
+import I from "./I.vue";
+import V from "./V.vue";
+import Y from "./Y.vue";
+import C from "./C.vue";
+import In from "./In.vue";
 
 export default {
     props: { fsLightboxIndex: Number, i: Number },
