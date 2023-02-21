@@ -1,17 +1,17 @@
 import { getScrollbarWidth } from "../../scrollbar/getScrollbarWidth";
 import { injectStylesIfNotInDom } from "../../styles/injectStylesIfNotInDom";
 
-export function runLightboxMountedActions(fsLightbox) {
+export function runLightboxMountedActions(o) {
     const {
         core: { lightboxOpener },
         data,
         props: { openOnMount }
-    } = fsLightbox;
+    } = o;
 
     injectStylesIfNotInDom();
-    data.scrollbarWidth = getScrollbarWidth(fsLightbox);
+    data.scrollbarWidth = getScrollbarWidth(o);
 
     if (openOnMount) {
-        lightboxOpener.initializeAndOpenLightbox();
+        o.i();
     }
 }

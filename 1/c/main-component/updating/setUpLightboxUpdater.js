@@ -1,24 +1,23 @@
 import { LightboxUpdateActioner } from "./LightboxUpdateActioner";
 
-export function setUpLightboxUpdater(fsLightbox) {
-    const {
+export function setUpLightboxUpdater(o) {
+    var {
         componentsServices: {
             isLightboxOpenManager
         },
         core: {
             lightboxCloser,
-            lightboxOpener,
             lightboxUpdater: self
         },
         data,
         resolve
-    } = fsLightbox;
+    } = o;
 
     const actioner = resolve(LightboxUpdateActioner);
 
     self.handleSlideProp = () => {
         // cannot destructure props in LightboxUpdater param, because this object is overwritten on props update
-        const currentProps = fsLightbox.props;
+        const currentProps = o.props;
 
         if (typeof currentProps.sourceIndex === 'number') {
             actioner.runCurrentStageIndexUpdateActionsFor(currentProps.sourceIndex);
@@ -33,9 +32,9 @@ export function setUpLightboxUpdater(fsLightbox) {
         if (isLightboxOpenManager.get()) {
             lightboxCloser.closeLightbox();
         } else if (data.isInitialized) {
-            lightboxOpener.openLightbox();
+            o.o()
         } else {
-            lightboxOpener.initializeAndOpenLightbox();
+            o.i()
         }
     };
 }

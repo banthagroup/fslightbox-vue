@@ -1,4 +1,4 @@
-import { setUpLightboxOpener } from "./c/main-component/opening/setUpLightboxOpener";
+import{so}from"./c/so";
 import { setUpLightboxUpdater } from "./c/main-component/updating/setUpLightboxUpdater";
 
 export function FsLightbox(props) {
@@ -7,7 +7,6 @@ export function FsLightbox(props) {
     this.props = props;
 
     this.data = {
-        isInitialized: false,
         isFullyRendered: false,
         maxSourceWidth: 0,
         maxSourceHeight: 0,
@@ -57,8 +56,6 @@ export function FsLightbox(props) {
         eventsDispatcher: {},
         globalEventsController: {},
         lightboxCloser: {},
-        lightboxOpener: {},
-        lightboxOpenActioner: {},
         lightboxUpdater: {},
         scrollbarRecompensor: {},
         slideChangeFacade: {},
@@ -104,5 +101,5 @@ export function FsLightbox(props) {
     // setting up dependencies required to initialize lightbox
     // rest of the core is set up at initialize, because lightbox gets props on first open not at mount
     setUpLightboxUpdater(this);
-    setUpLightboxOpener(this);
+    so(this);
 }
