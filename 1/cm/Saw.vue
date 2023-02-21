@@ -1,7 +1,8 @@
 <template>
     <div ref="a">
+	<div v-if="isl" class="fslightboxl"><div/><div/><div/><div/></div>
         <component
-            v-if="current === i || (!loadOnlyCurrentSource && isSourceInStage)"
+            v-if="current === i || (!loadOnlyCurrentSource && ist)"
             :is="sourceComponent"
             :fs-lightbox-index="fsLightboxIndex"
             :i="i"
@@ -38,14 +39,16 @@ export default {
     methods: {
         attachComponentDataToObject: function (object) {
             const {
-                core: { stageManager: { isSourceInStage } },
                 elements: { sourcesComponents },
+		isl,
                 props: { loadOnlyCurrentSource },
+		st,
                 stageIndexes: { current }
             } = a[this.fsLightboxIndex];
 
             object.sourceComponent = sourcesComponents[this.i];
-            object.isSourceInStage = isSourceInStage(this.i);
+	    object.isl = isl[this.i];
+            object.ist = st.i(this.i);
             object.current = current;
             object.loadOnlyCurrentSource = loadOnlyCurrentSource;
         }
