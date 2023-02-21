@@ -51,7 +51,7 @@ export default {
         openOnMount: Boolean,
         exitFullscreenOnClose: Boolean
     },
-    components: { SlideButtons, SourceWrappersContainer, Naver, SlideSwipingHoverer },
+    components: { Swc, SlideButtons, Naver, SlideSwipingHoverer },
     data() {
         return {
             isOpen: false
