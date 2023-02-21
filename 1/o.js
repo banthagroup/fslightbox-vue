@@ -52,7 +52,6 @@ export function FsLightbox(props) {
     };
 
     this.core = {
-        classFacade: {},
         eventsDispatcher: {},
         globalEventsController: {},
         lightboxCloser: {},
