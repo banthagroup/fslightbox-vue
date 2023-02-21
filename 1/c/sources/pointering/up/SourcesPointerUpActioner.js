@@ -10,7 +10,7 @@ export function SourcesPointerUpActioner(
         sourcePointerProps
     }
 ) {
-    var ab = resolve(ab);
+    var b = resolve(ab);
 
     this.runNoSwipeActions = () => {
         componentsServices.hideSlideSwipingHoverer();
@@ -24,9 +24,9 @@ export function SourcesPointerUpActioner(
 
     this.runActions = () => {
         if (sourcePointerProps.swipedX > 0) {
-            ab.p()
+            b.p()
         } else {
-            ab.n()
+            b.n()
         }
 
         componentsServices.hideSlideSwipingHoverer();
