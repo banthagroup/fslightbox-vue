@@ -61,9 +61,8 @@ export function FsLightbox(props) {
         slideIndexChanger: {},
         sourcesPointerDown: {},
         sourceDisplayFacade: {},
-        stageManager: {},
         windowResizeActioner: {}
-    };this.fs = {};this.sws={};
+    };this.fs = {};this.st={};this.sws={};
 
     this.getQueuedAction = (action, time) => {
         const queue = [];
