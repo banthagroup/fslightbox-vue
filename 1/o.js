@@ -11,7 +11,7 @@ export function FsLightbox(props) {
         maxSourceWidth: 0,
         maxSourceHeight: 0,
         scrollbarWidth: 0,
-    };
+    };this.isl=[];
 
     this.sourcePointerProps = {
         isPointering: false,
