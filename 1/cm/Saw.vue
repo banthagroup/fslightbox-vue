@@ -1,6 +1,6 @@
 <template>
     <div ref="a">
-	<div v-if="isl" class="fslightboxl"><div/><div/><div/><div/></div>
+	<div v-if="isl" class="fslightboxl"></div>
         <component
             v-if="current === i || (!loadOnlyCurrentSource && ist)"
             :is="sourceComponent"
@@ -17,7 +17,7 @@ import V from "./V.vue";
 import Y from "./Y.vue";
 import C from "./C.vue";
 import In from "./In.vue";
-
+	
 export default {
     props: { fsLightboxIndex: Number, i: Number },
     components: { I,V,Y,C,In },
@@ -29,9 +29,9 @@ export default {
         return data;
     },
     created() {
-        a[this.fsLightboxIndex].componentsServices.updateSourceDirectWrapperCollection[this.i] = () => {
-            this.attachComponentDataToObject(this);
-        };
+        a[this.fsLightboxIndex].sawu[this.i] = () => {
+            this.attachComponentDataToObject(this)
+        }
     },
     mounted() {
         a[this.fsLightboxIndex].saw[this.i] = this.$refs.a;
