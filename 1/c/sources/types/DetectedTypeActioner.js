@@ -1,9 +1,10 @@
 import { CUSTOM_TYPE, IMAGE_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../cn/core-constants";
 
 export function DetectedTypeActioner(fsLightbox) {
-    const {
-        componentsServices: { isLightboxOpenManager, updateSourceDirectWrapperCollection },
-        elements: { sourcesComponents }
+    var {
+        componentsServices: { isLightboxOpenManager },
+        elements: { sourcesComponents },
+	sawu
     } = fsLightbox;
 
     this.runActionsForSourceTypeAndIndex = (type, i) => {
@@ -30,7 +31,7 @@ export function DetectedTypeActioner(fsLightbox) {
         sourcesComponents[i] = componentName;
 
         if (isLightboxOpenManager.get()) {
-            updateSourceDirectWrapperCollection[i]();
+            sawu[i]();
         }
     };
 }

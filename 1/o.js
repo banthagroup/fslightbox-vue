@@ -37,7 +37,7 @@ export function FsLightbox(props) {
         updateSourceDirectWrapperCollection: [],
         showSlideSwipingHoverer: null,
         hideSlideSwipingHoverer: null
-    };
+    };this.sawu=[];
 
     this.elements = {
         sources: [],
@@ -45,7 +45,6 @@ export function FsLightbox(props) {
     };this.saw=[];this.smw=[];
 
     this.collections = {
-        sourceMainWrapperTransformers: [], // set up during lightbox initialize
         sourceLoadHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
         sourceSizers: [],
         xhrs: [] // if lightbox is unmounted pending xhrs need to be aborted
