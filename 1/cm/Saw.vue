@@ -1,6 +1,6 @@
 <template>
     <div ref="a">
-	<div v-if="isl" class="fslightboxl"></div>
+	<div v-if="!isl" class="fslightboxl"><div/><div/><div/><div/></div>
         <component
             v-if="current === i || (!loadOnlyCurrentSource && ist)"
             :is="sourceComponent"
