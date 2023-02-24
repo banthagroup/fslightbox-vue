@@ -34,7 +34,7 @@ const baseConfig = {
 };
 
 const packageConfig = Object.assign({
-    entry: '../o.vue',
+    entry: '../1/o.vue',
     output: {
         path: path.join(__dirname, ''),
         libraryTarget: 'commonjs2',
