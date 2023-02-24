@@ -33,8 +33,6 @@ export function FsLightbox(props) {
         isLightboxOpenManager: {},
         setSlideNumber: null,
         isFullscreenOpenManager: {},
-        hideSourceLoaderCollection: [],
-        updateSourceDirectWrapperCollection: [],
         showSlideSwipingHoverer: null,
         hideSlideSwipingHoverer: null
     };this.sawu=[];
