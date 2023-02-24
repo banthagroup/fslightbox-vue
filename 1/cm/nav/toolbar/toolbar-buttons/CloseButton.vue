@@ -14,10 +14,10 @@ import { a } from "../../../../a";
 
 export default {
     components: { ToolbarButton },
-    props: { fsLightboxIndex: Number },
+    props: { i: Number },
     data() {
         return {
-            onClick: a[this.fsLightboxIndex].core.lightboxCloser.closeLightbox
+            onClick: a[this.i].core.lightboxCloser.closeLightbox
         }
     }
 }

@@ -3,10 +3,10 @@
          class="fslightbox-absoluted fslightbox-full-dimension"
          @pointerdown="listener">
         <Smw
-            v-for="(n, i) in sources.length"
-            :key="i"
+            v-for="(n, j) in sources.length"
             :i="i"
-            :fs-lightbox-index="fsLightboxIndex"
+            :j="j"
+	    :key="j"
         />
     </div>
 </template>
@@ -16,13 +16,13 @@ import Smw from './Smw.vue';
 import { a } from "../a";
 
 export default {
-    props: { fsLightboxIndex: Number },
+    props: { i: Number },
     components: { Smw },
     data() {
         const {
             core: { sourcesPointerDown: { listener } },
             props: { sources }
-        } = a[this.fsLightboxIndex];
+        } = a[this.i];
 
         return {
             sources: sources,

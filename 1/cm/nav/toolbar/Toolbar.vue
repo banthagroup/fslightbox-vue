@@ -1,7 +1,7 @@
 <template>
     <div class="fslightbox-toolbar">
-        <FullscreenButton :fs-lightbox-index="fsLightboxIndex"/>
-        <CloseButton :fs-lightbox-index="fsLightboxIndex"/>
+        <FullscreenButton :i="i"/>
+        <CloseButton :i="i"/>
     </div>
 </template>
 
@@ -11,6 +11,6 @@
 
     export default {
         components: { FullscreenButton, CloseButton },
-        props: { fsLightboxIndex: Number },
+        props: { i: Number },
     }
 </script>

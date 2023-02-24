@@ -1,7 +1,7 @@
 <template>
     <div ref="nav" class="fslightbox-nav">
-        <Toolbar :fs-lightbox-index="fsLightboxIndex" />
-        <SlideNumber v-if="hasMoreThanSource" :fs-lightbox-index="fsLightboxIndex" />
+        <Toolbar :i="i" />
+        <SlideNumber v-if="hasMoreThanSource" :i="i" />
     </div>
 </template>
 
@@ -12,9 +12,9 @@ import { a } from "../../a";
 
 export default {
     components: { SlideNumber, Toolbar },
-    props: { fsLightboxIndex: Number },
+    props: { i: Number },
     data() {
-        return { hasMoreThanSource: a[this.fsLightboxIndex].props.sources.length > 1 }
+        return { hasMoreThanSource: a[this.i].props.sources.length > 1 }
     }
 };
 </script>

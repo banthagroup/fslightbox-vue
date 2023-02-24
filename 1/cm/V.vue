@@ -12,21 +12,21 @@
 import { a } from "../a";
 
 export default {
-    props: { fsLightboxIndex: Number, i: Number },
+    props: { i: Number, j: Number },
     data() {
         const {
             collections: { sourceLoadHandlers },
             props: { customAttributes, sources }
-        } = a[this.fsLightboxIndex];
+        } = a[this.i];
 
         return {
-            onLoad: sourceLoadHandlers[this.i].handleVideoLoad,
-            src: sources[this.i],
-            customAttributes: customAttributes && customAttributes[this.i]
+            onLoad: sourceLoadHandlers[this.j].handleVideoLoad,
+            src: sources[this.j],
+            customAttributes: customAttributes && customAttributes[this.j]
         }
     },
     mounted() {
-        a[this.fsLightboxIndex].elements.sources[this.i] = this.$refs['ref'];
+        a[this.i].elements.sources[this.j] = this.$refs['ref'];
     }
 };
 </script>

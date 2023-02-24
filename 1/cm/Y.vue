@@ -12,16 +12,16 @@
 import { a } from "../a";
 
 export default {
-	props: { fsLightboxIndex: Number, i: Number },
+	props: { i: Number, j: Number },
 	created() {
 		var {
 			props: {
 				customAttributes,
 				sources
 			}
-		} = a[this.fsLightboxIndex];
+		} = a[this.i];
 		
-		var i = this.i;
+		var i = this.j;
 		var url = sources[i];
 
 		var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -36,8 +36,8 @@ export default {
 			&& customAttributes[i];
 	},
 	mounted() {
-		var fsLightbox = a[this.fsLightboxIndex];
-		var i = this.i;
+		var fsLightbox = a[this.i];
+		var i = this.j;
 
 		fsLightbox.elements.sources[i] = this.$refs.a;
 

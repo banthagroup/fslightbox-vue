@@ -14,7 +14,7 @@ import { a } from "../../../../a";
 
 export default {
     components: { ToolbarButton },
-    props: { fsLightboxIndex: Number },
+    props: { i: Number },
     data() {
         return {
             isFullscreenOpen: false
@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         getButtonData(key) {
-            const { fs: { exitFullscreen, enterFullscreen } } = a[this.fsLightboxIndex];
+            const { fs: { exitFullscreen, enterFullscreen } } = a[this.i];
 
             const buttonData = (this.isFullscreenOpen) ? {
                 onClick: exitFullscreen,
@@ -42,7 +42,7 @@ export default {
         }
     },
     created() {
-        const isFullscreenOpenStateManager = a[this.fsLightboxIndex].componentsServices.isFullscreenOpenManager;
+        const isFullscreenOpenStateManager = a[this.i].componentsServices.isFullscreenOpenManager;
 
         isFullscreenOpenStateManager.get = () => this.isFullscreenOpen;
         isFullscreenOpenStateManager.set = (value) => this.isFullscreenOpen = value;

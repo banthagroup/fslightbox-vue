@@ -18,13 +18,13 @@ import SlideButton from "./SlideButton.vue";
 import { a } from "../a";
 
 export default {
-    props: { fsLightboxIndex: Number },
+    props: { i: Number },
     components: { SlideButton },
     data() {
         const {
             core: { slideChangeFacade: { changeToPrevious, changeToNext } },
             props: { sources }
-        } = a[this.fsLightboxIndex];
+        } = a[this.i];
 
         return {
             sourcesCount: sources.length,

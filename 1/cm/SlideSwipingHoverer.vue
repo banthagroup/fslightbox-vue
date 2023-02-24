@@ -9,14 +9,14 @@
     import { a } from "../a";
 
     export default {
-        props: { fsLightboxIndex: Number },
+        props: { i: Number },
         data() {
             return {
                 isSlideSwipingHovererShown: false
             }
         },
         created() {
-            const { componentsServices } = a[this.fsLightboxIndex];
+            const { componentsServices } = a[this.i];
 
             componentsServices.showSlideSwipingHoverer = () => {
                 if (!this.isSlideSwipingHovererShown) {
