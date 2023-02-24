@@ -11,7 +11,7 @@
 <script>
 import "./c/styles/styles-injection/styles-injection";
 import { a } from "./a";
-import { FsLightbox } from "./o";
+import { o } from "./o";
 import Naver from './cm/nav/Naver.vue';
 import Swc from "./cm/Swc.vue";
 import SlideButtons from "./cm/SlideButtons.vue";
@@ -77,7 +77,7 @@ export default {
         }
     },
     created() {
-        this.fsLightboxIndex = a.push(new FsLightbox(this)) - 1;
+        this.fsLightboxIndex = a.push(new o(this)) - 1;
 
         const isLightboxOpenManager = a[this.fsLightboxIndex].componentsServices.isLightboxOpenManager;
         isLightboxOpenManager.get = () => this.isOpen;

@@ -1,7 +1,7 @@
 import{so}from"./c/so";
 import { setUpLightboxUpdater } from "./c/main-component/updating/setUpLightboxUpdater";
 
-export function FsLightbox(props) {
+export function o(props) {
     // we can cache props at lightbox create, because before opening lightbox props are never used
     // so there is no threat of destructuring props that is not set yet
     this.props = props;
