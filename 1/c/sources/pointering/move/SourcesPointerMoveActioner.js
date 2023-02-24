@@ -2,9 +2,9 @@ import { CURSOR_GRABBING_CLASS_NAME } from "../../../../cn/classes-names";
 
 export function SourcesPointerMoveActioner(
     {
-        collections: { sourceMainWrapperTransformers },
         componentsServices,
         elements,
+	smw,
         sourcePointerProps,
         stageIndexes
     }
@@ -18,18 +18,15 @@ export function SourcesPointerMoveActioner(
 
         sourcePointerProps.swipedX = e.screenX - sourcePointerProps.downScreenX;
 
-        transformSourceHolderAtIndexToPosition(stageIndexes.current, 'zero');
-        // if there are only two slides we need to check if source we want to transform exists
+        t(stageIndexes.current,"z");
         if (stageIndexes.previous !== undefined && sourcePointerProps.swipedX > 0) {
-            transformSourceHolderAtIndexToPosition(stageIndexes.previous, 'negative');
+            t(stageIndexes.previous,"ne")
         } else if (stageIndexes.next !== undefined && sourcePointerProps.swipedX < 0) {
-            transformSourceHolderAtIndexToPosition(stageIndexes.next, 'positive');
+            t(stageIndexes.next,"p")
         }
     };
 
-    const transformSourceHolderAtIndexToPosition = (index, position) => {
-        sourceMainWrapperTransformers[index]
-            .byValue(sourcePointerProps.swipedX)
-            [position]();
-    };
+    function t (i,p) {
+        smw[i].v(sourcePointerProps.swipedX)[p]();
+    }
 }
