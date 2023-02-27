@@ -1,7 +1,7 @@
 <template>
     <div ref="source-outer" class="fslightbox-slide-number-container">
         <div ref="source-inner" class="fslightbox-flex-centered">
-            <span data-test-id="slide-number">{{ slide }}</span>
+            <span>{{ slide }}</span>
             <span class="fslightbox-slash" />
             <span>{{ sourcesCount }}</span>
         </div>
