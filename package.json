@@ -1,0 +1,1 @@
+{"scripts":{"p":"npm run --prefix v2 p && npm run --prefix v3 p"}}
