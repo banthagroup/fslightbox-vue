@@ -1,4 +1,4 @@
-import { getScrollbarWidth } from "../../scrollbar/getScrollbarWidth";
+import { gsw } from "../../scrollbar/gsw";
 import { injectStylesIfNotInDom } from "../../styles/injectStylesIfNotInDom";
 
 export function runLightboxMountedActions(o) {
@@ -9,7 +9,7 @@ export function runLightboxMountedActions(o) {
     } = o;
 
     injectStylesIfNotInDom();
-    data.scrollbarWidth = getScrollbarWidth(o);
+    data.scrollbarWidth = gsw();
 
     if (openOnMount) {
         o.i();
