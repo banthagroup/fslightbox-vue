@@ -8,11 +8,11 @@
     "url": "https://github.com/banthagroup/fslightbox-vue"
   },
   "keywords": [
-    "vue lightbox",
-    "vue image lightbox",
-    "vue slide gallery",
+    "fslightbox-vue",
     "vue fslightbox",
-    "vue image modal"
+    "vue slide gallery",
+    "vue modal",
+    "fslightbox vue"
   ],
   "author": "Piotr Zdziarski",
   "license": "MIT",
