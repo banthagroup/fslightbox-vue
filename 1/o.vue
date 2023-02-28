@@ -16,7 +16,7 @@ import Naver from './cm/nav/Naver.vue';
 import Swc from "./cm/Swc.vue";
 import SlideButtons from "./cm/SlideButtons.vue";
 import SlideSwipingHoverer from "./cm/SlideSwipingHoverer.vue";
-import { runLightboxMountedActions } from "./c/main-component/mounting/runLightboxMountedActions";
+import { m } from "./c/m";
 
 let updatedCallback;
 
@@ -91,7 +91,7 @@ export default {
     },
     mounted() {
         a[this.i].elements.container = this.$refs['container'];
-        runLightboxMountedActions(a[this.i]);
+        m(a[this.i]);
     },
     updated() {
         a[this.i].elements.container = this.$refs['container'];
