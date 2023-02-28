@@ -1,5 +1,5 @@
 import { SourceSizer } from "./SourceSizer";
-import { FADE_IN_STRONG_CLASS_NAME, OPACITY_1_CLASS_NAME } from "../../cn/classes-names";
+import { OPACITY_1_CLASS_NAME } from "../../cn/classes-names";
 
 export function SourceLoadActioner(
     {
@@ -14,7 +14,7 @@ export function SourceLoadActioner(
     this.runActions = (defaultWidth, defaultHeight) => {
         isl[i]=true;sawu[i]();
 	sources[i].classList.add(OPACITY_1_CLASS_NAME);
-        saw[i].classList.add(FADE_IN_STRONG_CLASS_NAME);
+        saw[i].classList.add("fslightboxfis");
 
         runNormalLoadActions(defaultWidth, defaultHeight);
         this.runActions = runNormalLoadActions;

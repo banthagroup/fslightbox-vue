@@ -8,7 +8,6 @@ export const OPEN_CLASS_NAME = `${PREFIX}open`;
 // animations
 export const FADE_IN_CLASS_NAME = `${PREFIX}fade-in`;
 export const FADE_OUT_CLASS_NAME = `${PREFIX}fade-out`;
-export const FADE_IN_STRONG_CLASS_NAME = FADE_IN_CLASS_NAME + '-strong';
 export const FADE_OUT_STRONG_CLASS_NAME = FADE_OUT_CLASS_NAME + '-strong';
 
 // opacity
