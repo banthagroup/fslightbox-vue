@@ -28,7 +28,7 @@ $ npm install ./src/lib/fslightbox-react-1.0.0.tgz
 ```vue
 <template>
     <div>
-        <button @click="toggler = !toggler">Open the lightbox</button>
+        <button @click="toggler = !toggler">Open the lightbox.</button>
         <FsLightbox
             :toggler="toggler"
             :sources="[
