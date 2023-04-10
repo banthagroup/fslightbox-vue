@@ -1,8 +1,9 @@
 {
   "name": "fslightbox-vue",
-  "version": "2.1.1",
+  "version": "2.1.1-2",
   "description": "A capable Vue.js component for displaying images, videos, or, through custom sources, anything you want in a full-window overlying box.",
   "main": "index.js",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/banthagroup/fslightbox-vue"
