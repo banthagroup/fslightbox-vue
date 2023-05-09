@@ -11,7 +11,7 @@
     "./v3.js": "./v3.js",
     "./fslightbox.umd": "./fslightbox.umd.js",
     "./fslightbox.umd.js": "./fslightbox.umd.js",
-    "./fslightbox.v3.umd": "./fslightbox.v3.umd.js"
+    "./fslightbox.v3.umd": "./fslightbox.v3.umd.js",
     "./fslightbox.v3.umd.js": "./fslightbox.v3.umd.js"
   },
   "main": "index.js",
