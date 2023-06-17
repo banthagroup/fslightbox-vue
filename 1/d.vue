@@ -1,1 +1,0 @@
-<template><div><button @click="t=!t">1</button><o :toggler="t" :sources="['1.jpg','0']"/></div></template><script>import o from"./o.vue";export default{components:{o},data(){return{t:false}}}</script>
