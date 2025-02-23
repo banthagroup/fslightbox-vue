@@ -57,7 +57,6 @@ export function o(props) {
         slideChangeFacade: {},
         slideIndexChanger: {},
         sourcesPointerDown: {},
-        sourceDisplayFacade: {},
         windowResizeActioner: {}
     };this.fs = {};this.st={};this.sws={};
 
