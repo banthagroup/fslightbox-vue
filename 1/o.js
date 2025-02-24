@@ -37,10 +37,7 @@ export function o(props) {
         hideSlideSwipingHoverer: null
     };this.sawu=[];
 
-    this.elements = {
-        sources: [],
-        sourcesComponents: []
-    };this.saw=[];this.smw=[];
+    this.elements = {sources:[]};this.saw=[];this.sc=[];this.smw=[];
 
     this.collections = {
         sourceLoadHandlers: [], // after source load its size adjuster will be stored in this array so it may be later resized
@@ -58,7 +55,7 @@ export function o(props) {
         slideIndexChanger: {},
         sourcesPointerDown: {},
         windowResizeActioner: {}
-    };this.fs = {};this.st={};this.sws={};
+    };this.ap={};this.fs={};this.st={};this.sws={};
 
     this.getQueuedAction = (action, time) => {
         const queue = [];

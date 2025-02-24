@@ -44,6 +44,7 @@ export default {
         // sources
         customAttributes: Array,
         maxYoutubeVideoDimensions: Object,
+	autoplay: Boolean,
 
         // preferences
         loadOnlyCurrentSource: Boolean,

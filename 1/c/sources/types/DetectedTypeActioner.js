@@ -1,37 +1,34 @@
-import { CUSTOM_TYPE, IMAGE_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../cn/core-constants";
+import { CUSTOM_TYPE, IMAGE_TYPE, VIDEO_TYPE, YOUTUBE_TYPE } from "../../../cn/core-constants";import I from "../../../cm/I.vue";
+import V from "../../../cm/V.vue";
+import Y from "../../../cm/Y.vue";
+import C from "../../../cm/C.vue";
+import In from "../../../cm/In.vue";
 
-export function DetectedTypeActioner(fsLightbox) {
-    var {
-        componentsServices: { isLightboxOpenManager },
-        elements: { sourcesComponents },
-	sawu
-    } = fsLightbox;
+export function DetectedTypeActioner({ componentsServices: { isLightboxOpenManager }, sawu, sc }) {
 
     this.runActionsForSourceTypeAndIndex = (type, i) => {
-        let componentName;
+        var c;
 
         switch (type) {
             case IMAGE_TYPE:
-                componentName = 'I';
+                c = I;
                 break;
             case VIDEO_TYPE:
-                componentName = 'V';
+                c = V;
                 break;
             case YOUTUBE_TYPE:
-                componentName = 'Y';
+                c = Y;
                 break;
             case CUSTOM_TYPE:
-                componentName = 'C';
+                c = C;
                 break;
             default:
-                componentName = 'In';
-                break;
+                c = In
         }
 
-        sourcesComponents[i] = componentName;
+        sc[i] = c;
 
-        if (isLightboxOpenManager.get()) {
-            sawu[i]();
-        }
-    };
+        if (isLightboxOpenManager.get())
+            sawu[i]()
+    }
 }

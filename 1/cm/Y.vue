@@ -1,6 +1,6 @@
 <template>
     <iframe
-        class="fslightbox-source fslightbox-youtube-iframe"
+        class="fslightbox-source fslightboxy"
         ref="a"
         :src="src"
         allowfullscreen
@@ -18,7 +18,7 @@ export default {
 			props: {
 				customAttributes,
 				sources
-			}
+			}, iap
 		} = a[this.i];
 		
 		var i = this.j;
@@ -30,7 +30,7 @@ export default {
 		var p = url.split("?")[1];
 		p = p ? p : "";
 
-		this.src = `https://www.youtube.com/embed/${id}?${p}`;
+		this.src = `https://www.youtube.com/embed/${id}?${p}${iap?"&mute=1&autoplay=1":""}&enablejsapi=1`;
 		this.customAttributes =
 			customAttributes
 			&& customAttributes[i];
