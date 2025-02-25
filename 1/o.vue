@@ -18,8 +18,6 @@ import SlideButtons from "./cm/SlideButtons.vue";
 import SlideSwipingHoverer from "./cm/SlideSwipingHoverer.vue";
 import { m } from "./c/m";
 
-let updatedCallback;
-
 export default {
     props: {
         toggler: Boolean,
@@ -82,26 +80,24 @@ export default {
 
         const isLightboxOpenManager = a[this.i].componentsServices.isLightboxOpenManager;
         isLightboxOpenManager.get = () => this.isOpen;
-        isLightboxOpenManager.set = (value, callback) => {
+        isLightboxOpenManager.set = (value, c) => {
             this.isOpen = value;
 
-            if (callback) {
-                updatedCallback = callback;
-            }
+            if (c)
+                this.c = c
         };
     },
     mounted() {
         a[this.i].elements.container = this.$refs['container'];
         m(a[this.i]);
     },
-    updated() {
+    updated() {console.log(Object.keys(this));
         a[this.i].elements.container = this.$refs['container'];
 
-        if (updatedCallback) {
-            updatedCallback();
-        }
+        if (this.c)
+            this.c();
 
-        updatedCallback = null;
+        this.c = 0
     }
 };
 </script>
