@@ -41,7 +41,7 @@ $ npm install ./src/lib/fslightbox-react-1.0.0.tgz
 </template>
 
 <script>
-import FsLightbox from "fslightbox-vue/v3";
+import FsLightbox from "fslightbox-vue";
 // import FsLightbox from "fslightbox-vue/v2"; for Vue 2
 
 export default {

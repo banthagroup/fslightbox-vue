@@ -1,7 +1,7 @@
 {
   "scripts": {
     "w": "webpack-dev-server --mode development --host 0.0.0.0",
-    "p": "webpack --config webpack.prod.config.js && cp ../package/index.js ../package/v2.js"
+    "p": "webpack --config webpack.prod.config.js"
   },
   "browserslist": {
     "development": [
