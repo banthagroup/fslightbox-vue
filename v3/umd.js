@@ -1,1 +1,1 @@
-import FsLightbox from"../1/o.vue";export{FsLightbox};
+import FsLightbox from"../o.vue";export{FsLightbox};
