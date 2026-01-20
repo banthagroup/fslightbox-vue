@@ -1,3 +1,8 @@
 1/t
+package/index.js
+package/v2.js
+package/v3.js
+package/fslightbox.umd.js
+package/fslightbox.v2.umd.js
 v2/node_modules
 v3/node_modules

@@ -68,4 +68,3 @@ Available at: https://fslightbox.com/vue/documentation.
 | Firefox | Yes |
 | Safari | Yes |
 | Edge | Yes |
-| IE 11 | Yes (Vue 3 doesn't support IE 11 so only FsLightbox for Vue 2) |
